@@ -2905,6 +2905,40 @@ padding:0;
 
 
 }
+
+
+@media (max-width: 390px) {
+
+
+.shane_tm_hero_fourth {
+  height:100%;
+}
+
+.shane_tm_hero_fourth
+{
+	padding-top:70px;
+}
+	.shane_tm_hero_fourth .name_another {
+    font-size: 32px;
+}
+
+.shane_tm_hero_fourth .desc {
+    margin-bottom: 30px;
+    max-width: 720px;
+    color: #eee;
+    font-size: 14px;
+}
+
+.shane_tm_mobile_menu .mobile_menu_list ul li {
+   font-size:14px;
+    text-align: center;
+    margin-left: 20px;
+    margin-right:0;
+}
+	.shane_tm_mobile_menu .topbar_in .logo {
+	display:none;
+	} 
+}
 .cd-headline.slide .cd-words-wrapper{overflow: visible;}
 
 .shane_tm_hero_fourth .desc {

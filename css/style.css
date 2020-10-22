@@ -35,7 +35,7 @@ body{
 	letter-spacing: 0.8px;
 	word-wrap: break-word;
 	font-weight: 400;
-	background-color: #fff;
+	background-color: #f5f8fc;
 	color: #333;
 }
 svg{
@@ -83,6 +83,9 @@ img.svg{
 	   -moz-box-sizing: border-box; /* Firefox, other Gecko */
 			box-sizing: border-box; /* Opera/IE 8+ */
 }
+
+
+
 .shane_tm_preloader{
   position: fixed;
   background-color: #fff;
@@ -96,12 +99,18 @@ img.svg{
   -webkit-transition-delay: .5s;
   -o-transition-delay: .5s;
   transition-delay: .5s; }  
-.shane_tm_preloader .spinner_wrap{
+
+.shane_tm_preloader .gc_logo_loader{
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%,-50%);
 	z-index: 33333;
+}
+
+.gc_logo_image {
+	    width: 100px;
+    height: 100px;
 }
 .shane_tm_preloader.loaded {
     opacity: 0;
@@ -2628,8 +2637,64 @@ body.dark .shane_tm_news ul li .title a:hover{
 .shane_tm_sidebar_hero .shane_tm_down{left: 70px;}
 .shane_tm_sidebar_hero .shane_tm_button a{border: none;}
 
+
+
+div.text.skills {
+	width:33%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+
+
+div.text.skills .skills_column {
+    flex-grow: 1;
+    width: 30%;
+    padding: 32px;
+    margin: 0px 24px 0 0;
+    border-radius: 16px;
+    background: #FFF;
+    box-shadow:rgba(79, 89, 106, 0.075) 0px 20px 40px;
+}
+
+.skills_column h3.skill_title {
+	margin-bottom: 16px;
+    color: #457b9d;
+    font-size: 32px;
+    font-weight: 600;
+}
+
+
+ul.skill_list li  {
+    list-style-type: none;
+    padding: 8px 0;
+}
+
+ul.skill_list li span {
+	margin-bottom:12px;
+}
+
+
+ul.skill_list li span.skill_desc {
+	font-size: 16px;
+    margin-left: 12px;
+    font-weight: 500;
+}
+
+.shane_tm_one_page_about .title_extra.title_skills {
+    margin-bottom: 64px;
+}
+
+
+.big_block_title .bb_content span.blocasso {
+	font-size: 47px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+
 /*---------------------------------------------------*/
-/*	13) SHANE MEDIA QUERIES (FOR SMALL DEVICES)
+/*	13) MEDIA QUERIES
 /*---------------------------------------------------*/
 
 @media (max-width: 1600px) {
@@ -2647,6 +2712,7 @@ body.dark .shane_tm_news ul li .title a:hover{
 	
 	.shane_tm_sidebar{width: 300px;}
 	.shane_tm_sidebar_demo_rightpart{padding-left: 300px;}
+
 }
 @media (max-width: 1400px) {
 	.shane_tm_all_wrap[data-menu-position="sidebar"] .shane_tm_section{padding-left: 90px;}
@@ -2668,7 +2734,9 @@ body.dark .shane_tm_news ul li .title a:hover{
 	.shane_tm_all_wrap[data-menu-position="center"] .shane_tm_menu{left: 0px;}
 	.shane_tm_leftside{display: none;}
 	.shane_tm_extra_section{padding-left: 0px;}
+
 }
+
 @media (max-width: 1040px) {
 	.animate_bg{display: none;}
 	.mouse-cursor{display: none;}
@@ -2750,9 +2818,40 @@ body.dark .shane_tm_news ul li .title a:hover{
 	.shane_tm_sidebar_hero .shane_tm_down{left: 20px;}
 	.shane_tm_sidebar_hero .content .text h3{font-size: 35px;}
 	.shane_tm_sidebar_hero .content .text h3 span,.shane_tm_sidebar_hero .content .text h3 b{font-size: 35px;}
+
+	div.text.skills .skills_column {
+    flex-grow: 1;
+    width: 33%;
+    padding: 16px;
+    margin: 18px 18px;
+    border-radius: 5px;
+}
+
+.skills_column h3.skill_title {
+	margin-bottom: 16px;
+    color: #457b9d;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+ul.skill_list li span.skill_desc {
+	    font-size: 16px;
+    margin-left: 12px;
+    font-weight: 500;
+}
+
+
+ul.skill_list li span img {
+	width:20px;
+	height:20px;
+}
+
 }
 @media (max-width: 768px) {
+	.shane_tm_hero_fourth .bakckground_image {display:none;}
+	.shane_tm_hero_fourth {background: #1d3557;}
 	.shane_tm_home .content h3{font-size: 35px;}
+	.shane_tm_hero_fourth .content_inner { width: 100% !important; }
 	.cd-headline{font-size: 20px;}
 	.shane_tm_about .shane_tm_services ul{margin: 0px;}
 	.shane_tm_about .shane_tm_services ul li{width: 100%;padding-left: 0px;}
@@ -2783,6 +2882,28 @@ body.dark .shane_tm_news ul li .title a:hover{
 	.shane_tm_commentbox_wrap .wp .avatar{position: relative;margin-bottom: 20px;}
 	.shane_tm_commentbox_wrap .wp{padding-left: 0px;}
 	.shane_tm_commentbox_wrap .title h3{font-size: 18px !important;}
+.shane_tm_one_page_about .title_extra h1 {font-size: 26px; margin-bottom: 36px;}
+
+div.text.skills .skills_column {
+    flex-grow: 1;
+    width: 100%;
+    padding: 16px;
+    margin: 16px 0;
+    border-radius: 5px;
+}
+
+ul.skill_list li {
+padding:0;
+}
+
+.big_block_title .bb_content span.blocasso {
+	font-size: 24px;
+    font-weight: bold;
+    line-height: 1;
+}
+
+
+
 }
 .cd-headline.slide .cd-words-wrapper{overflow: visible;}
 
@@ -2798,22 +2919,6 @@ body.dark .shane_tm_news ul li .title a:hover{
     text-decoration: underline;
 }
 
-div.text.skills {
-	width:33%;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-
-
-div.text.skills .skills_column {
-  flex-grow: 1;
-  width: 30%;
-  padding: 16px 32px 0 0;
-  margin: 0px 6px 0 0;
-  border-radius: 5px;
-}
-
 .right.full-width {
     width: 100%;
     padding-left: 0;
@@ -2823,33 +2928,6 @@ div.text.skills .skills_column {
 width:50%;
 }
 
-.skills_column h3.skill_title {
-	margin-bottom: 16px;
-    color: #457b9d;
-    font-size: 32px;
-    font-weight: 600;
-}
-
-
-ul.skill_list li  {
-    list-style-type: none;
-    padding: 8px 0;
-}
-
-ul.skill_list li span {
-	margin-bottom:12px;
-}
-
-
-ul.skill_list li span.skill_desc {
-	font-size: 16px;
-    margin-left: 12px;
-    font-weight: 500;
-}
-
-.shane_tm_one_page_about .title_extra.title_skills {
-    margin-bottom: 64px;
-}
 
 .education_box {
 	border: 1px solid rgba(0,0,0,.15);
@@ -2973,11 +3051,6 @@ align-items: center; /* align vertical */
     border-bottom: 1px solid #eee;
 }
 
-.big_block_title .bb_content span.blocasso {
-	font-size: 47px;
-    font-weight: bold;
-    line-height: 1;
-}
 
 .center-text-block {
 	max-width:60%;

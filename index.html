@@ -10,7 +10,6 @@
 
 <meta name="description" content="UX / UI/ Product Designer that aims to solve user problems and needs.">
 <meta name="author" content="Guilherme Cerqueira">
-
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 <title>Guilherme Cerqueira | UX / UI Designer | Product Designer</title>
@@ -48,12 +47,14 @@
 
 </head>
 
-<body>  <!-- DARK MODE: add class "dark" Example: <body class="dark"> RTL MODE: add class "rtl" Example: <body class="rtl"> --> 
+<body> 
 	
 	<!-- PRELOADER -->
 	<div class="shane_tm_preloader">
-		<div class="spinner_wrap">
-			<div class="spinner"></div>
+		<div class="gc_logo_loader">
+			<div class="gc_logo_image">
+				<img src="img/logo/loader.svg">
+			</div>
 		</div>
 	</div>
 	<!-- /PRELOADER -->
@@ -62,23 +63,18 @@
 <!-- WRAPPER ALL -->
 <div class="shane_tm_all_wrap" data-magic-cursor="hide" data-color="blue">
 	
-	<!-- "" is default option -->
-	
-	<!-- MAGIC CURSOR VALUES: "", hide -->
-	<!-- COLOR VALUES: blue, green, brown, pink, orange, black, white, purple, sky, cadetBlue, crimson, olive, red -->
-	
 	<div class="shane_tm_one_page_topbar">
 		<div class="container bigger">
 			<div class="topbar_inner">
 				<div class="logo">
-					<a class="light" href="#"><img src="img/logo/logo.png" alt="" /></a>
-					<a class="dark" href="#"><img src="img/logo/dark.png" alt="" /></a>
+					<a class="light" href="#"><img src="img/logo/gclogofinal.svg" alt="" /></a>
+					<a class="dark" href="#"><img src="img/logo/gclogofinal.svg" alt="" /></a>
 				</div>
 				<div class="menu">
 				<ul>
-					<li><a href="#home">Home</a></li>
 					<li><a href="#about">About</a></li>
-					<li><a href="#portfolio">Works</a></li>
+					<li><a href="#portfolio">Portfolio</a></li>
+					<li><a href="#experience">Experience</a></li>
 					<li><a href="#contact">Contact</a></li>
 				</ul>
 				</div>
@@ -87,34 +83,27 @@
 	</div>
 	
 	<!-- MOBILE MENU -->
+
+	<!-- /MOBILE MENU OLD -->
 	<div class="shane_tm_mobile_menu">
 		<div class="topbar_inner">
 			<div class="container bigger">
 				<div class="topbar_in">
 					<div class="logo">
-						<a href="#"><img src="img/logo/dark.png" alt="" /></a>
+						<a href="#"><img src="img/logo/gclogofinal.svg" alt="" /></a>
 					</div>
-					<div class="trigger">
-						<a href="#">
-							<span class="menu">Menu</span>
-							<span class="close">Close</span>
-						</a>
+					<div class="mobile_menu_list">
+						<ul>
+							<li><a href="#about">About</a></li>
+							<li><a href="#portfolio">Portfolio</a></li>
+							<li><a href="#experience">Experience</a></li>
+							<li><a href="#contact">Contact</a></li>
+						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
-		<div class="dropdown">
-			<div class="container">
-				<div class="dropdown_inner">
-					<ul>
-						<li><a href="#home">Home</a></li>
-					<li><a href="#about">About</a></li>
-					<li><a href="#portfolio">Works</a></li>
-					<li><a href="#contact">Contact</a></li>
-					</ul>
-				</div>
-			</div>
-		</div>
+		
 	</div>
 	<!-- /MOBILE MENU -->
 				
@@ -155,9 +144,10 @@
 								<p>Background in Art Direction and Front-End Development.</p>
 								<p>Bachelor degree in Advertising & Marketing by <a href="https://espm.br" target="_blank">Escola Superior de Propaganda e Marketing (ESPM - SP)</a></p>
 								<p>Master Degree in Web Applications by <a href="http://www.upv.es/" target="_blank">Universidad Politécnica de Valencia (UPV)</a></p>
-								<p>Languages: English, Spanish, Portuguese. Still learning Dutch :)</p>
+								<p>Languages: English, Spanish, Portuguese. Ik ben Nederlands studeren :)</p>
 							</div>
 						
+
 						<div class="text skills">
 								<div class="skills_column">
 									<h3 class="skill_title">UX</h3>
@@ -223,11 +213,18 @@
 								<div class="skills_column">
 									<h3 class="skill_title">UI</h3>
 									<ul class="skill_list">
+											<li>
+												<span>
+													<img src="img/thumb_skills/a11y.png" />
+												</span>
+												<span class="skill_desc">Accessibility</span>
+								
+										</li>
 										<li>
 												<span>
 													<img src="img/thumb_skills/webmobile.png" />
 												</span>
-												<span class="skill_desc">Web & Mobile</span>
+												<span class="skill_desc">Web / Mobile / Apps</span>
 								
 										</li>
 										<li>
@@ -388,50 +385,18 @@
 		<div class="shane_tm_one_page_works">
 			<div class="container bigger">
 				<div class="shane_tm_one_page_main_title">
-					<span>Portfolio</span>
-					<h3>Creative Portfolio</h3>
+					<h3>Portfolio</h3>
 				</div>
 				<div class="portfolio_filter">
 					<ul>
 						<li><a href="#" class="current" data-filter="*">All</a></li>
-						<li><a href="#" data-filter=".localvideo">Local Video</a></li>
-						<li><a href="#" data-filter=".youtubevideo">YouTube Video</a></li>
-						<li><a href="#" data-filter=".popupimage">Popup Image</a></li>
+						<li><a href="#" data-filter=".localvideo">UX Cases</a></li>
+						<li><a href="#" data-filter=".youtubevideo">UI Design</a></li>
+						<li><a href="#" data-filter=".popupimage">Older stuff</a></li>
 					</ul>
 				</div>
 				<div class="portfolio_list">
 					<ul class="masonry gallery_zoom">
-						<li class="masonry_item localvideo">
-							<div class="list_inner">
-								<img src="img/portfolio/1200x1200.jpg" alt="" />
-								<div class="video-wrapper"> 
-								  <video loop="" muted="" autoplay="true">
-									  <source src="video/1.mp4" type="video/mp4">
-								  </video>   
-								</div>
-								<div class="overlay"></div>
-								<div class="desc">
-									<div class="in">
-										<h3>Local Video</h3>
-										<span>Video</span>
-									</div>
-								</div>
-								<a class="full_link" href="portfolio-single-classic.html"></a>
-							</div>
-						</li>
-						<li class="masonry_item youtubevideo">
-							<div class="list_inner">
-								<img src="img/portfolio/2.jpg" alt="" />
-								<div class="overlay"></div>
-								<div class="desc">
-									<div class="in">
-										<h3>YouTube Video</h3>
-										<span>Video</span>
-									</div>
-								</div>
-								<a class="full_link popup-youtube" href="https://www.youtube.com/watch?v=iIrSCm_0Sj4"></a>
-							</div>
-						</li>
 						<li class="masonry_item popupimage">
 							<div class="list_inner">
 								<img src="img/portfolio/3.jpg" alt="" />
@@ -442,92 +407,10 @@
 										<span>Branding</span>
 									</div>
 								</div>
-								<a class="full_link zoom" href="img/portfolio/3.jpg"></a>
+								<a class="full_link" href="portfolio_template.html"></a>
 							</div>
 						</li>
-						<li class="masonry_item localvideo">
-							<div class="list_inner">
-								<img src="img/portfolio/1200x1200.jpg" alt="" />
-								<div class="video-wrapper"> 
-								  <video loop="" muted="" autoplay="true">
-									  <source src="video/2.mp4" type="video/mp4">
-								  </video>   
-								</div>
-								<div class="overlay"></div>
-								<div class="desc">
-									<div class="in">
-										<h3>Local Video</h3>
-										<span>Video</span>
-									</div>
-								</div>
-								<a class="full_link" href="portfolio-single-classic.html"></a>
-							</div>
-						</li>
-						<li class="masonry_item popupimage">
-							<div class="list_inner">
-								<img src="img/portfolio/4.jpg" alt="" />
-								<div class="overlay"></div>
-								<div class="desc">
-									<div class="in">
-										<h3>Popup Image</h3>
-										<span>Technology</span>
-									</div>
-								</div>
-								<a class="full_link zoom" href="img/portfolio/4.jpg"></a>
-							</div>
-						</li>
-						<li class="masonry_item youtubevideo">
-							<div class="list_inner">
-								<img src="img/portfolio/8.jpg" alt="" />
-								<div class="overlay"></div>
-								<div class="desc">
-									<div class="in">
-										<h3>YouTube Video</h3>
-										<span>Video</span>
-									</div>
-								</div>
-								<a class="full_link popup-youtube" href="https://www.youtube.com/watch?v=iIrSCm_0Sj4"></a>
-							</div>
-						</li>
-						<li class="masonry_item popupimage">
-							<div class="list_inner">
-								<img src="img/portfolio/6.jpg" alt="" />
-								<div class="overlay"></div>
-								<div class="desc">
-									<div class="in">
-										<h3>Popup Image</h3>
-										<span>Branding</span>
-									</div>
-								</div>
-								<a class="full_link zoom" href="img/portfolio/6.jpg"></a>
-							</div>
-						</li>
-						<li class="masonry_item popupimage">
-							<div class="list_inner">
-								<img src="img/portfolio/7.jpg" alt="" />
-								<div class="overlay"></div>
-								<div class="desc">
-									<div class="in">
-										<h3>Popup Image</h3>
-										<span>Branding</span>
-									</div>
-								</div>
-								<a class="full_link zoom" href="img/portfolio/7.jpg"></a>
-							</div>
-						</li>
-						<li class="masonry_item popupimage">
-							<div class="list_inner">
-								<img src="img/portfolio/5.jpg" alt="" />
-								<div class="overlay"></div>
-								<div class="desc">
-									<div class="in">
-										<h3>Popup Image</h3>
-										<span>Nature</span>
-									</div>
-								</div>
-								<a class="full_link zoom" href="img/portfolio/5.jpg"></a>
-							</div>
-						</li>
+						
 					</ul>
 				</div>
 			</div>
@@ -536,7 +419,7 @@
 	<!-- /PORTFOLIO -->
 	
 	<!-- EXPERIENCE -->
-	<div class="shane_tm_one_page_experience">
+	<div class="shane_tm_one_page_experience"  id="experience">
 		<div class="experience_bg">
 			<div class="image jarallax" data-speed="0"></div>
 			<div class="overlay"></div>
@@ -545,7 +428,6 @@
 			<div class="container bigger">
 				<div class="content_inner">
 					<div class="shane_tm_one_page_main_title" data-skin="light">
-						<span>CV</span>
 						<h3>Working Experience</h3>
 						
 					</div>
@@ -657,7 +539,7 @@
 			<div class="container full">
 				<div class="copyright_inner">
 					<div class="text">
-						<p>&copy; Guilherme Cerqueira - 2020</p>
+						<p>&copy; Designed & coded by Guilherme Cerqueira - 2020</p>
 					</div>
 					<div class="social">
 						<ul>
@@ -679,9 +561,6 @@
 <!--[if lt IE 10]> <script type="text/javascript" src="js/ie8.js"></script> <![endif]-->	
 <script src="js/plugins.js"></script>
 <script src="js/elements.js"></script>
- <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5bpEs3xlB8vhxNFErwoo3MXR64uavf6Y&callback=initMap">
-        </script>
 <script src="js/init.js"></script>
 <!-- /SCRIPTS -->
 

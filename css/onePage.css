@@ -403,10 +403,10 @@
       0% {  -moz-transform: translateY(2%); }   
     100% {  -moz-transform: translateY(0); }
 }
-.shane_tm_one_page_about .title_extra{
-	width: 100%;
-	float: left;
-	margin-bottom: 17px;
+.shane_tm_one_page_about .title_extra {
+    width: 100%;
+    float: left;
+    margin-bottom: 64px;
 }
 .shane_tm_one_page_about .content .text.skills{
 	margin-bottom: 17px;
@@ -416,10 +416,12 @@
     line-height: 1.4;
 	font-size: 25px;
 }
-.shane_tm_one_page_about .content .text{
-	width: 100%;
-	float: left;
-	margin-bottom: 30px;
+.shane_tm_one_page_about .content .text {
+    width: 100%;
+    float: left;
+    margin-bottom: 30px;
+    font-size: 18px;
+    line-height: 1.4;
 }
 .shane_tm_one_page_about .content .text p{
 	margin-bottom: 7px;
@@ -546,9 +548,10 @@ body.dark .shane_tm_one_page_about .content .sign .light{display: block;}
 	font-weight: 600;
 	color: #e54b4b;
 }
-.shane_tm_one_page_main_title h3{
-	font-weight: 600;
-	color: #000;
+.shane_tm_one_page_main_title h3 {
+    font-weight: 600;
+    color: #000;
+    font-size: 64px;
 }
 .shane_tm_one_page_services .service_inner{
 	width: 100%;
@@ -638,12 +641,18 @@ body.dark .shane_tm_one_page_about .content .sign .light{display: block;}
 /*---------------------------------------------------*/
 
 .shane_tm_one_page_experience{
-	width: 100%;
-	height: auto;
-	clear: both;
-	float: left;
-	position: relative;
+	    width: 100%;
+    height: auto;
+    clear: both;
+    float: left;
+    position: relative;
+    background: #000;
+    background-repeat: repeat-x;
+    background-size: contain;
+    background-position: bottom;
+    background-image: url(..//img/resume/bgcv.svg);
 }
+
 .shane_tm_one_page_experience .experience_bg{
 	position: absolute;
 	top: 0px;
@@ -684,7 +693,7 @@ body.dark .shane_tm_one_page_about .content .sign .light{display: block;}
 	height: auto;
 	clear: both;
 	float: left;
-	padding: 190px 0px 194px 0px;
+	padding: 190px 0px 350px 0px;
 }
 .shane_tm_one_page_experience .experience_list{
 	width: 100%;
@@ -761,9 +770,11 @@ body.dark .shane_tm_one_page_about .content .sign .light{display: block;}
 	margin: 0px;
 	list-style-type: none;
 }
-.shane_tm_one_page_portfolio .portfolio_filter ul li{
-	margin: 0px 30px 20px 0px;
-	display: inline-block;
+.shane_tm_one_page_portfolio .portfolio_filter ul li {
+    margin: 0px 160px 20px 0px;
+    display: inline-block;
+    font-size: 21px;
+    font-weight: 500;
 }
 .shane_tm_one_page_portfolio .portfolio_filter ul li:last-child{margin-right: 0px;}
 .shane_tm_one_page_portfolio .portfolio_filter ul li a{
@@ -1022,18 +1033,23 @@ body.dark .shane_tm_one_page_news ul li .title a:hover{
 /*---------------------------------------------------*/
 
 .shane_tm_one_page_contact{
-	width: 100%;
-	height: auto;
-	clear: both;
-	float: left;
-	background-color: #f8f5f2;
-	padding: 190px 0px 200px 0px;
+	    width: 100%;
+    height: auto;
+    clear: both;
+    float: left;
+    background-color: #f8f5f2;
+    padding: 0 0px 200px 0px;
+    text-align:center;
 }
 .shane_tm_one_page_contact .contact_inner_wrap{
 	width: 100%;
 	height: auto;
 	clear: both;
 	float: left;
+}
+
+.shane_tm_one_page_contact h4 {
+	font-size:64px;
 }
 .shane_tm_one_page_contact .contact_inner_wrap .short_info{
 	width: 100%;

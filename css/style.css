@@ -23,16 +23,21 @@
 /*	01) SHANE BASE
 /*---------------------------------------------------*/
 
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 html {
 	overflow-x: hidden;
 	padding: 0px;
 	margin: 0px
 }
 body{
-	font-family: "Mulish";
+	font-family: 'Open Sans', sans-serif;
 	font-size: 15px;
 	line-height: 2.1;
-	letter-spacing: 0.8px;
+	letter-spacing: normal;
 	word-wrap: break-word;
 	font-weight: 400;
 	background-color: #f5f8fc;

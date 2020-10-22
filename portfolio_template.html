@@ -42,6 +42,7 @@
 <link rel="stylesheet" type="text/css" href="css/darkMode.css" />
 <link rel="stylesheet" type="text/css" href="css/onePage.css" />
 <link rel="stylesheet" type="text/css" href="css/elements.css" />
+<link rel="stylesheet" type="text/css" href="css/slick.min.css" />
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 <!--[if lt IE 9]> <script type="text/javascript" src="js/modernizr.custom.js"></script> <![endif]-->
 <!-- /STYLES -->
@@ -253,7 +254,18 @@
 		<!--END Three Images-->
 
 
-
+		<div class="slider_projects">
+			<div class="project1">
+				<img src="img/slider/1920x1080.jpg" alt="" />
+			</div>
+			<div class="project1">
+				<img src="img/slider/1920x1080.jpg" alt="" />
+			</div>
+			<div class="project1">
+				<img src="img/slider/1920x1080.jpg" alt="" />
+			</div>
+			
+		</div>
 		<!--Project list navigation-->
 		<div class="pagination">
 			<div class="container bigger">
@@ -293,14 +305,24 @@
 <!-- / WRAPPER ALL -->
 	
 <!-- SCRIPTS -->
-<script src="js/jquery.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  ></script>
 <!--[if lt IE 10]> <script type="text/javascript" src="js/ie8.js"></script> <![endif]-->	
 <script src="js/plugins.js"></script>
 <script src="js/elements.js"></script>
- <script async defer
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA5bpEs3xlB8vhxNFErwoo3MXR64uavf6Y&callback=initMap">
-        </script>
+<script src="js/slick.min.js"></script>
 <script src="js/init.js"></script>
+<script>
+$function({
+	$('.slider_projects').slick({
+	  infinite: true,
+	  slidesToShow: 3,
+	  slidesToScroll: 3
+	});
+});
+
+</script>
 <!-- /SCRIPTS -->
 
 </body>

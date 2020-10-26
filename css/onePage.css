@@ -296,7 +296,7 @@
     height: auto;
     clear: both;
     float: left;
-    padding-bottom: 200px;
+    padding-bottom: 0;
     padding-top: 200px;
     background-image: url(../img/about/wave.svg);
     background-size: cover;
@@ -419,7 +419,7 @@
 .shane_tm_one_page_about .content .text {
     width: 100%;
     float: left;
-    margin-bottom: 30px;
+    margin: 64px 0 168px;
     font-size: 18px;
     line-height: 1.4;
 }
@@ -755,8 +755,12 @@ body.dark .shane_tm_one_page_about .content .sign .light{display: block;}
 	clear: both;
 	float: left;
 	margin-bottom: 130px;
-	padding-top: 190px;
+	padding-top: 270px;
 	background: #f9f9f9;
+	background-image:url('../img/about/fundoportfolio.svg');
+	background-position:top;
+	background-size:cover;
+	background-repeat:no-repeat;
 }
 .shane_tm_one_page_portfolio .portfolio_filter{
 	width: 100%;

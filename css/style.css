@@ -2698,6 +2698,8 @@ ul.skill_list li span.skill_desc {
 }
 
 
+
+
 /*---------------------------------------------------*/
 /*	13) MEDIA QUERIES
 /*---------------------------------------------------*/
@@ -2851,6 +2853,10 @@ ul.skill_list li span img {
 	height:20px;
 }
 
+.shane_tm_one_page_contact h4 {
+    font-size: 48px;
+}
+
 }
 @media (max-width: 768px) {
 	.shane_tm_hero_fourth .bakckground_image {display:none;}
@@ -2907,7 +2913,15 @@ padding:0;
     line-height: 1;
 }
 
+.shane_tm_one_page_contact h4 {
+    font-size: 48px;
+}
 
+.shane_tm_one_page_main_title h3 {
+    font-weight: 600;
+    color: #000;
+    font-size: 48px;
+}
 
 }
 

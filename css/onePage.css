@@ -740,7 +740,7 @@ body.dark .shane_tm_one_page_about .content .sign .light{display: block;}
 	padding-left: 100px;
 }
 .shane_tm_one_page_experience .experience_list ul li .third p{
-	color: #bbb;
+	color: #fff;
 	position: relative;
 	margin-top: -12px;
 }
@@ -1053,7 +1053,7 @@ body.dark .shane_tm_one_page_news ul li .title a:hover{
 }
 
 .shane_tm_one_page_contact h4 {
-	font-size:64px;
+	font-size:54px;
 }
 .shane_tm_one_page_contact .contact_inner_wrap .short_info{
 	width: 100%;

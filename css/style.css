@@ -3144,3 +3144,8 @@ font-size: 24px;
 .shane_tm_portfolio_single .hero .overlay.contentblue {
 	background: #003580;
 }
+
+.pdfdownload {
+	margin:48px auto;
+	font-size:24px;
+}

@@ -3140,3 +3140,7 @@ font-size: 24px;
 .shane_tm_one_page_topbar.animate .back_project_list, .shane_tm_one_page_topbar.animate  .back_project_list li {
 	color:black;
 } 
+
+.shane_tm_portfolio_single .hero .overlay.contentblue {
+	background: #003580;
+}

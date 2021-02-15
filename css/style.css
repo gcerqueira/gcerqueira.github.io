@@ -3109,3 +3109,34 @@ align-items: center; /* align vertical */
 	max-width:60%;
 	margin:0 auto;
 }
+
+.center-text-block h2 {
+ margin-bottom:24px;
+}
+
+.center-text-block ul{
+margin-left:24px;
+}
+
+.center-text-block ul li{
+font-size:16px;
+}
+
+.portfolio_block h3 {
+	margin-bottom:24px;
+}
+
+
+.portifa_text {
+margin: 64px 0;
+font-size: 24px;
+
+}
+
+.back_project_list, .back_project_list li {
+	color:white;
+}
+
+.shane_tm_one_page_topbar.animate .back_project_list, .shane_tm_one_page_topbar.animate  .back_project_list li {
+	color:black;
+}

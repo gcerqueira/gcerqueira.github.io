@@ -3158,3 +3158,44 @@ font-size: 24px;
 a, a:visited {
     color: #457b9d;
 }
+
+.desc.descportifa  {
+	margin-top: 24px;
+}
+a#portifaDownloadButton {
+	padding: 16px 24px;
+    background: #1f957a;
+    font-size: 22px;
+    text-decoration: none;
+    border-radius: 6px;
+    color: white;
+    box-shadow: 0px 8px 15px rgb(0 0 0 / 10%);
+}
+
+a#portifaDownloadButton:hover {
+    background: #160F41;
+    transition: 0.5s;
+}
+
+a#portifaDownloadButton svg {
+	margin-right: 8px;
+}
+
+a#portifaMenuButton {
+	padding: 8px 16px;
+    background: #1f957a;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 6px;
+    color: white;
+    box-shadow: 0px 8px 15px rgb(0 0 0 / 10%);
+}
+
+a#portifaMenuButton:hover {
+    background: #160F41;
+    transition: 0.5s;
+}
+
+a#portifaDownloadButton svg {
+	margin-right: 8px;
+}

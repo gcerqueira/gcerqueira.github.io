@@ -757,10 +757,6 @@ body.dark .shane_tm_one_page_about .content .sign .light{display: block;}
 	margin-bottom: 130px;
 	padding-top: 270px;
 	background: #f9f9f9;
-	background-image:url('../img/about/fundoportfolio.svg');
-	background-position:top;
-	background-size:cover;
-	background-repeat:no-repeat;
 }
 .shane_tm_one_page_portfolio .portfolio_filter{
 	width: 100%;

@@ -3199,3 +3199,18 @@ a#portifaMenuButton:hover {
 a#portifaDownloadButton svg {
 	margin-right: 8px;
 }
+
+.shane_tm_one_page_portfolio {
+	padding-top: 190px;
+}
+
+.shane_tm_one_page_portfolio .portfolio_list {
+    margin-top: 64px;
+}
+
+@media (max-width: 768px) {
+	.shane_tm_hero_fourth .name_another {
+	    font-size: 31px;
+	    margin-top: 80px;
+	}
+}

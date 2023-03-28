@@ -3214,3 +3214,56 @@ a#portifaDownloadButton svg {
 	    margin-top: 80px;
 	}
 }
+
+
+/* PORTFOLIO */ 
+
+.modal_portfolio {
+	background: white;
+	width: 100%;
+	height: 100%;
+	display: block;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 999;
+	overflow: hidden;
+
+}
+
+.modal_portfolio_container {
+
+}
+
+.modal_portfolio_top_bar {
+	justify-content: left;
+	justify-content: space-between;
+}
+
+.project_title {
+	width: 95%;
+}
+
+.modal_portfolio_top_bar .top_bar_content {
+	width: 100%;
+	height: 100px;
+	display: inline-flex;
+	padding: 25px;
+	box-shadow: 0px 0px 20px rgba(0,0,0,.15);
+	align-items: center;
+	margin-left: auto;
+    margin-right: auto;
+    
+}
+
+
+.top_bar_content .project_title {
+	padding-left: 24px;
+	font-weight: 600;
+	font-size: 16px;
+}
+
+.modal_portfolio_top_bar img {
+	width: 50px;
+	height: 50px;
+}

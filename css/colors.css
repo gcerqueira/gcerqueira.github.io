@@ -17,8 +17,8 @@
 .shane_tm_all_wrap[data-color="blue"] .shane_tm_menu ul li.active{background-color: #457b9d;}
 .shane_tm_all_wrap[data-color="blue"] .shane_tm_menu ul li:hover{background-color: #457b9d;}
 .shane_tm_all_wrap[data-color="blue"] .coloring{color: #457b9d;}
-.shane_tm_all_wrap[data-color="blue"] #contact a {color: #457b9d;}
-.shane_tm_all_wrap[data-color="blue"] #contact a:hover {color: #a8dadc; text-decoration:underline; transition: ease 0.2s;}
+.shane_tm_all_wrap[data-color="blue"] #contact a {color: #3816b9;}
+.shane_tm_all_wrap[data-color="blue"] #contact a:hover {color: #a08bed; transition: ease 0.8s;}
 .shane_tm_all_wrap[data-color="blue"] .shane_tm_button a{box-shadow: 0px 0px 20px rgba(65,105,225,.3);}
 .shane_tm_all_wrap[data-color="blue"] .shane_tm_button a:before{background-color: #457b9d;}
 .shane_tm_all_wrap[data-color="blue"] .shane_tm_button a:after{background-color: #457b9d;}

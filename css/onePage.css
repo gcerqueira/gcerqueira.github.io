@@ -42,13 +42,12 @@
 .shane_tm_one_page_topbar.animate{
 	background-color: #fff;
 	padding: 25px 0px;
-	box-shadow: 0px 0px 20px rgba(0,0,0,.15);
 }
 .shane_tm_one_page_topbar .topbar_inner .logo .light{display: block;}
 .shane_tm_one_page_topbar .topbar_inner .logo .dark{display: none;}
 .shane_tm_one_page_topbar.animate .topbar_inner .logo .light{display: none;}
 .shane_tm_one_page_topbar.animate .topbar_inner .logo .dark{display: block;}
-.shane_tm_one_page_topbar.animate ul li a{color: #000;}
+.shane_tm_one_page_topbar.animate ul li a{color: #3816b9;}
 .shane_tm_one_page_topbar .topbar_inner{
 	width: 100%;
 	height: auto;

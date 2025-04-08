@@ -1,111 +1,124 @@
-<!-- paste this whole code in a .html file -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Fedele Simulator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body { height: 100%; font-family: sans-serif; overflow: hidden; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: black;
+      font-family: 'Orbitron', sans-serif;
+      overflow: hidden;
+    }
+
+    body {
+      touch-action: manipulation;
+    }
 
     .screen {
       position: absolute;
       top: 0; left: 0;
-      width: 100vw; height: 100vh;
+      width: 100%;
+      height: 100%;
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
+      background-size: cover;
+      background-position: center;
     }
 
-    button {
-      cursor: pointer;
-      border: none;
-      border-radius: 8px;
-      position: absolute;
-      z-index: 2;
-      border-radius: 25px;
-    }
-
-    #buttonsContainer button { 
-        animation: bounce 2s infinite ease-in-out;
-        transition: background 0.3s;
-    }
-
-    
-
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    #gameBackground {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
-      z-index: -1;
-    }
-
-    #gameVideo {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    #hud {
+    .ui {
       position: absolute;
       top: 20px;
       left: 20px;
       display: flex;
-      gap: 20px;
-      font-size: 24px;
-      color: white;
-      z-index: 10;
+      gap: 40px;
+      font-size: 32px;
+      color: #00ffff;
+      z-index: 1;
     }
 
-    #splashScreen button {
-    background: #d059cd;
-    padding: 42px;
-    position: absolute;
-    right: 18%;
-    bottom: 14%;
-    font-size: 56px;
-    font-weight: bold;
-    color: white;
-    }
-
+    #splashScreen button,
     #gameOverScreen button {
-    background: #d059cd;
-    padding: 20px;
-    margin-top: 20px;
-    color: white;
-    font-size: 24px;
-    bottom: 41%;
-    font-weight:bold;
+      background: #ff00ff;
+      color: white;
+      font-size: 64px;
+      padding: 40px 80px;
+      border: none;
+      border-radius: 12px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 2;
     }
 
-    #splashScreen button:hover {
-      opacity: 80%;
+    #splashScreen button:hover,
+    #gameOverScreen button:hover {
+      opacity: 0.8;
     }
 
-    #finalScore {
-      color: black;
-      font-size: 28px;
-      margin-bottom: 20px;
+    .gameDiv {
+      position: absolute;
+      padding: 20px 40px;
+      border-radius: 10px;
+      color: white;
+      font-weight: bold;
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.2s ease;
+      animation: bounce 2s infinite ease-in-out;
+      z-index: 1;
     }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-10px) rotate(5deg); }
+    }
+
+    .particle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: yellow;
+      opacity: 0.9;
+      pointer-events: none;
+      animation: explode 0.6s ease-out forwards;
+      z-index: 1;
+    }
+
+    @keyframes explode {
+      100% {
+        transform: translate(var(--dx), var(--dy));
+        opacity: 0;
+      }
+    }
+
+    video {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    #buttonsContainer {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
   </style>
 </head>
 <body>
-  <div id="splashScreen" class="screen" style="background-image: url('background.jpg'); background-size: cover; background-position: center;">
+  <div id="splashScreen" class="screen" style="background-image: url('background.jpg'); z-index: 3;">
     <audio id="bgMusic" loop>
       <source src="backgroundmusic.mp3" type="audio/mpeg">
     </audio>
@@ -113,27 +126,20 @@
   </div>
 
   <div id="gameScreen" class="screen" style="display: none;">
-    <div id="gameBackground">
-      <video id="gameVideo" muted loop playsinline>
-        <source src="game.mp4" type="video/mp4">
-      </video>
-    </div>
-    <div id="hud">
+    <video id="gameVideo" muted loop playsinline autoplay>
+      <source src="game.mp4" type="video/mp4">
+    </video>
+    <div class="ui">
       <div id="timer">1:00</div>
       <div id="level">Confirmações: 1</div>
     </div>
     <div id="buttonsContainer"></div>
-
-    <audio id="clickSound">
-      <source src="bole.mp3" type="audio/mpeg">
-    </audio>
-    <audio id="wrongSound">
-      <source src="bilola.mp3" type="audio/mpeg">
-    </audio>
+    <audio id="clickSound"><source src="bole.mp3" type="audio/mpeg"></audio>
+    <audio id="wrongSound"><source src="bilola.mp3" type="audio/mpeg"></audio>
   </div>
 
-  <div id="gameOverScreen" class="screen" style="display: none; background-image: url('gameover.jpg'); background-size: cover; background-position: center;">
-    <div id="finalScore"></div>
+  <div id="gameOverScreen" class="screen" style="display: none; background-image: url('gameover.jpg'); z-index: 3;">
+    <div id="finalScore" style="color: white; font-size: 48px; margin-bottom: 40px;"></div>
     <button onclick="restartGame()">TENTAR NOVAMENTE</button>
   </div>
 
@@ -150,10 +156,9 @@
     const clickSound = document.getElementById('clickSound');
     const wrongSound = document.getElementById('wrongSound');
 
-    let timer;
-    let timeLeft = 60;
     let level = 1;
-    let baseSpeed = 0.5;
+    let timeLeft = 60;
+    let timer;
     const driftingButtons = [];
 
     function startGame() {
@@ -161,17 +166,24 @@
       gameScreen.style.display = 'flex';
       level = 1;
       timeLeft = 60;
-      timerDisplay.textContent = '1:00';
-      levelDisplay.textContent = 'Confirmações: 1';
-      buttonsContainer.innerHTML = '';
       driftingButtons.length = 0;
+      buttonsContainer.innerHTML = '';
+      levelDisplay.textContent = `Confirmações: 1`;
+      timerDisplay.textContent = '1:00';
 
-      createDriftingButton('CONFIRMAR', handleConfirmClick);
-      bgMusic.play().catch(e => console.log('Music blocked:', e));
-      gameVideo.play().catch(e => console.log('Video blocked:', e));
-
+      createDriftingDiv('CONFIRMAR', handleConfirmClick);
+      animateDrift();
+      bgMusic.play().catch(() => {});
+      gameVideo.play().catch(() => {});
       timer = setInterval(updateTimer, 1000);
-      animateButtons();
+    }
+
+    function restartGame() {
+      clearInterval(timer);
+      driftingButtons.length = 0;
+      buttonsContainer.innerHTML = '';
+      gameOverScreen.style.display = 'none';
+      splashScreen.style.display = 'flex';
     }
 
     function updateTimer() {
@@ -191,97 +203,96 @@
       finalScoreDisplay.textContent = `Você confirmou ${level} vezes!`;
     }
 
-    function restartGame() {
-      gameOverScreen.style.display = 'none';
-      splashScreen.style.display = 'flex';
-    }
+    function createDriftingDiv(text, clickHandler) {
+      if (text === 'DESCONFIRMAR') {
+        const existing = driftingButtons.filter(b => b.el.textContent === 'DESCONFIRMAR');
+        if (existing.length >= 30) return;
+      }
 
-    function randomColor() {
-      const colors = ['#e74c3c', '#2ecc71', '#3498db', '#f1c40f', '#9b59b6', '#e67e22'];
-      return colors[Math.floor(Math.random() * colors.length)];
-    }
+      const div = document.createElement('div');
+      div.className = 'gameDiv';
+      div.textContent = text;
 
-    function createDriftingButton(label, clickHandler) {
-      const button = document.createElement('button');
-      button.textContent = label;
+      div.style.backgroundColor = `hsl(${Math.random() * 360}, 80%, 50%)`;
+      div.style.fontSize = `${18 + Math.random() * 20}px`;
+      const width = 200;
+      const height = 80;
+      let x = Math.random() * (window.innerWidth - width);
+      let y = Math.random() * (window.innerHeight - height);
 
-      const randomSize = 16 + Math.random() * 20;
-      button.style.fontSize = `${randomSize}px`;
-      button.style.padding = `${randomSize / 2}px ${randomSize}px`;
-      button.style.backgroundColor = randomColor();
+      div.style.left = `${x}px`;
+      div.style.top = `${y}px`;
 
-      button.style.left = Math.random() * (window.innerWidth - 100) + 'px';
-      button.style.top = Math.random() * (window.innerHeight - 50) + 'px';
-
-      const animationDuration = 4 - Math.min(3.5, (level - 1) * 0.1);
-      button.style.animationDuration = `${animationDuration}s, ${animationDuration * 2}s`;
-
-      button.addEventListener('click', () => clickHandler(button));
+      const dx = (Math.random() - 0.5) * 2;
+      const dy = (Math.random() - 0.5) * 2;
 
       const drift = {
-        el: button,
-        x: parseFloat(button.style.left),
-        y: parseFloat(button.style.top),
-        dx: (Math.random() - 0.5) * baseSpeed * 2,
-        dy: (Math.random() - 0.5) * baseSpeed * 2,
-        teleport: () => {
-          drift.x = Math.random() * (window.innerWidth - 100);
-          drift.y = Math.random() * (window.innerHeight - 50);
-          button.style.left = drift.x + 'px';
-          button.style.top = drift.y + 'px';
+        el: div,
+        x, y, dx, dy,
+        teleport() {
+          this.x = Math.random() * (window.innerWidth - width);
+          this.y = Math.random() * (window.innerHeight - height);
+          this.el.style.left = `${this.x}px`;
+          this.el.style.top = `${this.y}px`;
         }
       };
 
-      buttonsContainer.appendChild(button);
+      div.onclick = () => {
+        clickHandler(div, drift);
+        spawnParticles(drift.x, drift.y);
+      };
+
+      buttonsContainer.appendChild(div);
       driftingButtons.push(drift);
     }
 
-    function animateButtons() {
-      driftingButtons.forEach(b => {
-        b.x += b.dx;
-        b.y += b.dy;
-
-        if (b.x <= 0 || b.x >= window.innerWidth - 100) b.dx *= -1;
-        if (b.y <= 0 || b.y >= window.innerHeight - 50) b.dy *= -1;
-
-        b.el.style.left = b.x + 'px';
-        b.el.style.top = b.y + 'px';
-      });
-      requestAnimationFrame(animateButtons);
-    }
-
-    function handleConfirmClick(button) {
-      clickSound.play();
-      level++;
-      levelDisplay.textContent = `Confirmações: ${level}`;
-      updateSpeed();
-      randomColor(); 
-      driftingButtons.forEach(b => b.teleport());
-
-      if (level % 3 === 0) {
-        createDriftingButton('DESCONFIRMAR', handleDesconfirmarClick);
+    function spawnParticles(x, y) {
+      for (let i = 0; i < 30; i++) {
+        const p = document.createElement('div');
+        p.className = 'particle';
+        p.style.left = `${x}px`;
+        p.style.top = `${y}px`;
+        p.style.setProperty('--dx', `${(Math.random() - 0.5) * 200}px`);
+        p.style.setProperty('--dy', `${(Math.random() - 0.5) * 200}px`);
+        buttonsContainer.appendChild(p);
+        setTimeout(() => p.remove(), 600);
       }
     }
 
-    function handleDesconfirmarClick(button) {
+    function animateDrift() {
+      driftingButtons.forEach(b => {
+        const width = b.el.offsetWidth;
+        const height = b.el.offsetHeight;
+        const speedMultiplier = Math.pow(1.10, level - 1);
+
+        b.x += b.dx * speedMultiplier;
+        b.y += b.dy * speedMultiplier;
+
+        if (b.x < 0 || b.x > window.innerWidth - width) b.dx *= -1;
+        if (b.y < 0 || b.y > window.innerHeight - height) b.dy *= -1;
+
+        b.el.style.left = `${b.x}px`;
+        b.el.style.top = `${b.y}px`;
+      });
+      requestAnimationFrame(animateDrift);
+    }
+
+    function handleConfirmClick(div, drift) {
+      clickSound.play();
+      level++;
+      levelDisplay.textContent = `Confirmações: ${level}`;
+      driftingButtons.forEach(b => b.teleport());
+
+      if (level % 3 === 0) {
+        createDriftingDiv('DESCONFIRMAR', handleDesconfirmarClick);
+      }
+    }
+
+    function handleDesconfirmarClick(div, drift) {
       wrongSound.play();
       level = Math.max(1, level - 10);
       levelDisplay.textContent = `Confirmações: ${level}`;
-      updateSpeed();
       driftingButtons.forEach(b => b.teleport());
-    }
-
-    function updateSpeed() {
-      const driftMultiplier = Math.pow(1.15, level - 1);
-      const animMultiplier = Math.max(0.5, 1 - 0.1 * (level - 1));
-      driftingButtons.forEach(b => {
-        const angle = Math.atan2(b.dy, b.dx);
-        const speed = baseSpeed * driftMultiplier;
-        b.dx = Math.cos(angle) * speed;
-        b.dy = Math.sin(angle) * speed;
-
-        b.el.style.animationDuration = `${2 * animMultiplier}s, ${4 * animMultiplier}s`;
-      });
     }
 
     document.addEventListener('keydown', (e) => {
@@ -289,6 +300,7 @@
         startGame();
       }
     });
+
   </script>
 </body>
 </html>

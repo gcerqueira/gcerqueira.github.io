@@ -1,0 +1,294 @@
+<!-- paste this whole code in a .html file -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fedele Simulator</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; font-family: sans-serif; overflow: hidden; }
+
+    .screen {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    button {
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      position: absolute;
+      z-index: 2;
+      border-radius: 25px;
+    }
+
+    #buttonsContainer button { 
+        animation: bounce 2s infinite ease-in-out;
+        transition: background 0.3s;
+    }
+
+    
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    #gameBackground {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    #gameVideo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    #hud {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      display: flex;
+      gap: 20px;
+      font-size: 24px;
+      color: white;
+      z-index: 10;
+    }
+
+    #splashScreen button {
+    background: #d059cd;
+    padding: 42px;
+    position: absolute;
+    right: 18%;
+    bottom: 14%;
+    font-size: 56px;
+    font-weight: bold;
+    color: white;
+    }
+
+    #gameOverScreen button {
+    background: #d059cd;
+    padding: 20px;
+    margin-top: 20px;
+    color: white;
+    font-size: 24px;
+    bottom: 41%;
+    font-weight:bold;
+    }
+
+    #splashScreen button:hover {
+      opacity: 80%;
+    }
+
+    #finalScore {
+      color: black;
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="splashScreen" class="screen" style="background-image: url('background.jpg'); background-size: cover; background-position: center;">
+    <audio id="bgMusic" loop>
+      <source src="backgroundmusic.mp3" type="audio/mpeg">
+    </audio>
+    <button onclick="startGame()">INICIAR JOGO</button>
+  </div>
+
+  <div id="gameScreen" class="screen" style="display: none;">
+    <div id="gameBackground">
+      <video id="gameVideo" muted loop playsinline>
+        <source src="game.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div id="hud">
+      <div id="timer">1:00</div>
+      <div id="level">Confirmações: 1</div>
+    </div>
+    <div id="buttonsContainer"></div>
+
+    <audio id="clickSound">
+      <source src="bole.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="wrongSound">
+      <source src="bilola.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <div id="gameOverScreen" class="screen" style="display: none; background-image: url('gameover.jpg'); background-size: cover; background-position: center;">
+    <div id="finalScore"></div>
+    <button onclick="restartGame()">TENTAR NOVAMENTE</button>
+  </div>
+
+  <script>
+    const splashScreen = document.getElementById('splashScreen');
+    const gameScreen = document.getElementById('gameScreen');
+    const gameOverScreen = document.getElementById('gameOverScreen');
+    const buttonsContainer = document.getElementById('buttonsContainer');
+    const timerDisplay = document.getElementById('timer');
+    const levelDisplay = document.getElementById('level');
+    const finalScoreDisplay = document.getElementById('finalScore');
+    const bgMusic = document.getElementById('bgMusic');
+    const gameVideo = document.getElementById('gameVideo');
+    const clickSound = document.getElementById('clickSound');
+    const wrongSound = document.getElementById('wrongSound');
+
+    let timer;
+    let timeLeft = 60;
+    let level = 1;
+    let baseSpeed = 0.5;
+    const driftingButtons = [];
+
+    function startGame() {
+      splashScreen.style.display = 'none';
+      gameScreen.style.display = 'flex';
+      level = 1;
+      timeLeft = 60;
+      timerDisplay.textContent = '1:00';
+      levelDisplay.textContent = 'Confirmações: 1';
+      buttonsContainer.innerHTML = '';
+      driftingButtons.length = 0;
+
+      createDriftingButton('CONFIRMAR', handleConfirmClick);
+      bgMusic.play().catch(e => console.log('Music blocked:', e));
+      gameVideo.play().catch(e => console.log('Video blocked:', e));
+
+      timer = setInterval(updateTimer, 1000);
+      animateButtons();
+    }
+
+    function updateTimer() {
+      timeLeft--;
+      const minutes = Math.floor(timeLeft / 60);
+      const seconds = timeLeft % 60;
+      timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+      if (timeLeft <= 0) {
+        clearInterval(timer);
+        endGame();
+      }
+    }
+
+    function endGame() {
+      gameScreen.style.display = 'none';
+      gameOverScreen.style.display = 'flex';
+      finalScoreDisplay.textContent = `Você confirmou ${level} vezes!`;
+    }
+
+    function restartGame() {
+      gameOverScreen.style.display = 'none';
+      splashScreen.style.display = 'flex';
+    }
+
+    function randomColor() {
+      const colors = ['#e74c3c', '#2ecc71', '#3498db', '#f1c40f', '#9b59b6', '#e67e22'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    function createDriftingButton(label, clickHandler) {
+      const button = document.createElement('button');
+      button.textContent = label;
+
+      const randomSize = 16 + Math.random() * 20;
+      button.style.fontSize = `${randomSize}px`;
+      button.style.padding = `${randomSize / 2}px ${randomSize}px`;
+      button.style.backgroundColor = randomColor();
+
+      button.style.left = Math.random() * (window.innerWidth - 100) + 'px';
+      button.style.top = Math.random() * (window.innerHeight - 50) + 'px';
+
+      const animationDuration = 4 - Math.min(3.5, (level - 1) * 0.1);
+      button.style.animationDuration = `${animationDuration}s, ${animationDuration * 2}s`;
+
+      button.addEventListener('click', () => clickHandler(button));
+
+      const drift = {
+        el: button,
+        x: parseFloat(button.style.left),
+        y: parseFloat(button.style.top),
+        dx: (Math.random() - 0.5) * baseSpeed * 2,
+        dy: (Math.random() - 0.5) * baseSpeed * 2,
+        teleport: () => {
+          drift.x = Math.random() * (window.innerWidth - 100);
+          drift.y = Math.random() * (window.innerHeight - 50);
+          button.style.left = drift.x + 'px';
+          button.style.top = drift.y + 'px';
+        }
+      };
+
+      buttonsContainer.appendChild(button);
+      driftingButtons.push(drift);
+    }
+
+    function animateButtons() {
+      driftingButtons.forEach(b => {
+        b.x += b.dx;
+        b.y += b.dy;
+
+        if (b.x <= 0 || b.x >= window.innerWidth - 100) b.dx *= -1;
+        if (b.y <= 0 || b.y >= window.innerHeight - 50) b.dy *= -1;
+
+        b.el.style.left = b.x + 'px';
+        b.el.style.top = b.y + 'px';
+      });
+      requestAnimationFrame(animateButtons);
+    }
+
+    function handleConfirmClick(button) {
+      clickSound.play();
+      level++;
+      levelDisplay.textContent = `Confirmações: ${level}`;
+      updateSpeed();
+      randomColor(); 
+      driftingButtons.forEach(b => b.teleport());
+
+      if (level % 3 === 0) {
+        createDriftingButton('DESCONFIRMAR', handleDesconfirmarClick);
+      }
+    }
+
+    function handleDesconfirmarClick(button) {
+      wrongSound.play();
+      level = Math.max(1, level - 10);
+      levelDisplay.textContent = `Confirmações: ${level}`;
+      updateSpeed();
+      driftingButtons.forEach(b => b.teleport());
+    }
+
+    function updateSpeed() {
+      const driftMultiplier = Math.pow(1.15, level - 1);
+      const animMultiplier = Math.max(0.5, 1 - 0.1 * (level - 1));
+      driftingButtons.forEach(b => {
+        const angle = Math.atan2(b.dy, b.dx);
+        const speed = baseSpeed * driftMultiplier;
+        b.dx = Math.cos(angle) * speed;
+        b.dy = Math.sin(angle) * speed;
+
+        b.el.style.animationDuration = `${2 * animMultiplier}s, ${4 * animMultiplier}s`;
+      });
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' && splashScreen.style.display !== 'none') {
+        startGame();
+      }
+    });
+  </script>
+</body>
+</html>

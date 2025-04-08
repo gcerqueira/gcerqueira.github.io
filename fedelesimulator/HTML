@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impossible Button Game</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; font-family: sans-serif; overflow: hidden; }
+    
+    .screen {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background-size: cover;
+      background-position: center;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 20px;
+      cursor: pointer;
+      border: none;
+      border-radius: 8px;
+      background-color: #333;
+      color: #fff;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+
+    #gameScreen #confirmButton {
+      position: absolute;
+    }
+
+    #timer {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 24px;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div id="splashScreen" class="screen" style="background-image: url('splash.jpg');">
+    <audio id="bgMusic" loop autoplay>
+      <source src="placeholder.mp3" type="audio/mpeg">
+    </audio>
+    <button onclick="startGame()">START</button>
+  </div>
+
+  <div id="gameScreen" class="screen" style="display: none; background-image: url('game.jpg');">
+    <div id="timer">2:00</div>
+    <button id="confirmButton">CONFIRM</button>
+  </div>
+
+  <div id="gameOverScreen" class="screen" style="display: none; background-image: url('gameover.jpg');">
+    <button onclick="restartGame()">TRY AGAIN</button>
+  </div>
+
+  <script>
+    const splashScreen = document.getElementById('splashScreen');
+    const gameScreen = document.getElementById('gameScreen');
+    const gameOverScreen = document.getElementById('gameOverScreen');
+    const confirmButton = document.getElementById('confirmButton');
+    const timerDisplay = document.getElementById('timer');
+
+    let timer;
+    let timeLeft = 120;
+
+    function startGame() {
+      splashScreen.style.display = 'none';
+      gameScreen.style.display = 'flex';
+      moveButtonRandomly();
+      timer = setInterval(updateTimer, 1000);
+    }
+
+    function updateTimer() {
+      timeLeft--;
+      const minutes = Math.floor(timeLeft / 60);
+      const seconds = timeLeft % 60;
+      timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+      if (timeLeft <= 0) {
+        clearInterval(timer);
+        endGame();
+      }
+    }
+
+    function endGame() {
+      gameScreen.style.display = 'none';
+      gameOverScreen.style.display = 'flex';
+    }
+
+    function restartGame() {
+      timeLeft = 120;
+      timerDisplay.textContent = '2:00';
+      gameOverScreen.style.display = 'none';
+      splashScreen.style.display = 'flex';
+    }
+
+    function moveButtonRandomly() {
+      const btn = confirmButton;
+      const screen = gameScreen;
+      screen.addEventListener('mousemove', () => {
+        const maxX = window.innerWidth - btn.offsetWidth;
+        const maxY = window.innerHeight - btn.offsetHeight;
+        const x = Math.random() * maxX;
+        const y = Math.random() * maxY;
+        btn.style.left = `${x}px`;
+        btn.style.top = `${y}px`;
+      });
+    }
+  </script>
+</body>
+</html>

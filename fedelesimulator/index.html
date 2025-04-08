@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <script src="https://unpkg.com/feather-icons"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Fedele Simulator</title>
@@ -115,6 +116,36 @@
       z-index: 1;
     }
 
+    .top-right-controls {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 2;
+  display: flex;
+  gap: 20px;
+}
+
+.top-right-controls button {
+  background: rgba(0,0,0,0.6);
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.top-right-controls button:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.top-right-controls svg {
+  width: 24px;
+  height: 24px;
+}
+
   </style>
 </head>
 <body>
@@ -143,164 +174,224 @@
     <button onclick="restartGame()">TENTAR NOVAMENTE</button>
   </div>
 
-  <script>
-    const splashScreen = document.getElementById('splashScreen');
-    const gameScreen = document.getElementById('gameScreen');
-    const gameOverScreen = document.getElementById('gameOverScreen');
-    const buttonsContainer = document.getElementById('buttonsContainer');
-    const timerDisplay = document.getElementById('timer');
-    const levelDisplay = document.getElementById('level');
-    const finalScoreDisplay = document.getElementById('finalScore');
-    const bgMusic = document.getElementById('bgMusic');
-    const gameVideo = document.getElementById('gameVideo');
-    const clickSound = document.getElementById('clickSound');
-    const wrongSound = document.getElementById('wrongSound');
 
-    let level = 1;
-    let timeLeft = 60;
-    let timer;
-    const driftingButtons = [];
+<div class="top-right-controls">
+  <button id="toggleFullscreen" title="Tela Cheia"><i data-feather="maximize"></i></button>
+  <button id="toggleSound" title="Mutar"><i data-feather="volume-2"></i></button>
+</div>
 
-    function startGame() {
-      splashScreen.style.display = 'none';
-      gameScreen.style.display = 'flex';
-      level = 1;
-      timeLeft = 60;
-      driftingButtons.length = 0;
-      buttonsContainer.innerHTML = '';
-      levelDisplay.textContent = `Confirmações: 1`;
-      timerDisplay.textContent = '1:00';
 
-      createDriftingDiv('CONFIRMAR', handleConfirmClick);
-      animateDrift();
-      bgMusic.play().catch(() => {});
-      gameVideo.play().catch(() => {});
-      timer = setInterval(updateTimer, 1000);
-    }
 
-    function restartGame() {
+<script>
+  const splashScreen = document.getElementById('splashScreen');
+  const gameScreen = document.getElementById('gameScreen');
+  const gameOverScreen = document.getElementById('gameOverScreen');
+  const buttonsContainer = document.getElementById('buttonsContainer');
+  const timerDisplay = document.getElementById('timer');
+  const levelDisplay = document.getElementById('level');
+  const finalScoreDisplay = document.getElementById('finalScore');
+  const bgMusic = document.getElementById('bgMusic');
+  const gameVideo = document.getElementById('gameVideo');
+  const clickSound = document.getElementById('clickSound');
+  const wrongSound = document.getElementById('wrongSound');
+
+  let level = 1;
+  let timeLeft = 60;
+  let timer;
+  const driftingButtons = [];
+
+  function startGame() {
+    splashScreen.style.display = 'none';
+    gameScreen.style.display = 'flex';
+    level = 1;
+    timeLeft = 60;
+    driftingButtons.length = 0;
+    buttonsContainer.innerHTML = '';
+    levelDisplay.textContent = `Confirmações: 1`;
+    timerDisplay.textContent = '1:00';
+
+    createDriftingDiv('CONFIRMAR', handleConfirmClick);
+    animateDrift();
+    bgMusic.play().catch(() => {});
+    gameVideo.play().catch(() => {});
+    timer = setInterval(updateTimer, 1000);
+  }
+
+  function restartGame() {
+    clearInterval(timer);
+    driftingButtons.length = 0;
+    buttonsContainer.innerHTML = '';
+    gameOverScreen.style.display = 'none';
+    splashScreen.style.display = 'flex';
+  }
+
+  function updateTimer() {
+    timeLeft--;
+    const minutes = Math.floor(timeLeft / 60);
+    const seconds = timeLeft % 60;
+    timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    if (timeLeft <= 0) {
       clearInterval(timer);
-      driftingButtons.length = 0;
-      buttonsContainer.innerHTML = '';
-      gameOverScreen.style.display = 'none';
-      splashScreen.style.display = 'flex';
+      endGame();
     }
+  }
 
-    function updateTimer() {
-      timeLeft--;
-      const minutes = Math.floor(timeLeft / 60);
-      const seconds = timeLeft % 60;
-      timerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
-      if (timeLeft <= 0) {
-        clearInterval(timer);
-        endGame();
-      }
+  function endGame() {
+    gameScreen.style.display = 'none';
+    gameOverScreen.style.display = 'flex';
+    finalScoreDisplay.textContent = `Você confirmou ${level} vezes!`;
+  }
+
+  const desconfirmarTexts = [
+  "É POSSÍVEL", "PODE SER", "TALVEZ", "QUEM SABE", "DEPENDE",
+  "NÃO É IMPOSSÍVEL", "É UMA HIPÓTESE", "HÁ UMA CHANCE", "NÃO DÁ PRA GARANTIR",
+  "EXISTE A POSSIBILIDADE", "NÃO ESTÁ DESCARTADO", "É UMA OPÇÃO",
+ "NÃO ESTÁ FORA DO ESCOPO",   "VOU AVERIGUAR", "NÃO FOI NEGADO", "ESTÁ EM ABERTO",
+  "PODE ACONTECER", "NÃO É TOTALMENTE IMPROVÁVEL", "ESTOU CONSIDERANDO"
+];
+
+let usedDesconfirmarTexts = [];
+
+function getNextDesconfirmarText() {
+  const available = desconfirmarTexts.filter(text => !usedDesconfirmarTexts.includes(text));
+  if (available.length === 0) return null;
+  const choice = available[Math.floor(Math.random() * available.length)];
+  usedDesconfirmarTexts.push(choice);
+  return choice;
+}
+
+function createDriftingDiv(text, clickHandler) {
+  if (text === 'DESCONFIRMAR') {
+    if (driftingButtons.filter(b => b.el.dataset.type === 'desconfirmar').length >= 30) return;
+
+    const newText = getNextDesconfirmarText();
+    if (!newText) return;
+    text = newText;
+  }
+
+  const div = document.createElement('div');
+  div.className = 'gameDiv';
+  div.textContent = text;
+  div.dataset.type = (clickHandler === handleDesconfirmarClick) ? 'desconfirmar' : 'confirmar';
+
+  div.style.backgroundColor = `hsl(${Math.random() * 360}, 80%, 50%)`;
+  div.style.fontSize = `${18 + Math.random() * 20}px`;
+  const width = 200;
+  const height = 80;
+  let x = Math.random() * (window.innerWidth - width);
+  let y = Math.random() * (window.innerHeight - height);
+
+  div.style.left = `${x}px`;
+  div.style.top = `${y}px`;
+
+  const dx = (Math.random() - 0.5) * 2;
+  const dy = (Math.random() - 0.5) * 2;
+
+  const drift = {
+    el: div,
+    x, y, dx, dy,
+    teleport() {
+      this.x = Math.random() * (window.innerWidth - width);
+      this.y = Math.random() * (window.innerHeight - height);
+      this.el.style.left = `${this.x}px`;
+      this.el.style.top = `${this.y}px`;
     }
+  };
 
-    function endGame() {
-      gameScreen.style.display = 'none';
-      gameOverScreen.style.display = 'flex';
-      finalScoreDisplay.textContent = `Você confirmou ${level} vezes!`;
+  div.onclick = () => {
+    clickHandler(div, drift);
+    spawnParticles(drift.x, drift.y);
+  };
+
+  buttonsContainer.appendChild(div);
+  driftingButtons.push(drift);
+}
+
+  function spawnParticles(x, y) {
+    for (let i = 0; i < 30; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      p.style.left = `${x}px`;
+      p.style.top = `${y}px`;
+      p.style.setProperty('--dx', `${(Math.random() - 0.5) * 200}px`);
+      p.style.setProperty('--dy', `${(Math.random() - 0.5) * 200}px`);
+      buttonsContainer.appendChild(p);
+      setTimeout(() => p.remove(), 600);
     }
+  }
 
-    function createDriftingDiv(text, clickHandler) {
-      if (text === 'DESCONFIRMAR') {
-        const existing = driftingButtons.filter(b => b.el.textContent === 'DESCONFIRMAR');
-        if (existing.length >= 30) return;
-      }
+  function animateDrift() {
+    driftingButtons.forEach(b => {
+      const width = b.el.offsetWidth;
+      const height = b.el.offsetHeight;
+      const speedMultiplier = Math.pow(1.10, level - 1);
 
-      const div = document.createElement('div');
-      div.className = 'gameDiv';
-      div.textContent = text;
+      b.x += b.dx * speedMultiplier;
+      b.y += b.dy * speedMultiplier;
 
-      div.style.backgroundColor = `hsl(${Math.random() * 360}, 80%, 50%)`;
-      div.style.fontSize = `${18 + Math.random() * 20}px`;
-      const width = 200;
-      const height = 80;
-      let x = Math.random() * (window.innerWidth - width);
-      let y = Math.random() * (window.innerHeight - height);
+      if (b.x < 0 || b.x > window.innerWidth - width) b.dx *= -1;
+      if (b.y < 0 || b.y > window.innerHeight - height) b.dy *= -1;
 
-      div.style.left = `${x}px`;
-      div.style.top = `${y}px`;
-
-      const dx = (Math.random() - 0.5) * 2;
-      const dy = (Math.random() - 0.5) * 2;
-
-      const drift = {
-        el: div,
-        x, y, dx, dy,
-        teleport() {
-          this.x = Math.random() * (window.innerWidth - width);
-          this.y = Math.random() * (window.innerHeight - height);
-          this.el.style.left = `${this.x}px`;
-          this.el.style.top = `${this.y}px`;
-        }
-      };
-
-      div.onclick = () => {
-        clickHandler(div, drift);
-        spawnParticles(drift.x, drift.y);
-      };
-
-      buttonsContainer.appendChild(div);
-      driftingButtons.push(drift);
-    }
-
-    function spawnParticles(x, y) {
-      for (let i = 0; i < 30; i++) {
-        const p = document.createElement('div');
-        p.className = 'particle';
-        p.style.left = `${x}px`;
-        p.style.top = `${y}px`;
-        p.style.setProperty('--dx', `${(Math.random() - 0.5) * 200}px`);
-        p.style.setProperty('--dy', `${(Math.random() - 0.5) * 200}px`);
-        buttonsContainer.appendChild(p);
-        setTimeout(() => p.remove(), 600);
-      }
-    }
-
-    function animateDrift() {
-      driftingButtons.forEach(b => {
-        const width = b.el.offsetWidth;
-        const height = b.el.offsetHeight;
-        const speedMultiplier = Math.pow(1.10, level - 1);
-
-        b.x += b.dx * speedMultiplier;
-        b.y += b.dy * speedMultiplier;
-
-        if (b.x < 0 || b.x > window.innerWidth - width) b.dx *= -1;
-        if (b.y < 0 || b.y > window.innerHeight - height) b.dy *= -1;
-
-        b.el.style.left = `${b.x}px`;
-        b.el.style.top = `${b.y}px`;
-      });
-      requestAnimationFrame(animateDrift);
-    }
-
-    function handleConfirmClick(div, drift) {
-      clickSound.play();
-      level++;
-      levelDisplay.textContent = `Confirmações: ${level}`;
-      driftingButtons.forEach(b => b.teleport());
-
-      if (level % 3 === 0) {
-        createDriftingDiv('DESCONFIRMAR', handleDesconfirmarClick);
-      }
-    }
-
-    function handleDesconfirmarClick(div, drift) {
-      wrongSound.play();
-      level = Math.max(1, level - 10);
-      levelDisplay.textContent = `Confirmações: ${level}`;
-      driftingButtons.forEach(b => b.teleport());
-    }
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' && splashScreen.style.display !== 'none') {
-        startGame();
-      }
+      b.el.style.left = `${b.x}px`;
+      b.el.style.top = `${b.y}px`;
     });
+    requestAnimationFrame(animateDrift);
+  }
 
-  </script>
+  function handleConfirmClick(div, drift) {
+    clickSound.play();
+    level++;
+    levelDisplay.textContent = `Confirmações: ${level}`;
+    driftingButtons.forEach(b => b.teleport());
+
+    if (level % 3 === 0) {
+      createDriftingDiv('DESCONFIRMAR', handleDesconfirmarClick);
+    }
+  }
+
+  function handleDesconfirmarClick(div, drift) {
+    wrongSound.play();
+    level = Math.max(1, level - 10);
+    levelDisplay.textContent = `Confirmações: ${level}`;
+    driftingButtons.forEach(b => b.teleport());
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && splashScreen.style.display !== 'none') {
+      startGame();
+    }
+  });
+
+  // Ativar os ícones feather
+feather.replace();
+
+// BOTÃO DE TELA CHEIA
+const toggleFullscreen = document.getElementById('toggleFullscreen');
+toggleFullscreen.addEventListener('click', () => {
+  if (!document.fullscreenElement) {
+    document.documentElement.requestFullscreen().catch(err => {
+      alert(`Erro ao entrar em tela cheia: ${err.message}`);
+    });
+  } else {
+    document.exitFullscreen();
+  }
+});
+
+// BOTÃO DE MUTE
+const toggleSound = document.getElementById('toggleSound');
+let isMuted = false;
+
+toggleSound.addEventListener('click', () => {
+  isMuted = !isMuted;
+  bgMusic.muted = isMuted;
+  clickSound.muted = isMuted;
+  wrongSound.muted = isMuted;
+
+  toggleSound.innerHTML = `<i data-feather="${isMuted ? 'volume-x' : 'volume-2'}"></i>`;
+  feather.replace();
+});
+
+</script>
+
 </body>
 </html>

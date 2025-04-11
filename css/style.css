@@ -2963,10 +2963,11 @@ padding:0;
 .cd-headline.slide .cd-words-wrapper{overflow: visible;}
 
 .shane_tm_hero_fourth .desc {
-    margin-bottom: 30px;
+	margin-bottom: 30px;
     max-width: 720px;
-    color: #352b2b;
-    font-size: 18px;
+    color: #4f3f3f;
+    font-size: 25px;
+    font-weight: 400;
 }
 
 .desc a, .desc a:visited {

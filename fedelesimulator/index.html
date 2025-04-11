@@ -146,6 +146,22 @@
   height: 24px;
 }
 
+@keyframes pulseGlow {
+  0%, 100% {
+    box-shadow: 0 0 10px 2px rgba(255, 255, 0, 0.7);
+  }
+  50% {
+    box-shadow: 0 0 20px 6px rgba(255, 255, 0, 1);
+  }
+}
+
+.gameDiv[data-type="bonus"] {
+  animation: pulseGlow 1.5s infinite ease-in-out;
+  border-radius:100%;
+}
+
+
+
   </style>
 </head>
 <body>
@@ -194,13 +210,17 @@
   const gameVideo = document.getElementById('gameVideo');
   const clickSound = document.getElementById('clickSound');
   const wrongSound = document.getElementById('wrongSound');
+  const bonusTimes = [5, 10, 15, 20];
+
 
   let level = 1;
   let timeLeft = 60;
   let timer;
   const driftingButtons = [];
 
+
   function startGame() {
+    usedDesconfirmarTexts = [];
     splashScreen.style.display = 'none';
     gameScreen.style.display = 'flex';
     level = 1;
@@ -215,6 +235,20 @@
     bgMusic.play().catch(() => {});
     gameVideo.play().catch(() => {});
     timer = setInterval(updateTimer, 1000);
+
+    setInterval(() => {
+  if (gameScreen.style.display === 'flex') {
+    createTimeBonusButton();
+  }
+}, 15000); // a cada 20s
+
+if (bonusInterval) clearInterval(bonusInterval);
+  bonusInterval = setInterval(() => {
+    if (gameScreen.style.display === 'flex') {
+      createTimeBonusButton();
+    }
+  }, 15000);
+
   }
 
   function restartGame() {
@@ -223,6 +257,8 @@
     buttonsContainer.innerHTML = '';
     gameOverScreen.style.display = 'none';
     splashScreen.style.display = 'flex';
+    clearInterval(timer);
+    clearInterval(bonusInterval); // Limpa aqui também
   }
 
   function updateTimer() {
@@ -241,6 +277,69 @@
     gameOverScreen.style.display = 'flex';
     finalScoreDisplay.textContent = `Você confirmou ${level} vezes!`;
   }
+
+  function randomizeSizes() {
+  driftingButtons.forEach(b => {
+    if (b.el.dataset.type !== 'bonus') {
+      const scale = 0.1 + Math.random() * 1.9; // de 0.1 até 2.0
+      b.el.style.transform = `scale(${scale})`;
+    }
+  });
+}
+
+
+function createTimeBonusButton() {
+  const bonus = bonusTimes[Math.floor(Math.random() * bonusTimes.length)];
+
+  const div = document.createElement('div');
+  div.className = 'gameDiv';
+  div.innerHTML = `<i data-feather="clock"></i> +${bonus}s`;
+  div.dataset.type = 'bonus';
+
+  div.style.backgroundColor = 'gold';
+  div.style.color = 'black';
+  div.style.fontSize = '20px';
+
+  const width = 200;
+  const height = 80;
+  let x = Math.random() * (window.innerWidth - width);
+  let y = Math.random() * (window.innerHeight - height);
+
+  div.style.left = `${x}px`;
+  div.style.top = `${y}px`;
+  div.style.fontSize = '20px';
+  div.style.transform = 'scale(1)';
+
+  const dx = (Math.random() - 0.5) * 0.5; // bem devagar
+  const dy = (Math.random() - 0.5) * 0.5;
+
+  const drift = {
+    el: div,
+    x, y, dx, dy,
+    teleport() {
+      this.x = Math.random() * (window.innerWidth - width);
+      this.y = Math.random() * (window.innerHeight - height);
+      this.el.style.left = `${this.x}px`;
+      this.el.style.top = `${this.y}px`;
+    }
+  };
+
+  div.onclick = () => {
+    timeLeft += bonus;
+    spawnParticles(drift.x, drift.y);
+    div.remove();
+    const index = driftingButtons.indexOf(drift);
+    if (index !== -1) driftingButtons.splice(index, 1);
+  };
+
+  buttonsContainer.appendChild(div);
+  driftingButtons.push(drift);
+  feather.replace(); // renderiza o ícone
+}
+
+
+
+
 
   const desconfirmarTexts = [
   "É POSSÍVEL", "PODE SER", "TALVEZ", "QUEM SABE", "DEPENDE",
@@ -301,10 +400,16 @@ function createDriftingDiv(text, clickHandler) {
   div.onclick = () => {
     clickHandler(div, drift);
     spawnParticles(drift.x, drift.y);
+    randomizeSizes();
   };
 
   buttonsContainer.appendChild(div);
   driftingButtons.push(drift);
+
+  
+  // Tamanho inicial aleatório
+  const scale = 0.1 + Math.random() * 1.9;
+  div.style.transform = `scale(${scale})`;
 }
 
   function spawnParticles(x, y) {
@@ -321,22 +426,30 @@ function createDriftingDiv(text, clickHandler) {
   }
 
   function animateDrift() {
-    driftingButtons.forEach(b => {
-      const width = b.el.offsetWidth;
-      const height = b.el.offsetHeight;
-      const speedMultiplier = Math.pow(1.10, level - 1);
+  driftingButtons.forEach(b => {
+    const width = b.el.offsetWidth;
+    const height = b.el.offsetHeight;
 
-      b.x += b.dx * speedMultiplier;
-      b.y += b.dy * speedMultiplier;
+    let speedMultiplier = 1;
 
-      if (b.x < 0 || b.x > window.innerWidth - width) b.dx *= -1;
-      if (b.y < 0 || b.y > window.innerHeight - height) b.dy *= -1;
+    if (b.el.dataset.type === 'confirmar' || b.el.dataset.type === 'desconfirmar') {
+      speedMultiplier = Math.pow(1.10, level - 1);
+    } else if (b.el.dataset.type === 'bonus') {
+      speedMultiplier = 0.5; // bem devagar
+    }
 
-      b.el.style.left = `${b.x}px`;
-      b.el.style.top = `${b.y}px`;
-    });
-    requestAnimationFrame(animateDrift);
-  }
+    b.x += b.dx * speedMultiplier;
+    b.y += b.dy * speedMultiplier;
+
+    if (b.x < 0 || b.x > window.innerWidth - width) b.dx *= -1;
+    if (b.y < 0 || b.y > window.innerHeight - height) b.dy *= -1;
+
+    b.el.style.left = `${b.x}px`;
+    b.el.style.top = `${b.y}px`;
+  });
+
+  requestAnimationFrame(animateDrift);
+}
 
   function handleConfirmClick(div, drift) {
     clickSound.play();
@@ -390,6 +503,7 @@ toggleSound.addEventListener('click', () => {
   toggleSound.innerHTML = `<i data-feather="${isMuted ? 'volume-x' : 'volume-2'}"></i>`;
   feather.replace();
 });
+
 
 </script>
 

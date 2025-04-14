@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clutch Design System - Case Study</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            color: #003366;
+        }
+        h3 {
+            color: #007acc;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        ul {
+            margin-left: 20px;
+        }
+        .quote {
+            font-style: italic;
+            color: #555;
+            border-left: 4px solid #007acc;
+            padding-left: 20px;
+            margin-left: 0;
+            margin-bottom: 20px;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #007acc;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .image-placeholder {
+            width: 100%;
+            height: 300px;
+            background-color: #ddd;
+            text-align: center;
+            line-height: 300px;
+            font-size: 20px;
+            color: #888;
+            margin-bottom: 20px;
+        }
+        .two-images {
+            display: flex;
+            gap: 20px;
+        }
+        .two-images .image-placeholder {
+            width: 48%;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <section class="section">
+        <h1>Clutch Design System</h1>
+        <h2>Unifying fragmented fintech experiences into one scalable, brand-flexible system</h2>
+        <div class="image-placeholder">Placeholder: Hero Shot (Components in Action)</div>
+        <p>At Clutch, we were building a suite of fintech products — everything from online loan portals to internal tools for credit union employees. The problem? We had no shared design system. Components were inconsistent, styles broke across platforms, and the experience differed wildly from one product to another.</p>
+        <p>To make things more complex, our products were <span class="highlight">white-labeled</span> — each credit union needed to apply its own branding. In many cases, our app was embedded inside the credit union’s mobile banking app, so visual consistency wasn’t just a preference — it was mandatory.</p>
+        <p>I led the entire design system initiative, from strategy through execution. This included:</p>
+        <ul>
+            <li>Auditing existing components and UI debt</li>
+            <li>Creating the foundational design tokens and component architecture</li>
+            <li>Designing and maintaining a Figma library</li>
+            <li>Coding core components in React and managing Storybook</li>
+            <li>Partnering with engineers to roll out and replace legacy MUI components</li>
+            <li>Evangelizing usage across product and engineering teams</li>
+        </ul>
+    </section>
+
+    <section class="section">
+        <h3>The Problem</h3>
+        <p>We were scaling fast, but our design tooling wasn’t keeping up. Here’s what we were facing:</p>
+        <ul>
+            <li>⚠️ <span class="highlight">Broken MUI-based components</span> across products</li>
+            <li>🧱 Two separate frontends: One for internal branch officers, and one for public-facing loan applicants</li>
+            <li>🎨 White-label requirements: 20+ credit unions, each needing to match their brand</li>
+            <li>🧩 Duplicate efforts: Different teams re-creating the same components with minor variations</li>
+            <li>🕳️ Inconsistent UX: Modals, buttons, and forms looked and behaved differently depending on the product</li>
+        </ul>
+        <p>I remember opening a Figma file and seeing <span class="highlight">five different button styles</span> used in the same flow. That was my “we need a system” moment.</p>
+    </section>
+
+    <section class="section">
+        <h3>Strategy & Rollout</h3>
+        <p>I knew a design system wouldn’t succeed unless it addressed both <span class="highlight">designer and developer</span> needs — and unless it was built with flexibility in mind.</p>
+        <div class="image-placeholder">Placeholder: Roadmap Graphic</div>
+        <p><strong>Here's how I approached it:</strong></p>
+        <ul>
+            <li><strong>Audit & Inventory:</strong> Conducted a full UI audit across all products, Identified the most used and most problematic components, Partnered with devs to evaluate feasibility of replacing MUI</li>
+            <li><strong>Foundation First:</strong> Built out a scalable token structure (colors, spacing, typography, elevations), Created light/dark modes and token theming for white-label use, Ensured accessibility from the start (WCAG AA contrast, keyboard nav)</li>
+            <li><strong>Component Library:</strong> Designed and coded 40+ core components, Used React + styled-components, published via Storybook, Included states, variants, accessibility, and usage guidelines</li>
+            <li><strong>Support for Two Products:</strong> Built layout templates that flexed between dense internal tools and simpler public-facing UIs, Added a “live theming” toggle in Figma to preview different brand variants, Partnered with PMs to define context-specific patterns</li>
+            <li><strong>Documentation & Onboarding:</strong> Created internal Figma documentation, Built Confluence pages for engineers, Ran live walkthroughs and async Loom videos for onboarding</li>
+        </ul>
+        <div class="two-images">
+            <div class="image-placeholder">Placeholder: UI Audit (Before/After)</div>
+            <div class="image-placeholder">Placeholder: New Components in Storybook</div>
+        </div>
+    </section>
+
+    <section class="section">
+        <h3>Convincing Stakeholders</h3>
+        <p>I didn’t get buy-in overnight. Our Director of Design was skeptical at first — mostly because we already had <span class="highlight">something working in MUI</span>, and shifting priorities felt risky. Plus, the engineering teams were underwater keeping up with core features.</p>
+        <p>I focused on three things:</p>
+        <ul>
+            <li><strong>Prototyping pain:</strong> I rebuilt a few of our most painful components and showed how the new system made them cleaner and more scalable</li>
+            <li><strong>Visual comparison:</strong> I mocked up broken MUI versions vs. our new unified designs</li>
+            <li><strong>Metrics:</strong> I estimated time saved in dev cycles if we adopted the new system (later validated!)</li>
+        </ul>
+        <div class="quote">“Once we saw that it could actually reduce our bug load and make our apps feel cohesive, we were in.” – Director of Design</div>
+        <p>Eventually, we got the green light — and the engineering team began prioritizing MUI deprecation and replacing broken components with our new system.</p>
+    </section>
+
+    <section class="section">
+        <h3>White-Labeling: A Major Challenge</h3>
+        <p>Because Clutch served dozens of credit unions, each product needed to match the branding of the partner institution. In practice, that meant:</p>
+        <ul>
+            <li>No hardcoded colors or fonts</li>
+            <li>Components needed to <span class="highlight">adapt</span> to different brand palettes</li>
+            <li>The system had to look like a seamless part of each credit union's ecosystem</li>
+        </ul>
+        <p>To solve this, I designed a flexible <span class="highlight">token architecture</span> and created a Figma theming system where we could toggle between brand presets. This made it easy to validate themes visually, share previews with clients, and keep consistency without duplicating files.</p>
+        <div class="image-placeholder">Placeholder: Figma Theming Interface</div>
+    </section>
+
+    <section class="section">
+        <h3>Trade-Offs & Decisions</h3>
+        <p>Some tough calls we had to make:</p>
+        <ul>
+            <li><strong>Dropped legacy browser support:</strong> To simplify CSS and token logic</li>
+            <li><strong>Postponed animations:</strong> Until we had stability in core components</li>
+            <li><strong>Said no to “just one-off styles”:</strong> From marketing teams — in favor of system-driven overrides</li>
+            <li><strong>Rebuilt from scratch instead of extending MUI:</strong> Harder upfront, but dramatically cleaner in the long run</li>
+        </ul>
+        <p>These decisions weren’t always popular, but they paid off in speed, consistency, and code maintainability.</p>
+    </section>
+
+    <section class="section">
+        <h3>The Results</h3>
+        <div class="quote">“The new design system not only solved our usability issues but also aligned our teams toward a common goal — enabling faster iteration.” – Engineering Lead</div>
+        <ul>
+            <li>🚀 <span class="highlight">30% faster feature delivery</span> after full rollout</li>
+            <li>🐞 <span class="highlight">~40% fewer visual bugs</span> reported in QA</li>
+            <li>✅ <span class="highlight">100% design team adoption</span> within the first quarter</li>
+            <li>🔄 <span class="highlight">MUI fully deprecated in 6 months</span></li>
+            <li>🎨 <span class="highlight">20+ credit unions successfully themed</span> using our system</li>
+        </ul>
+        <div class="image-placeholder">Placeholder: Results Dashboard (Metrics Visual)</div>
+    </section>
+
+    <section class="section">
+        <h3>What I Learned</h3>
+        <ul>
+            <li>A design system isn’t just about tokens and buttons — it’s about <span class="highlight">people</span>.</li>
+            <li>It takes <span class="highlight">evangelism and patience</span> to drive adoption.</li>
+            <li><span class="highlight">Theming complexity is real</span> in white-label environments — but manageable with the right token strategy.</li>
+            <li>Close collaboration between <span class="highlight">design and engineering</span> is non-negotiable.</li>
+            <li>Sometimes you need to <span class="highlight">prove value with action</span>, not just slides.</li>
+        </ul>
+    </section>
+
+    <section class="section">
+        <h3>Final Thoughts</h3>
+        <p>The Clutch Design System didn’t just clean up our UI — it helped us move faster, build better, and ship a more unified experience to thousands of users across the U.S. It gave us a common language across design and development, and a foundation we could trust as we scaled.</p>
+        <p>If you’d like to talk more about design systems, white-label strategy, or scaling component libraries — <span class="highlight">I’d love to chat.</span></p>
+    </section>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Castro Alves Simulator</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
+    body { background: #000; overflow: hidden; touch-action: none; }
+    canvas { display: block; background: #111; width: 100vw; height: 100vh; }
+    #hud {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: white;
+      font-family: monospace;
+      font-size: 16px;
+    }
+    #gameOverScreen {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: white;
+      font-family: monospace;
+      font-size: 28px;
+      text-align: center;
+      display: none;
+    }
+    #restartButton {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      background: #444;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+
+#healthContainer {
+  width: 200px;
+  height: 20px;
+  background: #333;
+  border: 2px solid white;
+  margin-bottom: 5px;
+}
+
+#healthBar {
+  width: 100%;
+  height: 100%;
+  background: limegreen;
+  transition: width 0.2s ease;
+}
+
+#statsText {
+  font-family: monospace;
+  font-size: 16px;
+}
+
+  </style>
+</head>
+<body>
+  <canvas id="gameCanvas"></canvas>
+<div id="hud">
+    <div id="healthContainer">
+      <div id="healthBar"></div>
+    </div>
+    <div id="statsText">Score: 0 | Powerups: 0</div>
+  </div>
+  
+  <div id="gameOverScreen">
+    <div id="finalScoreText">GAME OVER | Final Score: 0</div>
+    <button id="restartButton">Restart</button>
+  </div>
+
+  <script>
+    const canvas = document.getElementById('gameCanvas');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const hud = document.getElementById('hud');
+    const gameOverScreen = document.getElementById('gameOverScreen');
+    const finalScoreText = document.getElementById('finalScoreText');
+    const restartButton = document.getElementById('restartButton');
+
+    const playerImg = new Image();
+    playerImg.src = 'player.png';
+
+    const enemyImg = new Image();
+    enemyImg.src = 'gorgonzola.png';
+
+    const pickupImg = new Image();
+    pickupImg.src = 'tomateseco.png';
+
+    let player, enemies, pickups, bombs, particles;
+    let bulletIntervalId, enemyIntervalId, pickupIntervalId, bombInterval;
+    let bulletInterval = 2000;
+    let enemySpawnRate = 1500;
+    let enemySpeed = 2;
+    let powerupCount = 0;
+    let difficultyTimer = 0;
+    let patternIndex = 0;
+
+    const patterns = [
+      e => e.y += Math.sin(e.x * 0.05) * 2,
+      e => e.y += Math.sin(e.x * 0.1) * 5,
+      e => e.y += Math.cos(e.x * 0.05) * 7,
+      e => e.y += Math.sin(e.x * 0.3) * 10 + Math.cos(e.x * 0.1) * 5,
+      e => e.y += Math.sin(e.x * 0.5 + e.x * 0.1) * 15,
+      e => e.y += Math.random() * 10 - 5
+    ];
+
+    function initGame() {
+      player = {
+        x: 100,
+        y: canvas.height / 2,
+        width: 40,
+        height: 40,
+        bullets: [],
+        damage: 100,
+        score: 0
+      };
+
+      enemies = [];
+      pickups = [];
+      bombs = [];
+      particles = [];
+      powerupCount = 0;
+      bulletInterval = 2000;
+      enemySpawnRate = 1500;
+      enemySpeed = 2;
+      patternIndex = 0;
+
+      clearIntervals();
+      bulletIntervalId = setInterval(shootBullet, bulletInterval);
+      enemyIntervalId = setInterval(spawnEnemy, enemySpawnRate);
+      pickupIntervalId = setInterval(spawnPickup, 5000);
+      scheduleBomb();
+
+      gameOverScreen.style.display = 'none';
+      difficultyTimer = Date.now();
+      update();
+    }
+
+    function clearIntervals() {
+      clearInterval(bulletIntervalId);
+      clearInterval(enemyIntervalId);
+      clearInterval(pickupIntervalId);
+      clearTimeout(bombInterval);
+    }
+
+    function scheduleBomb() {
+      const delay = Math.random() * 30000 + 30000;
+      bombInterval = setTimeout(() => {
+        spawnBomb();
+        scheduleBomb();
+      }, delay);
+    }
+
+    function spawnEnemy() {
+      enemies.push({
+        x: canvas.width + 50,
+        y: Math.random() * (canvas.height - 40),
+        width: 40,
+        height: 40,
+        speed: enemySpeed,
+        pattern: patternIndex
+      });
+    }
+
+    function spawnPickup() {
+      pickups.push({
+        x: canvas.width + 50,
+        y: Math.random() * (canvas.height - 30),
+        width: 30,
+        height: 30,
+        speed: 1.5
+      });
+    }
+
+    function spawnBomb() {
+      bombs = [{
+        x: canvas.width * 0.5,
+        y: canvas.height * 0.5,
+        width: 50,
+        height: 50,
+        timer: 2000
+      }];
+    }
+
+    function shootBullet() {
+      if (player.damage <= 0) return;
+      const bullets = [{
+        x: player.x + player.width,
+        y: player.y + player.height / 2 - 2,
+        width: 10,
+        height: 4,
+        speed: 6,
+        dx: 1,
+        dy: 0
+      }];
+
+      const setsOfExtra = Math.floor(powerupCount / 10);
+      for (let i = 1; i <= setsOfExtra; i++) {
+        const angle = i * 15 * Math.PI / 180;
+        bullets.push({
+          x: player.x + player.width,
+          y: player.y + player.height / 2 - 2,
+          width: 10,
+          height: 4,
+          speed: 6,
+          dx: Math.cos(angle),
+          dy: -Math.sin(angle)
+        });
+        bullets.push({
+          x: player.x + player.width,
+          y: player.y + player.height / 2 - 2,
+          width: 10,
+          height: 4,
+          speed: 6,
+          dx: Math.cos(angle),
+          dy: Math.sin(angle)
+        });
+      }
+
+      player.bullets.push(...bullets);
+    }
+
+    document.addEventListener('mousemove', e => {
+      player.y = e.clientY;
+    });
+
+    function drawImage(obj, img) {
+      ctx.drawImage(img, obj.x, obj.y, obj.width, obj.height);
+    }
+
+    function update() {
+      const now = Date.now();
+      if (now - difficultyTimer > 10000) {
+        enemySpawnRate = Math.max(200, enemySpawnRate - 100);
+        enemySpeed += 0.5;
+        clearInterval(enemyIntervalId);
+        enemyIntervalId = setInterval(spawnEnemy, enemySpawnRate);
+        difficultyTimer = now;
+
+        if ((now / 1000 | 0) % 20 === 0) {
+          patternIndex = (patternIndex + 1) % patterns.length;
+        }
+      }
+
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawImage(player, playerImg);
+
+      // Bullets
+      for (let i = player.bullets.length - 1; i >= 0; i--) {
+        const b = player.bullets[i];
+        b.x += b.speed * b.dx;
+        b.y += b.speed * b.dy;
+        ctx.fillStyle = 'yellow';
+        ctx.fillRect(b.x, b.y, b.width, b.height);
+        if (b.x > canvas.width || b.y < 0 || b.y > canvas.height) player.bullets.splice(i, 1);
+      }
+
+      // Enemies
+      for (let i = enemies.length - 1; i >= 0; i--) {
+        const e = enemies[i];
+        e.x -= e.speed;
+        patterns[e.pattern % patterns.length](e);
+        drawImage(e, enemyImg);
+
+        if (e.x + e.width < 0) {
+          player.damage -= 10;
+          enemies.splice(i, 1);
+          continue;
+        }
+
+        if (e.x < player.x + player.width && e.x + e.width > player.x &&
+            e.y < player.y + player.height && e.y + e.height > player.y) {
+          player.damage -= 10;
+          enemies.splice(i, 1);
+        }
+      }
+
+      // Pickups
+      for (let i = pickups.length - 1; i >= 0; i--) {
+        const p = pickups[i];
+        p.x -= p.speed;
+        drawImage(p, pickupImg);
+
+        if (p.x + p.width < 0) {
+          pickups.splice(i, 1);
+          continue;
+        }
+
+        if (p.x < player.x + player.width && p.x + p.width > player.x &&
+            p.y < player.y + player.height && p.y + p.height > player.y) {
+          powerupCount++;
+          player.score += 10;
+          pickups.splice(i, 1);
+
+          bulletInterval = Math.max(100, bulletInterval * 0.5);
+          clearInterval(bulletIntervalId);
+          bulletIntervalId = setInterval(shootBullet, bulletInterval);
+        }
+      }
+
+      // Bomb
+      if (bombs.length > 0) {
+        const b = bombs[0];
+        ctx.fillStyle = 'red';
+        ctx.beginPath();
+        ctx.arc(b.x, b.y, 25, 0, Math.PI * 2);
+        ctx.fill();
+        b.timer -= 16;
+        if (
+          player.x < b.x + b.width &&
+          player.x + player.width > b.x &&
+          player.y < b.y + b.height &&
+          player.y + player.height > b.y
+        ) {
+          triggerBomb();
+          bombs = [];
+        } else if (b.timer <= 0) {
+          bombs = [];
+        }
+      }
+
+      // Bullet vs Enemy
+      for (let bi = player.bullets.length - 1; bi >= 0; bi--) {
+        const b = player.bullets[bi];
+        for (let ei = enemies.length - 1; ei >= 0; ei--) {
+          const e = enemies[ei];
+          if (b.x < e.x + e.width && b.x + b.width > e.x &&
+              b.y < e.y + e.height && b.y + b.height > e.y) {
+            player.bullets.splice(bi, 1);
+            enemies.splice(ei, 1);
+            player.score += 5;
+            spawnParticles(e.x + e.width / 2, e.y + e.height / 2);
+            break;
+          }
+        }
+      }
+
+      // Particles
+      for (let i = particles.length - 1; i >= 0; i--) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+        p.life -= 1;
+        ctx.fillStyle = 'yellow';
+        ctx.fillRect(p.x, p.y, 2, 2);
+        if (p.life <= 0) particles.splice(i, 1);
+      }
+
+
+      if (player.damage > 0) {
+        requestAnimationFrame(update);
+      } else {
+        finalScoreText.innerText = `GAME OVER | Final Score: ${player.score}`;
+        gameOverScreen.style.display = 'block';
+        clearIntervals();
+      }
+
+      const healthBar = document.getElementById('healthBar');
+const statsText = document.getElementById('statsText');
+healthBar.style.width = `${player.damage}%`;
+healthBar.style.background = player.damage < 30 ? 'red' : 'limegreen';
+statsText.innerText = `Score: ${player.score} | Powerups: ${powerupCount}`;
+
+    }
+
+    function triggerBomb() {
+      enemies = [];
+      player.bullets = [];
+    }
+
+    function spawnParticles(x, y) {
+      for (let i = 0; i < 20; i++) {
+        particles.push({
+          x,
+          y,
+          vx: Math.random() * 4 - 2,
+          vy: Math.random() * 4 - 2,
+          life: 30
+        });
+      }
+    }
+
+    restartButton.addEventListener('click', initGame);
+    initGame();
+  </script>
+</body>
+</html>

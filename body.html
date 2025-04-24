@@ -493,34 +493,6 @@ Let’s design products that don’t just look good—they drive results.</p>
 		lastScroll = currentScroll;
 	  });
 	});
-
-
-	document.addEventListener("DOMContentLoaded", function () {
-	  const topbar = document.querySelector(".shane_tm_mobile_menu");
-  
-	  let lastScroll = 0;
-  
-	  window.addEventListener("scroll", () => {
-		const currentScroll = window.scrollY;
-  
-		if (currentScroll > 50) {
-		  if (currentScroll > lastScroll) {
-			// User is scrolling down
-			topbar.classList.add("visible");
-		  }
-		} else {
-		  // User is near the top
-		  topbar.classList.remove("visible");
-		}
-  
-		lastScroll = currentScroll;
-	  });
-	});
-
-
-	
-
-
   </script>
   
 </body>

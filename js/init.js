@@ -37,14 +37,7 @@ jQuery(document).ready(function(){
 		shane_tm_vcard_hero_height();
 	});
 	
-	jQuery(window).load('body', function(){
-		setTimeout(function(){
-        jQuery('.shane_tm_preloader').addClass('loaded');
-    }, 1000);
-		setTimeout(function(){
-        shane_tm_isotope();
-    }, 5000);
-	});
+
 	
 });
 

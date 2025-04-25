@@ -29,8 +29,9 @@ h3 {
 .highlight {
     font-weight: bold;
 }
+
 .casestudy_container .section {
-  margin: 100px 0;
+  margin: 64px 0;
 }
 
 .casestudy_container .section h1 {
@@ -44,10 +45,38 @@ h3 {
 }
 
 
-.casestudy_container { 
-    margin-top:130px;
-    max-width:1400px;
+.casestudy_container {
+  margin-top: 130px;
+  max-width: 1400px;
+  padding: 32px 206px;
+  background: white;
+  box-shadow: 9px 3px 49px -23px rgba(33, 33, 33, 0.35);
+  -webkit-box-shadow: 9px 3px 49px -23px rgba(33, 33, 33, 0.35);
+  -moz-box-shadow: 9px 3px 49px -23px rgba(33,33,33,0.35);
 }
+
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .casestudy_container {
+    padding: 32px 120px;
+  }
+}
+
+/* Small Tablet / Large Phones */
+@media (max-width: 768px) {
+  .casestudy_container {
+    padding: 32px 64px;
+  }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+  .casestudy_container {
+    padding: 32px 16px;
+  }
+}
+
 
 .image-placeholder {
     width: 100%;

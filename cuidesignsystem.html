@@ -152,7 +152,7 @@
         <div class="image-placeholder">
             <img src="img/cui/cui1.png">
         </div>
-        <div class="quote">How many inconsistencies can you spot? There were MANY more across the products.</div>
+        <div class="quote">How many inconsistencies can you spot? There were MANY more across the products. Each element had a separate code and the systems had no shared components. Ouch.</div>
     </section>
 
     <section id="strategy" class="section">
@@ -196,8 +196,48 @@
           <div class="image-placeholder">
             <img src="img/cui/componentsaudit.png">
         </div>
-        <div class="quote">Audit of some of the most problematic components, apart from the MUI ones</div>
+        <div class="quote">Raw example of an audit of some of the most used and most problematic components, apart from the MUI ones</div>
         
+        <div class="two-images">
+            <div class="image-placeholder">
+                <img src="img/cui/figmasidebar.gif">
+                </div>
+
+            <div class="image-placeholder">
+                <img src="img/cui/cui0.png">
+                </div>
+         
+        </div>
+        <div class="quote">Peek into the Figma file for the Design System, organized with specific pages for tokens, primitives and with +40 components and their variants. We also see the Design principles.</div>
+
+        <div class="image-placeholder">
+            <img src="img/cui/cui2.png">
+        </div>
+
+        
+        
+        <div class="quote">Since the products were white-labeled, I divided the color usage into two categories: System colors and Partner Colors. System colors are default colors used as Primary colors for system purposes, like main Typography, Backgrounds and to inform statuses. They should not differ from one CU to other. The 6th color cell ( 500 )  generally satisfies WCAG 2.0's 4.5:1 minimum contrast ratio (AA level), and is used as the default for the palette.</div>
+        
+        <div class="image-placeholder">
+            <img src="img/cui/tokens.png">
+        </div>
+
+        <div class="quote">First version of the color tokens</div>
+
+        <div class="image-placeholder">
+            <img src="img/cui/cui3.png">
+        </div>
+
+        <div class="quote">Typography and styling abstraction used to ensure consistency and standardize text throughout the systems. </div>
+        <div class="image-placeholder">
+            <img src="img/cui/cui4.png">
+        </div>
+        <div class="image-placeholder">
+            <img src="img/cui/cui5.png">
+        </div>
+
+        <div class="quote">Random examples of components and variants</div>
+
     </section>
 
     <section id="stakeholders" class="section">
@@ -215,8 +255,15 @@
         </div>
 
         <div class="image-placeholder">
+            <img src="img/cui/cardcomponent.png">
+        </div>
+        <div class="quote">The card component was an example of a scalable, clean and maintainable component, that could be used in different scenarios. It saved a lot of development time in a lot of occasions.</div>
+
+        <div class="image-placeholder">
             <img src="img/cui/hero.png">
         </div>
+
+        <div class="quote">The very same card component used in live contexts, later on when the DS was rolled out.</div>
         
         <p>With a working example in the Staff Portal and real dev progress in Storybook, the benefits became hard to ignore. Eventually, we got the green light — and the engineering team began deprecating MUI in the Online Portal and replacing it with our new system, component by component.</p>
      
@@ -246,22 +293,42 @@
     <section id="staffvsonline" class="section">
         <h3>Staff Portal vs. Online Portal</h3>
         <p>One of the biggest challenges was designing a system that worked across <strong>two very different products</strong>:</p>
-    
-        <ul>
-            <li><strong>Staff Portal:</strong> Used by Credit Union employees in-branch. Desktop-only. Requires information density, more powerful tooling, and task-focused workflows. Branding is flexible but still needs to reflect each Credit Union’s identity.</li>
-            <li><strong>Online Portal:</strong> Used by members to apply for loans or open accounts. Mobile-first. Often embedded inside the Credit Union’s mobile app, so visual integration and responsiveness are critical. Accessible, simple, and trust-building design is essential here.</li>
-        </ul>
-    
+        <div class="project-highlights">
+            <ul>
+                <li>
+                    
+                    <h4>Staff Portal:</h4> 
+                    <div class="image-placeholder">
+                        <img src="img/cui/staffportal.png">
+                    </div>
+
+                    Used by Credit Union employees in-branch. Desktop-only. Requires information density, more powerful tooling, and task-focused workflows. Branding is flexible but still needs to reflect each Credit Union’s identity.
+                   
+                </li>
+                <li>
+                    <h4>Online Portal:</h4> 
+                    <div class="image-placeholder">
+                        <img src="img/cui/onlineportal.png">
+                    </div>
+
+                    Used by members to apply for loans or open accounts. Mobile-first. Often embedded inside the Credit Union’s mobile app, so visual integration and responsiveness are critical. Accessible, simple, and trust-building design is essential here.
+                   
+                    
+                </li>
+            </ul>
+        </div>
     
         <p>Designing for both meant I had to keep the system <span class="highlight">flexible without fragmenting</span> into two separate systems. Here’s how I tackled the challenge:</p>
     
-        <ul>
-            <li><strong>Created variants for responsive needs:</strong> Components like navigation, tables, and form inputs had alternate versions for mobile vs. desktop use cases.</li>
-            <li><strong>Used adaptive theming:</strong> While the Staff Portal could handle broader color use, the Online Portal needed stricter adherence to the Credit Union’s branding and mobile platform guidelines. I built flexibility into the token structure to support both needs.</li>
-            <li><strong>Kept user context in mind:</strong> The tone, density, and interaction feedback differed across portals — so I documented usage guidance based on audience (e.g. “Use this version for branch staff” vs. “Use this variant for mobile loan applications”).</li>
-            <li><strong>Shared core components, different wrappers:</strong> Where possible, I reused base components but wrapped them in layout containers appropriate to each portal’s needs.</li>
-            <li><strong>Tested in Figma with live theming:</strong> I used theming toggles to preview both Staff and Online experiences in real time, speeding up design decisions and stakeholder approvals.</li>
-        </ul>
+        <div class="project-highlights">
+            <ul>
+                <li><h4>Created variants for responsive needs:</h4> Components like navigation, tables, and form inputs had alternate versions for mobile vs. desktop use cases.</li>
+                <li><h4>Used adaptive theming:</h4> While the Staff Portal could handle broader color use, the Online Portal needed stricter adherence to the Credit Union’s branding and mobile platform guidelines. I built flexibility into the token structure to support both needs.</li>
+                <li><h4>Kept user context in mind:</h4> The tone, density, and interaction feedback differed across portals — so I documented usage guidance based on audience (e.g. “Use this version for branch staff” vs. “Use this variant for mobile loan applications”).</li>
+                <li><h4>Shared core components, different wrappers:</h4> Where possible, I reused base components but wrapped them in layout containers appropriate to each portal’s needs.</li>
+                <li><h4>Tested in Figma with live theming:</h4> I used theming toggles to preview both Staff and Online experiences in real time, speeding up design decisions and stakeholder approvals.</li>
+            </ul>
+        </div>
     
         <div class="image-placeholder">
             <img src="img/cui/hero.png">
@@ -277,23 +344,18 @@
       
         <p>Each Credit Union wanted their app to feel “theirs” — often asking for full control over color, typography, and layout. To make this scalable, I worked closely with our Customer Success (CS) team to understand just how far each Credit Union expected to go in their custom branding. I joined calls, reviewed tickets, and even built Notion documentation to help CS educate Credit Unions about the limitations of the system.</p>
       
-        <div class="image-placeholder">
-            <img src="img/cui/hero.png">
-        </div>
       
         <p>The compromise: I proposed that Credit Unions could define one <strong>primary brand color</strong> — but that the rest of the interface would remain consistent. I created demos showing how allowing full color overrides would lead to poor UX, low contrast ratios, and inconsistent interaction patterns across the platform.</p>
       
         <p>We also faced the challenge of Credit Unions whose brand colors were red, yellow, or other tones that didn’t meet WCAG contrast standards. To address this, I introduced a system-wide <strong>secondary fallback color</strong> — one that automatically took over in components where accessibility or visual clarity was at risk. This allowed us to preserve the CU’s identity without compromising usability.</p>
-      
-        <div class="image-placeholder">
-            <img src="img/cui/hero.png">
-        </div>
-      
+
+        <div class="project-highlights">
         <ul>
-          <li><strong>Trade-off:</strong> Limited full customization to a single primary color instead of unlimited overrides.</li>
-          <li><strong>Why:</strong> Prevent visual fragmentation, maintain accessibility standards, and speed up development with predictable theming logic.</li>
-          <li><strong>Result:</strong> Credit Unions got just enough visual ownership to feel represented, while we kept the system cohesive, supportable, and accessible.</li>
+          <li><h4>Trade-off:</h4> Limited full customization to a single primary color instead of unlimited overrides.</li>
+          <li><h4>Why:</h4> Prevent visual fragmentation, maintain accessibility standards, and speed up development with predictable theming logic.</li>
+          <li><h4>Result:</h4> Credit Unions got just enough visual ownership to feel represented, while we kept the system cohesive, supportable, and accessible.</li>
         </ul>
+        </div>
       </section>
       
 
@@ -302,71 +364,44 @@
         <div class="quote">“The new design system not only solved our usability issues but also aligned our teams toward a common goal — enabling faster iteration.” – Engineering Lead</div>
         <div class="project-highlights">
         <ul>
-            <li><span class="highlight">30% faster feature delivery</span> after full rollout</li>
-            <li><span class="highlight">~40% fewer visual bugs</span> reported in QA</li>
-            <li><span class="highlight">100% design team adoption</span> within the first quarter</li>
-            <li><span class="highlight">MUI fully deprecated in 6 months</span></li>
-            <li><span class="highlight">120+ credit unions successfully themed</span> using our system</li>
+            <li><h4>30% faster feature delivery</h4> after full rollout</li>
+            <li><h4>~40% fewer visual bugs</h4> reported in QA</li>
+            <li><h4>100% design team adoption</h4> within the first quarter</li>
+            <li><h4>MUI fully deprecated in 6 months</h4></li>
+            <li><h4>120+ credit unions successfully themed</h4> using our system</li>
         </ul>
         </div>
-        <div class="two-images">
-            <div class="image-placeholder">
-                <img src="img/cui/figmasidebar.gif">
-                </div>
-
-            <div class="image-placeholder">
-                <img src="img/cui/cui0.png">
-                </div>
-         
-        </div>
-        <div class="quote">Peek into the Figma file for the Design System, organized with specific pages for tokens, primitives and with +40 components and their variants. We also see the Design principles.</div>
-
-        <div class="image-placeholder">
-            <img src="img/cui/cui2.png">
-        </div>
-        <div class="image-placeholder">
-            <img src="img/cui/cui3.png">
-        </div>
-
-        <div class="quote">Examples of color and typography tokens </div>
-        <div class="image-placeholder">
-            <img src="img/cui/cui4.png">
-        </div>
-        <div class="image-placeholder">
-            <img src="img/cui/cui5.png">
-        </div>
-
-        <div class="quote">Random examples of components and variants</div>
+      
       
     </section>
 
     <section id="learned" class="section">
         <h3>What I Learned</h3>
         <p>Building this design system from scratch across two separate products taught me valuable lessons not just about design craft — but also about technical architecture, organizational alignment, and scaling UX across real-world constraints.</p>
-    
+        <div class="project-highlights">
         <ul>
             <li>
-                <strong>Design for variability, not just consistency:</strong>
+                <h4>Design for variability, not just consistency:</h4>
                 Creating components that could adapt to different themes, breakpoints, and user contexts (staff vs. member) required me to think beyond a “single source of truth.” I leaned heavily on Figma variants, tokens, and component composition to create a system that was both modular and flexible.
             </li>
             <li>
-                <strong>Real-world development forces trade-offs:</strong>
+                <h4>Real-world development forces trade-offs:</h4>
                 Working directly in the codebase, I gained hands-on experience building and documenting components in React and Storybook. This helped me internalize the engineering perspective — performance costs, prop-driven flexibility, and API naming conventions were key to adoption.
             </li>
             <li>
-                <strong>Mobile-first ≠ one-size-fits-all:</strong>
+                <h4>Mobile-first ≠ one-size-fits-all:</h4>
                 Designing for the Online Portal (used mostly on mobile) while also supporting the more complex desktop-only Staff Portal forced me to plan components from the inside out. Breakpoint-aware behaviors and tailored layouts became part of our system’s foundation, not an afterthought.
             </li>
             <li>
-                <strong>Unifying legacy code is political and technical:</strong>
+                <h4>Unifying legacy code is political and technical:</h4>
                 Replacing legacy MUI components required cross-functional buy-in, especially from engineers and leadership. I learned to frame technical debt in terms of design value, user friction, and long-term maintainability — not just aesthetic differences.
             </li>
             <li>
-                <strong>Stakeholder alignment is a design skill:</strong>
+                <h4>Stakeholder alignment is a design skill:</h4>
                 Getting people on board wasn’t instant. I had to tell the story of the system in terms of speed, flexibility, and cohesion across products. Showcasing design + code prototypes helped make the value tangible and helped engineering prioritize integration.
             </li>
         </ul>
-
+       </div>
       
     </section>
 
@@ -374,25 +409,26 @@
         <h3>What I’d Improve if I Did It Again</h3>
         <p>While I’m proud of the system we delivered, there are things I would do differently next time — both tactically and strategically:</p>
     
+        <div class="project-highlights">
         <ul>
             <li>
-                <strong>Start stakeholder buy-in earlier, with tighter alignment on outcomes:</strong>
+                <h4>Start stakeholder buy-in earlier, with tighter alignment on outcomes:</h4>
                 It took time to get traction from engineering leadership and upper management. I spent weeks crafting detailed Notion documents, diagrams, and future-state proposals to make the case. If I were to do it again, I’d bring those stakeholders into the conversation earlier — not just to present a vision, but to co-create it with them.
             </li>
             <li>
-                <strong>Plan for contribution guidelines sooner:</strong>
+                <h4>Plan for contribution guidelines sooner:</h4>
                 As the system grew, the need for clearer contribution workflows became obvious. Engineers and designers needed more structured documentation around how to propose, test, and implement new components or patterns. I would prioritize this earlier next time to improve adoption and reduce ambiguity.
             </li>
             <li>
-                <strong>Scale testing and accessibility coverage faster:</strong>
+                <h4>Scale testing and accessibility coverage faster:</h4>
                 While we followed basic accessibility practices, we could have formalized and automated those standards sooner. In a system that would support dozens of white-labeled apps and products, ensuring WCAG compliance and consistent user experience should be part of the foundation, not the refinement phase.
             </li>
             <li>
-                <strong>Involve end-users in the design system process:</strong>
+                <h4>Involve end-users in the design system process:</h4>
                 We spoke often with internal teams, but less so with real end-users (especially members using the Online Portal). In the future, I’d integrate system-level usability testing earlier to ensure decisions around spacing, hierarchy, and color contrast reflect actual user behavior across devices.
             </li>
         </ul>
-    
+    </div>
 
     </section>
 

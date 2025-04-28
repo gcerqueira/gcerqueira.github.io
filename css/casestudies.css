@@ -95,6 +95,37 @@ ul li {
     list-style-type: none;
 }
 
+.project-highlights ul {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 24px 0;
+}
+
+.project-highlights ul li {
+  background: white;
+  padding: 24px;
+  border: 1px solid #e2e2e2;
+  border-radius: 18px;
+  font-size: 14px;
+  margin: 7px 0px;
+}
+
+.project-highlights li h4 {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.project-highlights li p {
+  margin: 0;
+  color: #555;
+  line-height: 1.5;
+}
+
+
 
 /* Base TOC styling */
 .toc {

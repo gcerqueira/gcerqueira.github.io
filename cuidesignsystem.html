@@ -125,50 +125,79 @@
         <p>Some parts of our app used Material UI (MUI), but it became a bottleneck: it was running on an outdated version, theming was rigid and hard to customize, and engineers spent too much time hacking it to meet our needs. The engineering team was also vocal about wanting full control over the UI — they were frustrated with MUI’s opinionated architecture and its overhead. We wanted something lightweight, maintainable, and tailored to our stack. </p>
         <p>To make things more complex, our products were <span class="highlight">white-labeled</span> — each credit union needed to apply its own branding. In many cases, our app was embedded inside the credit union’s mobile banking app, so visual consistency wasn’t just a preference — it was mandatory.</p>
         <p>I led the entire design system initiative, from strategy through execution. This included:</p>
-        <ul>
-            <li>- Auditing existing components and UI debt</li>
-            <li>- Creating the foundational design tokens and component architecture</li>
-            <li>- Designing and maintaining a Figma library</li>
-            <li>- Coding core components in React and managing Storybook</li>
-            <li>- Partnering with engineers to roll out and replace legacy MUI components</li>
-            <li>- Evangelizing usage across product and engineering teams</li>
-        </ul>
+        <div class="project-highlights">
+            <ul>
+                <li>Auditing existing components and UI debt</li>
+                <li>Creating the foundational design tokens and component architecture</li>
+                <li>Designing and maintaining a Figma library</li>
+                <li>Coding core components in React and managing Storybook</li>
+                <li>Partnering with engineers to roll out and replace legacy MUI components</li>
+                <li>Evangelizing usage across product and engineering teams</li>
+            </ul>
+        </div>
     </section>
 
     <section id="problem" class="section">
         <h3>The Problem</h3>
         <p>We were scaling fast, but our design tooling wasn’t keeping up. Here’s what we were facing:</p>
+        <div class="project-highlights">
         <ul>
-            <li>-  <span class="highlight">Broken MUI-based components</span> across products</li>
-            <li>-  <span class="highlight">Two separate frontends:</span> One for internal branch officers, and one for public-facing loan applicants</li>
-            <li>-  <span class="highlight">White-label requirements:</span> 120+ credit unions, each needing to match their brand</li>
-            <li>-  <span class="highlight">Duplicate efforts:</span> Different teams re-creating the same components with minor variations</li>
-            <li>-  <span class="highlight">Inconsistent UX:</span> Modals, buttons, and forms looked and behaved differently depending on the product</li>
+            <li><h4>Broken MUI-based components</h4><p>Across all products</p></li>
+            <li><h4>Two separate frontends</h4> One for internal branch officers, and one for public-facing loan applicants</li>
+            <li><h4>White-label requirements</h4> 120+ credit unions, each needing to match their brand</li>
+            <li><h4>Duplicate efforts</h4> Different teams re-creating the same components with minor variations</li>
+            <li><h4>Heavy inconsistency</h4> UX Modals, buttons, and forms looked and behaved differently depending on the product</li>
         </ul>
-        <div class="image-placeholder">
-            <img src="img/cui/hero.png">
         </div>
+        <div class="image-placeholder">
+            <img src="img/cui/cui1.png">
+        </div>
+        <div class="quote">How many inconsistencies can you spot? There were MANY more across the products.</div>
     </section>
 
     <section id="strategy" class="section">
         <h3>Strategy & Rollout</h3>
         <p>I knew a design system wouldn’t succeed unless it addressed both <span class="highlight">designer and developer</span> needs — and unless it was built with flexibility in mind.</p>
         <p>Here's how I approached it:</p>
-        <ul>
-            <li><strong>Audit & Inventory:</strong> Conducted a full UI audit across all products, Identified the most used and most problematic components, Partnered with devs to evaluate feasibility of replacing MUI</li>
-            <li><strong>Foundation First:</strong> Created a scalable token system covering colors, spacing, typography, and elevations. I split colors into <em>system tokens</em> (for UI states like errors, warnings, success) and <em>brand tokens</em> (customized per Credit Union). I also mapped all CU brand colors and built Figma themes to preview white-label variations in real time — ensuring accessibility (WCAG AA), consistency, and flexibility across the board.</li>
-            <li><strong>Component Library:</strong> Designed 40+ core components, with multiple states, variants, accessibility, and usage guidelines. Coded some of them as well.</li>
-            <li><strong>Support for Two Products:</strong> Built layout templates that flexed between dense internal tools and simpler public-facing UIs, Added a “live theming” toggle in Figma to preview different brand variants, Partnered with PMs to define context-specific patterns</li>
-            <li><strong>Documentation & Onboarding:</strong> Created internal Figma documentation, wrote Notion documents, ran live walkthroughs and async Loom videos for onboarding</li>
-        </ul>
-        <div class="two-images">
-            <div class="image-placeholder">
-                <img src="img/cui/hero.png">
-            </div>
-            <div class="image-placeholder">
-                <img src="img/cui/hero.png">
-            </div>
+        <div class="project-highlights">
+            <ul>
+              <li>
+                <h4>Audit & Inventory</h4>
+                <p>Conducted a full UI audit across all products, identified the most used and most problematic components, and partnered with devs to evaluate the feasibility of replacing MUI.</p>
+              </li>
+          
+              <li>
+                <h4>Foundation First</h4>
+                <p>Created a scalable token system covering colors, spacing, typography, and elevations. Split colors into <em>system tokens</em> (errors, warnings, success) and <em>brand tokens</em> (customized per Credit Union). Built Figma themes to preview white-label variations in real time — ensuring WCAG AA accessibility, consistency, and flexibility.</p>
+              </li>
+          
+              <li>
+                <h4>Defining Design Principles</h4>
+                <p>Led workshops with designers, engineers, PMs, and marketing to align on core design principles — simplicity, consistency, accessibility, and scalability — guiding the Design System's evolution.</p>
+              </li>
+          
+              <li>
+                <h4>Component Library</h4>
+                <p>Designed 40+ core components with multiple states, variants, and usage guidelines. Coded several components in React and helped maintain the Storybook library for developer adoption.</p>
+              </li>
+          
+              <li>
+                <h4>Support for Two Products</h4>
+                <p>Built layout templates that flexed between dense internal tools (Staff Portal) and simpler public-facing UIs (Online Portal). Added a live theming toggle in Figma to test Credit Union branding, and collaborated with PMs to define context-specific design patterns.</p>
+              </li>
+          
+              <li>
+                <h4>Documentation & Onboarding</h4>
+                <p>Created Figma documentation, wrote detailed Notion guides, and delivered live walkthroughs and async Loom videos to onboard both designers and engineers efficiently.</p>
+              </li>
+            </ul>
+          </div>
+          
+          <div class="image-placeholder">
+            <img src="img/cui/componentsaudit.png">
         </div>
+        <div class="quote">Audit of some of the most problematic components, apart from the MUI ones</div>
+        
     </section>
 
     <section id="stakeholders" class="section">
@@ -177,31 +206,41 @@
         <p>I didn’t get buy-in overnight. Our Head of Product was skeptical at first — mostly because we already had something “working” in MUI for the Online Portal, and shifting priorities felt risky. The engineering teams were underwater just trying to keep up with core features, so building a Design System from scratch initially sounded like added work.</p>
         <p>But we had a unique opportunity: the Staff Portal was about to be built from the ground up. Unlike the Online Portal, which relied heavily on outdated and brittle MUI components, the Staff Portal had no UI code yet. I proposed that we use it as the foundation for our new Design System — a way to build components properly from day one, in Storybook, and fully aligned with our new design vision. That changed everything.</p>
         <p>I focused on three strategies to earn buy-in:</p>
+        <div class="project-highlights">
         <ul>
-            <li><strong>Prototyping pain:</strong>  I rebuilt a few of our most painful UI components and showed how the new system made them cleaner, more maintainable, and scalable.</li>
-            <li><strong>Visual comparison:</strong>I created side-by-side mockups of the broken MUI components vs. the new unified design system.</li>
-            <li><strong>Metrics:</strong> Talked to devs and estimated how much time we’d save in dev cycles if we invested in the new system</li>
+            <li><h4>Prototyping pain</h4>  I rebuilt a few of our most painful UI components and showed how the new system made them cleaner, more maintainable, and scalable.</li>
+            <li><h4>Visual comparison</h4>I created side-by-side mockups of the broken MUI components vs. the new unified design system.</li>
+            <li><h4>Metrics</h4> Talked to devs and estimated how much time we’d save in dev cycles if we invested in the new system</li>
         </ul>
-        
-        <p>With a working example in the Staff Portal and real dev progress in Storybook, the benefits became hard to ignore. Eventually, we got the green light — and the engineering team began deprecating MUI in the Online Portal and replacing it with our new system, component by component.</p>
-        <div class="quote">"Using the Staff Portal as the base was a smart move. clean slate, no MUI mess, and we could actually build stuff the right way. now it’s kinda wild to imagine going back.” – Head of Product</div>
+        </div>
+
         <div class="image-placeholder">
             <img src="img/cui/hero.png">
         </div>
+        
+        <p>With a working example in the Staff Portal and real dev progress in Storybook, the benefits became hard to ignore. Eventually, we got the green light — and the engineering team began deprecating MUI in the Online Portal and replacing it with our new system, component by component.</p>
+     
     </section>
 
     <section id="whitelabel" class="section">
         <h3>White-Labeling: A Major Challenge</h3>
         <p>Because the company served dozens of credit unions, each product needed to match the branding of the partner institution. In practice, that meant:</p>
+        <div class="project-highlights">
         <ul>
-            <li>No hardcoded colors or fonts</li>
+            <li>Need to be very strict on system colors vs brand colors</li>
             <li>Components needed to <span class="highlight">adapt</span> to different brand palettes</li>
             <li>The system had to look like a seamless part of each credit union's ecosystem</li>
         </ul>
+        </div>
         <p>To solve this, I designed a flexible <span class="highlight">token architecture</span> and created a Figma theming system where we could toggle between brand presets. This made it easy to validate themes visually, share previews with clients, and keep consistency without duplicating files.</p>
         <div class="image-placeholder">
-            <img src="img/cui/hero.png">
+            <img src="img/cui/partnercolors.png">
         </div>
+        <div class="quote">Brand colors of each customer</div>
+        <div class="image-placeholder">
+            <img src="img/cui/whitelabel.gif">
+        </div>
+        <div class="quote">Example of theme switching live in Figma. We had the same feature in Storybook so we could test the components live with all the colors of our customers. See that only the clickable elements use the brand colors, while system colors, like a "Positive" variant of the badge, keeps using the green system color.</div>
     </section>
 
     <section id="staffvsonline" class="section">
@@ -213,14 +252,6 @@
             <li><strong>Online Portal:</strong> Used by members to apply for loans or open accounts. Mobile-first. Often embedded inside the Credit Union’s mobile app, so visual integration and responsiveness are critical. Accessible, simple, and trust-building design is essential here.</li>
         </ul>
     
-        <div class="two-images">
-            <div class="image-placeholder">
-                <img src="img/cui/hero.png">
-            </div>
-            <div class="image-placeholder">
-                <img src="img/cui/hero.png">
-            </div>
-        </div>
     
         <p>Designing for both meant I had to keep the system <span class="highlight">flexible without fragmenting</span> into two separate systems. Here’s how I tackled the challenge:</p>
     
@@ -269,6 +300,7 @@
     <section id="results" class="section">
         <h3>The Results</h3>
         <div class="quote">“The new design system not only solved our usability issues but also aligned our teams toward a common goal — enabling faster iteration.” – Engineering Lead</div>
+        <div class="project-highlights">
         <ul>
             <li><span class="highlight">30% faster feature delivery</span> after full rollout</li>
             <li><span class="highlight">~40% fewer visual bugs</span> reported in QA</li>
@@ -276,9 +308,35 @@
             <li><span class="highlight">MUI fully deprecated in 6 months</span></li>
             <li><span class="highlight">120+ credit unions successfully themed</span> using our system</li>
         </ul>
-        <div class="image-placeholder">
-            <img src="img/cui/hero.png">
         </div>
+        <div class="two-images">
+            <div class="image-placeholder">
+                <img src="img/cui/figmasidebar.gif">
+                </div>
+
+            <div class="image-placeholder">
+                <img src="img/cui/cui0.png">
+                </div>
+         
+        </div>
+        <div class="quote">Peek into the Figma file for the Design System, organized with specific pages for tokens, primitives and with +40 components and their variants. We also see the Design principles.</div>
+
+        <div class="image-placeholder">
+            <img src="img/cui/cui2.png">
+        </div>
+        <div class="image-placeholder">
+            <img src="img/cui/cui3.png">
+        </div>
+
+        <div class="quote">Examples of color and typography tokens </div>
+        <div class="image-placeholder">
+            <img src="img/cui/cui4.png">
+        </div>
+        <div class="image-placeholder">
+            <img src="img/cui/cui5.png">
+        </div>
+
+        <div class="quote">Random examples of components and variants</div>
       
     </section>
 
@@ -308,14 +366,7 @@
                 Getting people on board wasn’t instant. I had to tell the story of the system in terms of speed, flexibility, and cohesion across products. Showcasing design + code prototypes helped make the value tangible and helped engineering prioritize integration.
             </li>
         </ul>
-    
-        <div class="image-placeholder">
-            <img src="img/cui/hero.png">
-        </div>
-      
-        <div class="image-placeholder">
-            <img src="img/cui/hero.png">
-        </div>
+
       
     </section>
 
@@ -342,10 +393,7 @@
             </li>
         </ul>
     
-        <div class="image-placeholder">
-            <img src="img/cui/hero.png">
-        </div>
-      
+
     </section>
 
     <section id="finalthoughts" class="section">

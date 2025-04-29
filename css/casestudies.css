@@ -16,9 +16,8 @@ p {
     margin-bottom:8px;
 }
 
-h3 { 
-  margin-bottom: 16px;
-}
+
+
 .title { 
     margin-bottom: 24px;
 }
@@ -249,4 +248,10 @@ ul li {
     .summary-text {
       font-size: 14px;
     }
+  }
+
+  h3 {
+    font-size:42px;
+    margin-bottom: 24px;
+    color: #007acc;
   }

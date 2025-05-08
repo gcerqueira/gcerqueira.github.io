@@ -255,3 +255,48 @@ ul li {
     margin-bottom: 24px;
     color: #007acc;
   }
+
+
+  .two-column {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: stretch; /* Make both columns same height */
+    padding: 32px 0;
+    border-bottom: 1px solid #d5d5d5;
+  }
+  
+  .leftcontent,
+  .rightcontent {
+    flex: 1 1 45%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .leftcontent p strong { 
+    font-size:18px;
+  }
+  
+  .image-placeholder img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  
+/* Responsive behavior */
+@media (max-width: 768px) {
+  .two-column {
+    flex-direction: column;
+  }
+
+  .leftcontent,
+  .rightcontent {
+    flex: 1 1 100%;
+    display: block; /* Reset flex so content flows normally */
+  }
+
+  .image-placeholder {
+    text-align: center;
+  }
+}

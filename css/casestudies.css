@@ -300,3 +300,9 @@ ul li {
     text-align: center;
   }
 }
+
+.hmw li {
+  list-style-type: circle;
+  margin-left: 28px;
+}
+

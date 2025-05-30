@@ -3336,4 +3336,45 @@ background: #01000b;  /* fallback for old browsers */
 }
 
 
+.faq-section { 
+	margin-top:48px;
+}
+
+  .accordion-item {
+    border-bottom: 1px solid #e2e2e2;
+  }
+
+  .accordion-button {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    padding: 24px 0;
+    font-size: 2.1rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .accordion-button:focus {
+    outline: none;
+  }
+
+   .accordion-button:hover {
+    background-color: #f3f3f3;
+  }
+
+  .accordion-content {
+    display: none;
+    padding: 0 1rem 1rem 0;
+    line-height: 1.6;
+	font-size:16px;
+  }
+
+  .accordion-item.active .accordion-content {
+    display: block;
+  }
+
+#faq .shane_tm_one_page_main_title { 
+	margin-bottom:48px;
+}
 

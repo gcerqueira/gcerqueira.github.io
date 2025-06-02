@@ -3360,7 +3360,7 @@ background: #01000b;  /* fallback for old browsers */
   }
 
    .accordion-button:hover {
-    background-color: #f3f3f3;
+    color: #559bc7;
   }
 
   .accordion-content {

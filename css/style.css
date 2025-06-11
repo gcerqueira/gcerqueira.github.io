@@ -2861,7 +2861,7 @@ ul.skill_list li span img {
 
 }
 @media (max-width: 768px) {
-	.shane_tm_hero_fourth .bakckground_image {display:none;}
+	.shane_tm_hero_fourth .background_image {display:none;}
 	.shane_tm_hero_fourth {background: #1d3557;}
 	.shane_tm_home .content h3{font-size: 35px;}
 	.shane_tm_hero_fourth .content_inner { width: 100% !important; }
@@ -3128,9 +3128,51 @@ font-size:16px;
 	margin-bottom:24px;
 }
 
-.shane_tm_hero_fourth {
-background: #080808;  /* fallback for old browsers */
+.shane_tm_hero_fourth { 
+ position: relative;
+  background: linear-gradient(135deg, #0d0d0d, #1a0e2b, #0d0d0d);
+  background-size: 300% 300%;
+  animation: gradientShift 20s ease infinite;
+  color: white;
+  padding: 80px 20px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+};
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
+
+
+/* Glassmorphic overlay */
+.shane_tm_hero_fourth::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Content layering */
+.shane_tm_hero_fourth > * {
+  position: relative;
+  z-index: 2;
+}
+
 
 .shane_tm_hero_fourth .name_another {
     font-size: 6.1rem;

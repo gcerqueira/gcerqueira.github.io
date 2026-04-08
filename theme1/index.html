@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guilherme Cerqueira — Portfolio 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Scroll Progress -->
+  <div id="progress-bar"></div>
+
+  <!-- Nav -->
+  <nav id="main-nav">
+    <a href="#" class="nav-name">Guilherme Cerqueira</a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <main>
+    <div class="hero-bg" aria-hidden="true">
+      <canvas id="hero-canvas"></canvas>
+      <div class="hero-bg__gradient"></div>
+      <div class="hero-bg__noise"></div>
+      <div class="hero-bg__grid"></div>
+    </div>
+    <section class="hero container">
+      <!-- Decorative shapes -->
+      <div class="hero-deco hero-deco--circle" aria-hidden="true"></div>
+      <div class="hero-deco hero-deco--ring" aria-hidden="true"></div>
+      <div class="hero-deco hero-deco--dot-grid" aria-hidden="true"></div>
+      <div class="hero-deco hero-deco--line" aria-hidden="true"></div>
+      <div class="hero-deco hero-deco--cross" aria-hidden="true"></div>
+      <div class="hero-deco hero-deco--small-circle" aria-hidden="true"></div>
+      <div class="hero-content">
+        <h1 class="headline" id="headline" aria-label="Hi, I'm Guilherme"></h1>
+
+        <p class="subtitle">
+          Product Designer and Builder with 15+ years of experience designing user-centric solutions across B2C and B2B platforms. Proven track record of driving business impact through data-driven design at scale, including a +16% conversion lift and +1,500 bookings/day at Booking.com. Specialized in 0-to-1 product development, design systems, conversational AI, and cross-functional leadership.
+        </p>
+
+      </div>
+
+      <div class="hero-image">
+        <img src="gcfoto.jpg" alt="Guilherme Cerqueira" class="hero-photo" />
+      </div>
+    </section>
+  </main>
+
+  <!-- Brands -->
+  <section class="brands-strip" aria-label="Companies I've worked with">
+    <p class="brands-label">Worked with</p>
+    <div class="brands-track">
+      <div class="brand-logo" aria-label="Brand placeholder"></div>
+      <div class="brand-logo" aria-label="Brand placeholder"></div>
+      <div class="brand-logo" aria-label="Brand placeholder"></div>
+      <div class="brand-logo" aria-label="Brand placeholder"></div>
+      <div class="brand-logo" aria-label="Brand placeholder"></div>
+      <div class="brand-logo" aria-label="Brand placeholder"></div>
+    </div>
+  </section>
+
+  <!-- ─── Case Studies ─── -->
+  <section class="section-case-studies" id="work">
+    <div class="section-deco section-deco--dots-right" aria-hidden="true"></div>
+    <div class="section-deco section-deco--corner-lines-tl" aria-hidden="true"></div>
+    <div class="section-deco section-deco--accent-bar" aria-hidden="true"></div>
+    <div class="container">
+      <header class="section-header">
+        <p class="section-label">Case Studies</p>
+        <h2 class="section-heading">Selected Work</h2>
+      </header>
+
+      <div class="case-list">
+
+        <article class="case-card">
+          <div class="case-card-body">
+            <p class="case-tag">Booking.com · Travel · 2019</p>
+            <h3 class="case-title">+16% Conversion Lift Across the Core Booking Funnel</h3>
+            <p class="case-desc">Redesigned the search-to-checkout experience for one of the world's largest travel platforms, generating 1,500 additional bookings per day through data-driven UX decisions and large-scale A/B testing.</p>
+            <a href="#" class="btn-case">View Case <span class="arrow">↗</span></a>
+          </div>
+          <div class="case-card-visual">
+            <div class="case-img-placeholder"></div>
+          </div>
+        </article>
+
+        <article class="case-card">
+          <div class="case-card-body">
+            <p class="case-tag">B2B SaaS · Fintech · 2022</p>
+            <h3 class="case-title">0→1 AI-Powered Onboarding That Reduced Time-to-Value by 40%</h3>
+            <p class="case-desc">Designed the end-to-end product experience for a fintech SaaS platform, from initial concept through launch, with a focus on intelligent onboarding and conversational AI flows.</p>
+            <a href="#" class="btn-case">View Case <span class="arrow">↗</span></a>
+          </div>
+          <div class="case-card-visual">
+            <div class="case-img-placeholder"></div>
+          </div>
+        </article>
+
+        <article class="case-card">
+          <div class="case-card-body">
+            <p class="case-tag">Design System · Enterprise · 2023</p>
+            <h3 class="case-title">Token-Based Design System That Cut Component Build Time by 3×</h3>
+            <p class="case-desc">Built and shipped a fully documented design system adopted across 30+ product squads, bridging Figma and React with a governance model that scaled without a dedicated design-systems team.</p>
+            <a href="#" class="btn-case">View Case <span class="arrow">↗</span></a>
+          </div>
+          <div class="case-card-visual">
+            <div class="case-img-placeholder"></div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Working Experience ─── -->
+  <section class="section-experience" id="about">
+    <div class="section-deco section-deco--ring-right" aria-hidden="true"></div>
+    <div class="section-deco section-deco--dots-left" aria-hidden="true"></div>
+    <div class="section-deco section-deco--diagonal" aria-hidden="true"></div>
+    <div class="container">
+      <header class="section-header">
+        <p class="section-label">Experience</p>
+        <h2 class="section-heading">Working Experience</h2>
+      </header>
+
+      <div class="exp-list">
+
+        <div class="exp-item">
+          <div class="exp-left">
+            <p class="exp-company">Toptal</p>
+            <p class="exp-role">Senior Product Designer</p>
+            <p class="exp-period">2020 — Present</p>
+            <p class="exp-location">Remote · Global</p>
+          </div>
+          <div class="exp-right">
+            <ul class="exp-achievements">
+              <li>Vetted into the top 3% of global product design talent</li>
+              <li>Delivered 0-to-1 product design for B2B SaaS and fintech clients across US and EU markets</li>
+              <li>Led AI-driven UX projects including conversational interfaces and intelligent onboarding systems</li>
+              <li>Embedded into cross-functional teams as design lead, driving projects from strategy through execution</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-left">
+            <p class="exp-company">Booking.com</p>
+            <p class="exp-role">Lead UX Designer</p>
+            <p class="exp-period">2015 — 2020</p>
+            <p class="exp-location">Amsterdam, NL</p>
+          </div>
+          <div class="exp-right">
+            <ul class="exp-achievements">
+              <li>Drove a +16% conversion lift through full redesign of the core search-to-checkout funnel</li>
+              <li>Generated +1,500 incremental bookings per day via data-driven UX optimisation</li>
+              <li>Led design system initiative spanning 30+ product squads across web and native platforms</li>
+              <li>Partnered with data science and engineering to run A/B tests at scale across 100M+ users</li>
+              <li>Mentored junior designers and established squad-level design critique processes</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- TODO: fill in company name and achievements -->
+        <div class="exp-item">
+          <div class="exp-left">
+            <p class="exp-company">[Company Name]</p>
+            <p class="exp-role">Senior Product Designer</p>
+            <p class="exp-period">2012 — 2015</p>
+            <p class="exp-location">São Paulo, BR</p>
+          </div>
+          <div class="exp-right">
+            <ul class="exp-achievements">
+              <li>Placeholder — describe key outcome here</li>
+              <li>Placeholder — describe key outcome here</li>
+              <li>Placeholder — describe key outcome here</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- TODO: fill in company name and achievements -->
+        <div class="exp-item">
+          <div class="exp-left">
+            <p class="exp-company">[Company Name]</p>
+            <p class="exp-role">UX / UI Designer</p>
+            <p class="exp-period">2010 — 2012</p>
+            <p class="exp-location">São Paulo, BR</p>
+          </div>
+          <div class="exp-right">
+            <ul class="exp-achievements">
+              <li>Placeholder — describe key outcome here</li>
+              <li>Placeholder — describe key outcome here</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── FAQ ─── -->
+  <section class="section-faq">
+    <div class="section-deco section-deco--circle-left" aria-hidden="true"></div>
+    <div class="section-deco section-deco--cross-right" aria-hidden="true"></div>
+    <div class="section-deco section-deco--dots-bottom" aria-hidden="true"></div>
+    <div class="container">
+      <header class="section-header">
+        <p class="section-label">FAQ</p>
+        <h2 class="section-heading">Frequently Asked Questions</h2>
+      </header>
+
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can you work at both strategic and executional levels?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a" hidden>
+            <p>Yes. I move fluidly between shaping product strategy and shipping high-fidelity UI. In early-stage work, that means co-defining scope with founders and PMs — using Jobs to Be Done, opportunity mapping, and rapid prototyping. In mature organisations, it means running design critiques, owning the design system, and translating roadmap goals into polished, production-ready flows. The level I operate at is whatever the team needs most at any given sprint.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How do you integrate AI into your design process?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a" hidden>
+            <p>AI is now core infrastructure for how I work — not a side tool. I use LLMs for synthesis (user research, competitive analysis, rapid copy iteration), generative tools to accelerate early visual exploration, and I design <em>for</em> AI products: chatbots, copilots, and agentic interfaces. I think carefully about where AI adds genuine value vs. where it creates noise, and I apply that same systems-level thinking when designing AI-driven experiences — ensuring the model's behaviour is legible, controllable, and trustworthy to the user.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How do you measure the impact of your design work?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a" hidden>
+            <p>I define success metrics before designing, not after. Primary metrics are typically business outcomes — conversion rate, activation, retention, revenue per user. Secondary metrics cover usability — task completion rate, error rate, time-on-task. For AI products I also track trust indicators: override rate, confidence calibration, and re-engagement after AI errors. At Booking.com, this approach translated directly: +16% conversion lift, +1,500 bookings/day.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What does your approach to design systems look like?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a" hidden>
+            <p>I treat design systems as products, not style guides. That means a token architecture (primitive → semantic → component), clear governance, contribution workflows, and versioned documentation. I've built systems from scratch and inherited messy ones at scale. Either way, I focus on three things: adoption (engineers and designers actually use it), flexibility (it scales to edge cases without breaking), and velocity (teams ship faster because of it, not despite it). I work natively in Figma and hand off to React/Storybook.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What's your experience designing conversational AI products?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a" hidden>
+            <p>I've designed chatbots, copilots, and agentic interfaces — from the first user message to error recovery and human handoff flows. The hard problems aren't visual: they're epistemic. How does the user understand what the AI can and can't do? What happens when it's wrong? I design explicit affordances for uncertainty, graceful failure states, and progressive disclosure of AI capabilities. I also think carefully about prompt design, feedback loops, and how the UI shapes the user's mental model of the underlying system.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How do you collaborate with engineering teams?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a" hidden>
+            <p>I keep Figma files production-ready: named layers, auto layout, responsive frames, complete component states, and interaction specs. I speak the language of constraints — I know what's expensive to build and design accordingly. I've written React components when it unblocked a sprint and joined code reviews to catch UI drift early. My goal is zero ambiguity at handoff and zero surprises in QA.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What industries have you worked across?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a" hidden>
+            <p>Travel, Fintech, e-Commerce, B2B SaaS, Fitness, AI, Retail, Sports, Logistics, and Dev Tools. The common thread is scale and complexity: products used by millions of people, or by small teams whose daily workflows depend on them. That range gives me a fast ramp-up in new domains and a pattern library of what works — and what doesn't — across verticals.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Are you available for freelance or contract work?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a" hidden>
+            <p>Yes. I take on freelance and contract engagements with product teams that need hands-on design leadership — whether that's a focused 4-week sprint or an ongoing embedded role. I work through Toptal (top 3% vetted) and directly. Timezones are flexible; I've worked comfortably across US, EU, and APAC teams.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How do we get started?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a" hidden>
+            <p>Send me a short message about what you're working on and what kind of help you need. I'll reply within 24 hours. If there's a fit, we'll set up a 30-minute call to map the scope, timeline, and working style. No lengthy intake forms, no agency overhead.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── Contact ─── -->
+  <section class="section-contact" id="contact">
+    <div class="section-deco section-deco--contact-ring" aria-hidden="true"></div>
+    <div class="section-deco section-deco--contact-dots" aria-hidden="true"></div>
+    <div class="section-deco section-deco--contact-line" aria-hidden="true"></div>
+    <div class="container">
+      <header class="section-header section-header--centered">
+        <p class="section-label">Contact</p>
+        <h2 class="section-heading">Let's work together</h2>
+        <p class="contact-subtext">Available for freelance, contract, and full-time opportunities. I reply within 24 hours.</p>
+      </header>
+
+      <div class="contact-row">
+        <a href="mailto:gcerqueira.uxdesign@gmail.com" class="contact-btn contact-btn--primary">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <polyline points="2,4 12,13 22,4"/>
+          </svg>
+          gcerqueira.uxdesign@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/guilherme-cerqueira-b1b03131/" target="_blank" rel="noopener" class="contact-btn contact-btn--ghost">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>
+            <rect x="2" y="9" width="4" height="12"/>
+            <circle cx="4" cy="4" r="2"/>
+          </svg>
+          LinkedIn <span class="arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Year badge -->
+  <span class="year-badge" aria-hidden="true">2026</span>
+
+  <script>
+    /* ─── Split Headline Animation ─── */
+    const lines = [
+      ["Hi,", "I'm"],
+      ["Guilherme"]
+    ];
+
+    const h1 = document.getElementById('headline');
+    lines.forEach((words, lineIdx) => {
+      const lineEl = document.createElement('div');
+      lineEl.style.display = 'block';
+      words.forEach((word, wordIdx) => {
+        const globalIdx = lines.slice(0, lineIdx).reduce((s, l) => s + l.length, 0) + wordIdx;
+        const wrap = document.createElement('span'); 
+        wrap.className = 'word-wrap';
+        const span = document.createElement('span');
+        span.className = 'word';
+        span.textContent = word;
+        span.style.animationDelay = (0.55 + globalIdx * 0.09) + 's';
+        span.style.animation = `fadeUp 0.75s ${0.55 + globalIdx * 0.09}s cubic-bezier(0.23,1,0.32,1) forwards`;
+        if (wordIdx > 0) wrap.style.marginLeft = '0.22em';
+        wrap.appendChild(span);
+        lineEl.appendChild(wrap);
+      });
+      h1.appendChild(lineEl);
+    });
+
+    /* ─── Scroll: Nav border, progress ─── */
+    const nav = document.getElementById('main-nav');
+    const progressBar = document.getElementById('progress-bar');
+
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      nav.classList.toggle('scrolled', scrolled > 10);
+
+      const docH = document.documentElement.scrollHeight - window.innerHeight;
+      progressBar.style.width = (docH > 0 ? (scrolled / docH) * 100 : 0) + '%';
+    }, { passive: true });
+
+    /* ─── FAQ Accordion ─── */
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item   = btn.closest('.faq-item');
+        const answer = item.querySelector('.faq-a');
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+        // Close all items
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+          i.querySelector('.faq-a').hidden = true;
+          i.querySelector('.faq-icon').textContent = '+';
+          i.classList.remove('faq-open');
+        });
+
+        // Open clicked item if it was closed
+        if (!isOpen) {
+          btn.setAttribute('aria-expanded', 'true');
+          answer.hidden = false;
+          item.querySelector('.faq-icon').textContent = '×';
+          item.classList.add('faq-open');
+        }
+      });
+    });
+
+    /* ─── Scroll-reveal for case cards & exp items ─── */
+    const revealEls = document.querySelectorAll('.case-card, .exp-item');
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+          revealObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => revealObs.observe(el));
+
+    /* ─── Smooth anchor scroll ─── */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+
+    /* ─── Hero Canvas — Subtle Floating Particles ─── */
+    (() => {
+      const canvas = document.getElementById('hero-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let w, h, particles, raf;
+
+      const COLORS = [
+        { r: 43,  g: 58,  b: 103 },  // navy
+        { r: 107, g: 123, b: 168 },  // periwinkle
+        { r: 196, g: 163, b: 90  },  // gold
+      ];
+
+      function resize() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const rect = canvas.parentElement.getBoundingClientRect();
+        w = rect.width; h = rect.height;
+        canvas.width = w * dpr; canvas.height = h * dpr;
+        canvas.style.width = w + 'px'; canvas.style.height = h + 'px';
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      }
+
+      class Particle {
+        constructor() { this.init(); }
+        init() {
+          this.x = Math.random() * w;
+          this.y = Math.random() * h;
+          this.size = Math.random() * 2 + 0.5;
+          this.vx = (Math.random() - 0.5) * 0.25;
+          this.vy = (Math.random() - 0.5) * 0.25;
+          this.color = COLORS[Math.floor(Math.random() * COLORS.length)];
+          this.alpha = Math.random() * 0.2 + 0.05;
+          this.phase = Math.random() * Math.PI * 2;
+          this.pulseRate = Math.random() * 0.002 + 0.001;
+          const rng = Math.random();
+          this.shape = rng < 0.1 ? 'diamond' : rng < 0.18 ? 'ring' : 'circle';
+        }
+        update(t) {
+          this.x += this.vx;
+          this.y += this.vy;
+          this.alpha = (Math.random() * 0.2 + 0.05) + Math.sin(t * this.pulseRate + this.phase) * 0.03;
+          if (this.x < -20) this.x = w + 20;
+          if (this.x > w + 20) this.x = -20;
+          if (this.y < -20) this.y = h + 20;
+          if (this.y > h + 20) this.y = -20;
+        }
+        draw() {
+          const { r, g, b } = this.color;
+          const a = Math.max(0, this.alpha);
+          ctx.globalAlpha = a;
+          if (this.shape === 'diamond') {
+            ctx.save();
+            ctx.translate(this.x, this.y);
+            ctx.rotate(Math.PI / 4);
+            ctx.fillStyle = `rgb(${r},${g},${b})`;
+            const s = this.size * 1.6;
+            ctx.fillRect(-s / 2, -s / 2, s, s);
+            ctx.restore();
+          } else if (this.shape === 'ring') {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size * 2.5, 0, Math.PI * 2);
+            ctx.strokeStyle = `rgb(${r},${g},${b})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          } else {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fillStyle = `rgb(${r},${g},${b})`;
+            ctx.fill();
+          }
+          ctx.globalAlpha = 1;
+        }
+      }
+
+      function drawConnections() {
+        const maxDist = 120;
+        for (let i = 0; i < particles.length; i++) {
+          for (let j = i + 1; j < particles.length; j++) {
+            const dx = particles[i].x - particles[j].x;
+            const dy = particles[i].y - particles[j].y;
+            const distSq = dx * dx + dy * dy;
+            if (distSq < maxDist * maxDist) {
+              const alpha = (1 - Math.sqrt(distSq) / maxDist) * 0.06;
+              ctx.beginPath();
+              ctx.moveTo(particles[i].x, particles[i].y);
+              ctx.lineTo(particles[j].x, particles[j].y);
+              ctx.strokeStyle = `rgba(43, 58, 103, ${alpha})`;
+              ctx.lineWidth = 0.4;
+              ctx.stroke();
+            }
+          }
+        }
+      }
+
+      function animate(t) {
+        ctx.clearRect(0, 0, w, h);
+        particles.forEach(p => { p.update(t); p.draw(); });
+        drawConnections();
+        raf = requestAnimationFrame(animate);
+      }
+
+      function init() {
+        resize();
+        const count = Math.min(Math.floor((w * h) / 14000), 70);
+        particles = Array.from({ length: count }, () => new Particle());
+        if (raf) cancelAnimationFrame(raf);
+        raf = requestAnimationFrame(animate);
+      }
+
+      const heroObs = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) { if (!raf) raf = requestAnimationFrame(animate); }
+        else { if (raf) { cancelAnimationFrame(raf); raf = null; } }
+      }, { threshold: 0 });
+      heroObs.observe(canvas.parentElement);
+
+      window.addEventListener('resize', resize);
+      init();
+    })();
+  </script>
+</body>
+</html>

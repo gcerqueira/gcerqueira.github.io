@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TPI Payment Failure Recovery — Guilherme Cerqueira</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;1,14..32,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-primary:      #2B3A67;
+      --color-primary-deep: #1E2A4D;
+      --color-primary-soft: #6B7BA8;
+      --color-primary-pale: #D8DDE9;
+      --color-primary-wash: #F0F1F5;
+      --color-accent:       #C4A35A;
+      --color-accent-deep:  #7D662D;
+      --color-accent-pale:  #F2EBD8;
+      --color-bg:           #F8F7F4;
+      --color-bg-warm:      #F0EDEA;
+      --color-surface:      #EDECEA;
+      --color-ink:          #1A1E2E;
+      --color-ink-soft:     #2A2F42;
+      --color-muted:        #4E5366;
+      --color-faint:        #636878;
+      --color-border:       #D8D6D2;
+      --color-border-soft:  #E5E3DF;
+
+      --font-heading: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+      --radius-sm:  6px;
+      --radius-md:  12px;
+      --radius-lg:  16px;
+
+      --max: 760px;
+      --gap: 60px;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background: var(--color-bg);
+      color: var(--color-ink);
+      font-family: var(--font-body);
+      line-height: 1.72;
+      padding: 0 24px 120px;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+      opacity: 0.018;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+
+    /* ── HEADER ── */
+    .header {
+      padding: 60px 0 48px;
+      border-bottom: 1px solid var(--color-border);
+      margin-bottom: 52px;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-faint);
+      text-decoration: none;
+      margin-bottom: 32px;
+      letter-spacing: 0.01em;
+      transition: color 150ms ease;
+    }
+    .back-link:hover { color: var(--color-muted); }
+    .back-link svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+    .project-tag {
+      display: inline-block;
+      background: var(--color-primary-wash);
+      color: var(--color-primary);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(26px, 5vw, 42px);
+      font-weight: 600;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
+      color: var(--color-ink);
+      margin-bottom: 28px;
+    }
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      margin-top: 4px;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .meta-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--color-faint);
+    }
+
+    .meta-value {
+      font-size: 14px;
+      color: var(--color-muted);
+      font-weight: 500;
+    }
+
+    /* ── TL;DR ── */
+    .tldr {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 32px 36px;
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tldr::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--color-primary) 0%, var(--color-accent) 100%);
+    }
+
+    .tldr-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-primary);
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    .tldr-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px 36px;
+    }
+
+    .tldr-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-faint);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .tldr-item p {
+      font-size: 14.5px;
+      line-height: 1.65;
+      color: var(--color-ink-soft);
+    }
+
+    .tldr-item.span-2 { grid-column: 1 / -1; }
+
+    /* ── SECTIONS ── */
+    .section { margin-bottom: var(--gap); }
+
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-accent-deep);
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    h2 {
+      font-family: var(--font-heading);
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      line-height: 1.28;
+      margin-bottom: 20px;
+      color: var(--color-ink);
+    }
+
+    h3 {
+      font-family: var(--font-heading);
+      font-size: 15px;
+      font-weight: 600;
+      line-height: 1.4;
+      margin-bottom: 10px;
+      margin-top: 36px;
+      color: var(--color-ink);
+      letter-spacing: -0.01em;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--color-ink);
+      margin-bottom: 18px;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    /* ── IMPACT CALLOUT ── */
+    .impact {
+      background: var(--color-primary-wash);
+      border-left: 3px solid var(--color-primary);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 18px 22px;
+      margin: 28px 0;
+    }
+
+    .impact p {
+      font-size: 15px;
+      color: var(--color-primary-deep);
+      font-weight: 500;
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+
+    /* ── HIGHLIGHT BOX ── */
+    .highlight {
+      background: var(--color-accent-pale);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      margin: 28px 0;
+    }
+
+    .highlight p {
+      font-size: 15px;
+      color: var(--color-accent-deep);
+      line-height: 1.65;
+      font-weight: 500;
+      margin-bottom: 0;
+    }
+
+    /* ── STAT ROW ── */
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 28px 0;
+    }
+
+    .stat-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-family: var(--font-heading);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--color-primary);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--color-muted);
+      line-height: 1.4;
+    }
+
+    /* ── IMAGES ── */
+    .img-block { margin: 36px 0; }
+
+    .img-block img,
+    .img-block video {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-md);
+      display: block;
+    }
+
+    .img-caption {
+      font-size: 13px;
+      color: var(--color-faint);
+      margin-top: 10px;
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    .img-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 36px 0;
+    }
+
+    .img-grid img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-md);
+      display: block;
+    }
+
+    .img-grid-caption {
+      grid-column: 1 / -1;
+      font-size: 13px;
+      color: var(--color-faint);
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--color-border);
+      margin: var(--gap) 0;
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      margin-top: 80px;
+      padding-top: 28px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .footer p {
+      font-size: 13px;
+      color: var(--color-faint);
+      text-align: center;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 580px) {
+      body { padding: 0 16px 80px; }
+      h1 { font-size: 24px; }
+      .tldr { padding: 22px; }
+      .tldr-grid { grid-template-columns: 1fr; }
+      .img-grid { grid-template-columns: 1fr; }
+      .project-meta { gap: 20px; }
+      .stat-row { grid-template-columns: 1fr; gap: 10px; }
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      body::before { display: none; }
+      .back-link { display: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <!-- HEADER -->
+  <header class="header">
+    <a href="index.html" class="back-link">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M10 3L5 8l5 5"/>
+      </svg>
+      Back to portfolio
+    </a>
+    <span class="project-tag">Feature</span>
+    <h1>Increasing Conversion Through TPI Payment Failure Recovery</h1>
+    <div class="project-meta">
+      <div class="meta-item">
+        <span class="meta-label">Role</span>
+        <span class="meta-value">UX Designer</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Company</span>
+        <span class="meta-value">Booking.com</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Timeline</span>
+        <span class="meta-value">4 months, 2019</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Team</span>
+        <span class="meta-value">1 UX Copywriter, 1 PM, 1 Full-Stack Dev, 1 Mobile Dev, 1 Data Analyst</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- TL;DR -->
+  <section class="tldr">
+    <span class="tldr-eyebrow">TL;DR</span>
+    <div class="tldr-grid">
+      <div class="tldr-item">
+        <span class="tldr-label">What</span>
+        <p>A recovery flow that offers users a comparable Booking.com room immediately after a third-party inventory payment fails, giving them a path forward instead of a dead end.</p>
+      </div>
+      <div class="tldr-item">
+        <span class="tldr-label">Problem</span>
+        <p>TPI rooms attracted users with lower prices but payment failures were common. When they happened, users hit a generic error with no next step. Between 18% and 33% of those users abandoned the platform entirely.</p>
+      </div>
+      <div class="tldr-item">
+        <span class="tldr-label">My Role</span>
+        <p>End-to-end UX across mobile and desktop: user flow redesign, prototype iteration, usability testing on UserTesting.com, copy direction, and final design specs for both platforms.</p>
+      </div>
+      <div class="tldr-item">
+        <span class="tldr-label">Approach</span>
+        <p>Started with a JTBD framing to anchor the design in the user's real need. Ran rapid prototyping cycles with real users, iterating from an overloaded comparison layout down to a focused, scannable table over four versions.</p>
+      </div>
+      <div class="tldr-item span-2">
+        <span class="tldr-label">Impact</span>
+        <p>Positive net conversion uplift on both app and web. Drop-off after failed payments decreased significantly. High engagement rates on the comparison module, including image clicks and detail views, confirmed the design was working.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HERO IMAGE -->
+  <div class="img-block" style="margin-bottom: var(--gap);">
+    <img src="hero.png" alt="Final shipped design — desktop and mobile comparison table side by side">
+    <p class="img-caption">The final shipped design on both platforms. A structured comparison table that let users make a clear decision without leaving the booking flow.</p>
+  </div>
+
+  <!-- SECTION 1 — CONTEXT -->
+  <section class="section">
+    <span class="section-eyebrow">Context</span>
+    <h2>A product improving conversion by selling someone else's rooms</h2>
+    <p>Booking.com offered third-party inventory (TPI) rooms sourced from providers like Agoda and other OTAs alongside its own native inventory. The appeal was straightforward: TPI rooms were cheaper, and showing lower prices in search results drove more users through the funnel.</p>
+    <p>The trade-offs were real and disclosed upfront. TPI bookings required advance payment, were non-refundable, didn't issue invoices, had limited payment method support, and received reduced customer service since the reservation was ultimately owned by the third-party provider. Users who understood and accepted those conditions converted. The problem lived further downstream.</p>
+
+    <div class="highlight">
+      <p>The limited payment method support built into TPI rooms wasn't a technical edge case. It was a structural characteristic of the model — making payment failures a predictable, recurring event in the booking funnel.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 2 — THE PROBLEM -->
+  <section class="section">
+    <span class="section-eyebrow">The Problem</span>
+    <h2>When payment failed, the experience simply stopped</h2>
+    <p>The existing error state was a modal with a single message: "We're sorry, we have not been able to take your payment." One button: OK. No guidance, no alternatives, no next step. From the user's perspective, the booking was over and they had to start from scratch.</p>
+
+    <div class="img-block">
+      <img src="oldxp.png" alt="Original mobile experience: booking overview, payment screen, then a dead-end We're sorry error modal">
+      <p class="img-caption">The original experience. A user who had already chosen their hotel, filled in their details, and entered payment information was met with a dead end and no recovery path.</p>
+    </div>
+
+    <p>Analytics and research confirmed the impact. Between 18% and 33% of users who encountered a TPI payment failure abandoned the platform entirely, either leaving the app or restarting their search from zero. That range was significant enough to warrant a dedicated project, and large enough that even modest improvement would translate directly to revenue at scale.</p>
+
+    <div class="stat-row">
+      <div class="stat-card">
+        <span class="stat-number">18–33%</span>
+        <span class="stat-label">of users abandoned after a TPI payment failure</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">0</span>
+        <span class="stat-label">recovery options in the original error state</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-number">4 mo.</span>
+        <span class="stat-label">from brief to launch across mobile and web</span>
+      </div>
+    </div>
+
+    <p>The failure was predictable, the scale was measurable, and we had a product lever worth pulling: Booking.com's native inventory offered "pay at the property" as a standard option. That was the seed of the recovery concept.</p>
+  </section>
+
+  <!-- SECTION 3 — PROCESS -->
+  <section class="section">
+    <span class="section-eyebrow">Process</span>
+    <h2>Starting with the job, not the interface</h2>
+    <p>Before touching the design, I framed the problem around what users actually needed in that moment. The JTBD was direct: when my payment fails, I want a clear and trustworthy alternative so I don't have to start over and risk losing my booking. That framing shaped everything. The goal wasn't to show an upsell. It was to reduce the perceived cost of failure and keep booking momentum alive.</p>
+
+    <p>I mapped the current flow against the proposed recovery flow to get cross-functional agreement before designing. The before state was a linear dead end. The after state introduced a branch: when payment fails, offer a comparable Booking.com room with pay-at-property. Users could either take the suggestion or try their payment again, with a clear path in both directions.</p>
+
+    <div class="img-block">
+      <img src="oldflow.png" alt="Original user flow diagram — a linear path ending in failure with no recovery">
+      <p class="img-caption">The original flow. A linear path with no recovery after payment failure.</p>
+    </div>
+
+    <div class="img-block">
+      <img src="newflow.png" alt="Proposed flow diagram — a branch at the payment failure point leading to a comparison screen and booking success">
+      <p class="img-caption">The proposed flow. Turning the payment failure into a decision point with two clear paths: accept the alternative room, or try the payment again.</p>
+    </div>
+
+    <p>With the flow approved, I moved into prototyping. I used UserTesting.com to test each iteration with real users, keeping cycles short. The feedback pattern across early sessions was consistent: users in a payment failure state were already frustrated. Any interface that added cognitive load made things worse. That insight drove every subsequent iteration.</p>
+  </section>
+
+  <!-- SECTION 4 — DESIGN DECISIONS -->
+  <section class="section">
+    <span class="section-eyebrow">Design Decisions</span>
+    <h2>Four iterations to get to something that actually worked</h2>
+    <p>The first prototype for mobile followed the existing room options design guidelines closely: a side-by-side comparison with color-coded differences. Users found it overwhelming. Many didn't register it as a comparison at all, and several weren't sure the two rooms were from the same hotel. The color coding added noise instead of clarity.</p>
+
+    <div class="img-block">
+      <img src="newxp.png" alt="Three-screen mobile flow showing the shift from a dead-end payment failure modal to an inline recovery message with a room suggestion">
+      <p class="img-caption">The first major improvement: replacing the dead-end modal with an inline recovery message that surfaced an alternative room directly in context. This kept users in the flow instead of forcing them to dismiss an error and start over.</p>
+    </div>
+
+    <p>Iteration two removed the color cues and simplified the type hierarchy. Better, but the information volume still overloaded users who were already in a frustrated state. Iteration three went further, showing only the essential differences and tightening the copy significantly. Users responded better, but two concerns kept surfacing in tests: they couldn't confirm both rooms were from the same hotel, and they wanted to see photos.</p>
+
+    <div class="img-grid">
+      <img src="upsell2.png" alt="Mobile iteration: Your payment didn't work — detailed comparison screen with facilities section and two-column layout">
+      <img src="upsell3.png" alt="Mobile iteration: cleaner Your payment didn't work screen with reduced information and improved hierarchy">
+      <p class="img-grid-caption">Iterations on the mobile comparison screen. Left: the more detailed early version showing facilities side by side. Right: a cleaner iteration reducing noise, though users still asked about hotel context and photos.</p>
+    </div>
+
+    <div class="highlight">
+      <p>The original headline "Your payment didn't work" was consistently triggering premature exits. Users read it as a signal the process had failed permanently, not as a prompt to take a different action. Reframing the message with a more forward-looking tone changed how users engaged with everything that followed it.</p>
+    </div>
+
+    <div class="img-block">
+      <img src="upsell4.gif" alt="Animated walkthrough of the mobile payment failure recovery flow" style="width: 50%; margin: 0 auto;">
+      <p class="img-caption">The mobile recovery flow in action. After a failed payment, users are shown a clear alternative with hotel name, room photo, and key conditions — without leaving the booking context.</p>
+    </div>
+
+    <h3>Desktop followed a parallel arc</h3>
+    <p>The first desktop version used two split columns with green highlights to call out differences. Like the early mobile version, it required too much scanning and didn't clearly signal that both options were from the same hotel. The large room photos intended to add visual weight became a liability when suggested rooms had weaker photography.</p>
+
+    <div class="img-grid">
+      <img src="desktop1.png" alt="Desktop iteration 1 — split card layout with large room photos and green highlight cues">
+      <img src="desktop2.png" alt="Desktop iteration 2 — unified layout with hotel name at top, smaller images, and checkmarks replacing color highlights">
+      <p class="img-grid-caption">Desktop iterations one and two. The shift from split cards to a unified container immediately resolved the "are these from the same hotel?" confusion, but hierarchy and whitespace still needed work.</p>
+    </div>
+
+    <p>The final version borrowed the table pattern from the app: left-aligned labels, horizontal dividers, and a clean two-column structure for comparison. Users appreciated the clear conditions section and could preview the suggested room via image click, which opened a detail view without leaving the screen. Primary CTAs — "Book our suggestion" and "Try another payment method" — were streamlined to reduce friction. The user could complete the booking without re-entering any payment information.</p>
+
+    <div class="img-block">
+      <img src="desktop3.png" alt="Final desktop design — structured comparison table with hotel name, room images, conditions, and two clear CTAs">
+      <p class="img-caption">The final desktop design. A structured table made scanning fast, the hotel name at the top resolved the trust issue, and the two-CTA pattern gave users a clear choice without over-explaining. Shipped version.</p>
+    </div>
+
+    <p>A recovery component was also added to the payment screen itself, so users who chose to retry their payment could still see the alternative without navigating away. That kept the fallback visible without making it the dominant message.</p>
+
+    <div class="img-block">
+      <img src="desktopcomponent.png" alt="Payment failure dialog on desktop showing Your payment failed message with inline room suggestion and Compare your options CTA">
+      <p class="img-caption">The payment failure dialog with the inline upsell component. Users saw the alternative directly in the error state, with a clear path to compare options or try another payment method.</p>
+    </div>
+
+  </section>
+
+  <!-- SECTION 5 — OUTCOME -->
+  <section class="section">
+    <span class="section-eyebrow">Outcome</span>
+    <h2>A reliable conversion lift from a moment that used to lose users entirely</h2>
+    <p>The solution launched on both app and web. A/B test results confirmed a positive net conversion uplift across platforms, meaning the recovery flow wasn't just retaining users who would have found their way back anyway — it was generating bookings that otherwise would not have happened.</p>
+
+    <div class="impact">
+      <p>Drop-off after failed payments decreased significantly. Net conversion was positive on both app and web. High engagement on the comparison module — image clicks, detail views, scroll depth — confirmed users were reading and acting on the suggestion rather than dismissing it.</p>
+    </div>
+
+    <p>The mechanics behind the result were straightforward in hindsight. Reducing cognitive load at a high-frustration moment, making the alternative feel trustworthy with photos and hotel context, and keeping the booking flow intact with no re-entry of information lowered the friction cost of accepting the suggestion to near zero.</p>
+
+    <div class="img-block">
+      <img src="upsellET.png" alt="A/B testing tool screenshot showing conversion metrics after full launch">
+      <p class="img-caption">Actual screenshot from the A/B testing tool showing the results after the upselling feature went full-on. These metrics confirmed that the design not only solved the problem: it delivered measurable results at scale. Blurred sensitive data for portfolio purposes.</p>
+    </div>
+
+    <p>Looking back, the main thing I would change is the sequencing of the research synthesis. By the time I brought in the room selection team to discuss deviating from the design pattern in iteration two, they had already built a strong internal model of what worked in room comparisons. Getting them in earlier would have saved at least a week of back-and-forth and might have shortened the iteration count on desktop.</p>
+  </section>
+
+  <hr class="divider">
+
+  <footer class="footer">
+    <p>Case study by Guilherme Cerqueira &mdash; 2026</p>
+  </footer>
+
+</div>
+</body>
+</html>

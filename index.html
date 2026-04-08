@@ -1,694 +1,460 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
-
-<meta http-equiv="Content-Type" content="text/html; charset=utfp-8" />
-
-<meta name="description" content="UX / UI/ Product Designer that aims to solve user problems and needs.">
-<meta name="author" content="Guilherme Cerqueira">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-<title>Guilherme Cerqueira | UX / UI Designer | Product Designer</title>
-
-<!-- STYLES -->
-<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
-<link rel="preload" href="js/portfolio.js" as="script">
-<link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png">
-<link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png">
-<link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-icon-72x72.png">
-<link rel="apple-touch-icon" sizes="76x76" href="img/favicon/apple-icon-76x76.png">
-<link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-icon-114x114.png">
-<link rel="apple-touch-icon" sizes="120x120" href="img/favicon/apple-icon-120x120.png">
-<link rel="apple-touch-icon" sizes="144x144" href="img/favicon/apple-icon-144x144.png">
-<link rel="apple-touch-icon" sizes="152x152" href="img/favicon/apple-icon-152x152.png">
-<link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-icon-180x180.png">
-<link rel="icon" type="image/png" sizes="192x192"  href="img/favicon/android-icon-192x192.png">
-<link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="96x96" href="img/favicon/favicon-96x96.png">
-<link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
-<meta name="msapplication-TileColor" content="#ffffff">
-<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
-<meta name="theme-color" content="#ffffff">
-
-<link rel="stylesheet" type="text/css" href="css/plugins.css" />
-<link rel="stylesheet" type="text/css" href="css/rtl.css" />
-<link rel="stylesheet" type="text/css" href="css/colors.css" />
-<link rel="stylesheet" type="text/css" href="css/darkMode.css" />
-<link rel="stylesheet" type="text/css" href="css/onePage.css" />
-<link rel="stylesheet" type="text/css" href="css/elements.css" />
-<link rel="stylesheet" type="text/css" href="css/style.css" />
-<!--[if lt IE 9]> <script type="text/javascript" src="js/modernizr.custom.js"></script> <![endif]-->
-<!-- /STYLES -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guilherme Cerqueira — Portfolio 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
 </head>
+<body>
 
-<body> 
-	
-	<!-- PRELOADER -->
-	<div class="shane_tm_preloader loaded">
-		<div class="gc_logo_loader">
-			<div class="gc_logo_image">
-				<img src="img/logo/loader.svg">
-			</div>
-		</div>
-	</div>
-	<!-- /PRELOADER -->
+  <!-- Scroll Progress -->
+  <div id="progress-bar"></div>
 
-	
-<!-- WRAPPER ALL -->
-<div class="shane_tm_all_wrap" data-magic-cursor="hide" data-color="blue">
-	
-	<div class="shane_tm_one_page_topbar">
-		<div class="container bigger">
-			<div class="topbar_inner">
-				<div class="logo">
-					<a class="light" href="#"><img src="img/logo/gclogofinal.svg" alt="" /></a>
-					<a class="dark" href="#"><img src="img/logo/gclogofinal.svg" alt="" /></a>
-				</div>
-				<div class="menu">
-				<ul>
-					<li><a href="#portfolio">Portfolio</a></li>
-					<li><a href="#experience">Experience</a></li>
-					<li><a href="#faq">FAQ</a></li>
-					<li><a href="#contact">Contact</a></li>
-				</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-	
-	<!-- MOBILE MENU -->
+  <!-- Nav — Translucent Glass -->
+  <nav id="main-nav">
+    <a href="#" class="nav-name">Guilherme Cerqueira</a>
+    <ul class="nav-links">
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-	<!-- /MOBILE MENU OLD -->
-	<div class="shane_tm_mobile_menu">
-		<div class="topbar_inner">
-			<div class="container bigger">
-				<div class="topbar_in">
-					<div class="logo">
-						<a href="#"><img src="img/logo/gclogofinal.svg" alt="" /></a>
-					</div>
-					<div class="mobile_menu_list">
-						<ul>
-							<li><a href="#portfolio">Portfolio</a></li>
-							<li><a href="#experience">Experience</a></li>
-							<li><a href="#faq">FAQ</a></li>
-							<li><a href="#contact">Contact</a></li>
-				</ul>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-	</div>
-	<!-- /MOBILE MENU -->
-				
-				<!-- HERO 4 -->
-	<div class="shane_tm_hero_fourth" id="home">
-		<div class="background_image"></div>
-		<div class="container bigger">
-			<div class="content">
-				<div class="content_inner">
-					
-					<div class="left" style="margin-left: 30px;">
-						<h3 class="name_another">Guilherme Cerqueira</h3>
-						<p class="desc">
-						<span class="headline">15+ years of designing products that convert, scale, and drive growth.</span>
-From global platforms like Booking.com to multiple SaaS startups, I blend UX, strategy, and business thinking to turn complex problems into clear, high-impact solutions.
-Let’s design products that don’t just look good - they drive results.</p>
-					</div>
+  <!-- Hero — Dark, Cinematic -->
+  <main>
+   <div class="hero-wrap">
+    <section class="hero container">
+      <div class="hero-content">
+        <h1 class="headline" id="headline" aria-label="Hi, I'm Guilherme"></h1>
 
-					<div class="right">
-						<div class="picture">
-							<img src="img/about/pedzao.jpg">
-					    </div>
-					</div>
+        <p class="subtitle">
+          Product Designer and Builder with 15+ years of experience designing user-centric solutions across B2C and B2B platforms. Proven track record of driving business impact through data-driven design at scale, including a +16% conversion lift and +1,500 bookings/day at Booking.com.
+        </p>
+      </div>
 
-				
-				</div>
-			</div>
-			<div class="shane_tm_down">
-				<div class="line_wrapper">
-					<div class="line"></div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- /HERO 4 -->
-	
-	<!-- PORTFOLIO -->
-	<div class="shane_tm_one_page_portfolio" id="portfolio">
-		<div class="shane_tm_one_page_works">
-			<div class="container bigger">
-				<div class="shane_tm_one_page_main_title">
-					<h3>Portfolio</h3>
-				</div>
-				<div class="portfolio_list">
-					<ul class="masonry gallery_zoom">
+      <div class="hero-image">
+        <img src="gcfoto.jpg" alt="Guilherme Cerqueira" class="hero-photo" />
+      </div>
+    </section>
+   </div>
+  </main>
 
-						
-
-						<li class="masonry_item popupimage">
-							<div class="list_inner">
-								<img src="img/portfolio/bk/bkng_upselling_cover.png" alt="" />
-								<div class="overlay"></div>
-								<div class="desc">
-									<div class="in">
-										<h3>Booking.com - Upselling</h3>
-										<span>Read case study</span>
-									</div>
-								</div>
-								<a class="full_link" target="_blank" href="bkngupselling.html"></a>
-							</div>
-						</li>
-
-						<li class="masonry_item popupimage">
-							<div class="list_inner">
-								<img src="img/portfolio/cover_portfolio_tf.png" alt="" />
-								<div class="overlay"></div>
-								<div class="desc">
-									<div class="in">
-										<h3>Field Team Management App</h3>
-										<span>Download .PDF case study</span>
-									</div>
-								</div>
-									<a class="full_link" target="_blank" href="pdfs/GuilhermeCerqueira_Tradeforce_CaseStudy.pdf"></a>
-							</div>
-						</li>
-
-						
-						<li class="masonry_item popupimage">
-							<div class="list_inner">
-								<img src="img/portfolio/cover_portfolio_cui.png" alt="" />
-								<div class="overlay"></div>
-								<div class="desc">
-									<div class="in">
-										<h3>CUI Design System</h3>
-										<span>Read case study</span>
-									</div>
-								</div>
-								<a class="full_link" href="cuidesignsystem.html"></a>
-							</div>
-						</li>
-
-
-						
-
-					
-							<li class="masonry_item popupimage">
-							<div class="list_inner">
-								<img src="img/portfolio/bk/bkng_deals_cover.png" alt="" />
-								<div class="overlay"></div>
-								<div class="desc">
-									<div class="in">
-										<h3>Booking.com - Deal campaigns</h3>
-										<span>Download .PDF case studies</span>
-									</div>
-								</div>
-								<a class="full_link" target="_blank" href="pdfs/GuilhermeCerqueira_BKNG_WorldwideDeals.pdf"></a>
-							</div>
-						</li>
-
-
-
-						<li class="masonry_item popupimage">
-							<div class="list_inner spotlight-group" data-title="Sales Module" data-animation="fade">
-								<img src="img/portfolio/salesmodule/Capa2.jpeg" alt="" />
-								<div class="overlay"></div>
-								<div class="desc">
-									<div class="in">
-										<h3>Sales Module </h3>
-										<span>Dashboard for retail sales management</span>
-									</div>
-								</div>
-									<a class="full_link spotlight" href="img/portfolio/salesmodule/Capa2.jpeg" data-title="Sales Module" data-description="SalesModule is an application that allows the retail worker and supervisor to have full control of their product sales on any given POS. A web experience that makes it easier for sales professionals and their managers to manage their daily job and get insights and data about sales visits."></a>
-									<a class="spotlight" href="img/portfolio/salesmodule/wireframes_ia.png" data-title="Information architecture and low-fidelity prototyping" data-description="I owned the end-to-end design process for the product, from research to release. This included organizing the information architecture of the portal and designing low-fidelity prototypes for users and stakeholders validation."></a>
-									<a class="spotlight" href="img/portfolio/salesmodule/DarkModeDashboard1.png" data-title="Dark Mode main dashboard"></a>
-									<a class="spotlight" href="img/portfolio/salesmodule/DarkModeDashboard2.png" data-title="Dark Mode main dashboard"></a>
-									<a class="spotlight" href="img/portfolio/salesmodule/DarkModeStoreDashboard1.png" data-title="Dark Mode Store dashboard"></a>
-									<a class="spotlight" href="img/portfolio/salesmodule/DarkModeStoreDashboard2.png" data-title="Dark Mode Store dashboard"></a>
-									<a class="spotlight" href="img/portfolio/salesmodule/DarkModeStorepage.png" data-title="Dark Mode Store List and Filters"></a>
-									<a class="spotlight" href="img/portfolio/salesmodule/LightModeDashboard1.png" data-title="Light Mode main dashboard"></a>
-									<a class="spotlight" href="img/portfolio/salesmodule/LightModeDashboard2.png" data-title="Light Mode main dashboard"></a>
-									<a class="spotlight" href="img//portfolio/salesmodule/LightModeStoreDashboard.png" data-title="Light Mode Store dashboard"></a>
-									<a class="spotlight" href="img//portfolio/salesmodule/LightModeStoreDashboard2.png" data-title="Light Mode Store dashboard"></a>
-									<a class="spotlight" href="img/portfolio/salesmodule/LightModeStoreList.png" data-title="Light Mode Store List"></a>
-							</div>
-						</li>
-
-					
-				
-						<li class="masonry_item">
-							<div class="list_inner spotlight-group" data-title="Anima" data-animation="fade">
-								<img src="img/portfolio/anima/anima_cover.png" alt="" />
-								<div class="overlay"></div>
-								<div class="desc">
-									<div class="in">
-										<h3>Anima </h3>
-										<span>#1 Design-to-code Figma Plugin</span>
-									</div>
-								</div>
-									<a class="full_link spotlight" href="img/portfolio/anima/anima_cover.png" data-title="Anima" data-description="A Figma plugin that automates design to the front-end process with ready-to-use React components. I improved the user experience for developers and designers with metrics such as churn reduction, number of exports and number of components used. Also, improved the UI to respect the design system, while creating and maintaining components. I conducted user research and interviews, quickly produced mockups and prototypes for testing, and created space for others to collaborate and give feedback so I could iterate the designs until the final release."></a>
-									<a class="spotlight" href="img/portfolio/anima/1.png" data-title="Plugin main menu"></a>
-									<a class="spotlight" href="img/portfolio/anima/2.png" data-title="Component library setup"></a>
-									<a class="spotlight" href="img/portfolio/anima/3.png" data-title="Component library list"></a>
-									<a class="spotlight" href="img/portfolio/anima/4.png" data-title="Preview to export"></a>
-									<a class="spotlight" href="img/portfolio/anima/5.png" data-title="Inspector mode"></a>
-									<a class="spotlight" href="img/portfolio/anima/6.png" data-title="Project selection"></a>
-							</div>
-						</li>
-
-
-						
-
-					</ul>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- /PORTFOLIO -->
-	
-	<!-- EXPERIENCE -->
-	<div class="shane_tm_one_page_experience"  id="experience">
-		<div class="content">
-			<div class="container bigger">
-				<div class="content_inner">
-					<div class="shane_tm_one_page_main_title glow_effect" data-skin="light">
-						<h3>Working Experience</h3>
-						
-					</div>
-					<div class="experience_list">
-						<ul>
-
-							
-
-							<li class="wow fadeInUp">
-								<div class="list_inner">
-									<div class="first">
-										<h3>2023 - current</h3>
-									</div>
-									<div class="second">
-										<h3>Senior Freelancer Product Designer<br />Toptal</h3>
-									</div>
-									<div class="third">
-										<p>Member of the 3% elite freelance network, helping clients all around the world.</p>
-									</div>
-								</div>
-							</li>
-
-							<li class="wow fadeInUp">
-								<div class="list_inner">
-									<div class="first">
-										<h3>2023 - 2024</h3>
-									</div>
-									<div class="second">
-										<h3>Lead Product Designer - Design Systems<br />WithClutch</h3>
-									</div>
-									<div class="third">
-										<p>Led the strategy and implementation of a scalable design system for products used by 120+ credit unions. I conducted a full UI audit, built 40+ React components with a flexible token system, and aligned cross-functional teams around core design principles. Through prototypes, metrics, and clear documentation, I secured stakeholder buy-in, streamlined onboarding, and improved delivery speed, visual consistency, and cross-team collaboration.</p>
-									</div>
-								</div>
-							</li>
-
-							<li class="wow fadeInUp">
-								<div class="list_inner">
-									<div class="first">
-										<h3>2022 - 2023</h3>
-									</div>
-									<div class="second">
-										<h3>Senior Product Designer<br />Anima</h3>
-									</div>
-									<div class="third">
-										<p>Figma plugin that helps developers and designers to automate front-end code directly from the software. The plugin is #1 in the development category, with over 350,000 installations. <br/>
-										Drove discussions, research, and study. Created user stories and personas and mapped user journeys. Made presentations, sketches, drafts, designs, components, and assets.<br/>
-										Improved the user experience by analyzing qualitative and quantitative data and applying it to prototypes and final releases.<br/>
-										Redesigned the user interface for the plugin and web app while creating and maintaining components for the design system.
-									</div>
-								</div>
-							</li>
-							<li class="wow fadeInUp">
-								<div class="list_inner">
-									<div class="first">
-										<h3>2017 - 2022</h3>
-									</div>
-									<div class="second">
-										<h3>Product Designer<br />Booking.com</h3>
-									</div>
-									<div class="third">
-										<p>Designed for millions of daily users collaborating in more than 10 different teams, including a key role in worldwide deals campaigns for the company. I owned the entire design process for the campaign funnel for both web and mobile, creating new assets and conducting A/B experiments that boosted conversion rates and user engagement. I also owned the end-to-end design process for one of the company's major pricing products, increasing sales and conversion rates by helping users with alternative solutions, collaborating with cross-functional teams and generating millions of USD in revenue.</p>
-									</div>
-								</div>
-							</li>
-							<li class="wow fadeInUp">
-								<div class="list_inner">
-									<div class="first">
-										<h3>2014 - 2017</h3>
-									</div>
-									<div class="second">
-										<h3>Senior UX Designer<br />Trade Force (now NeoGrid)</h3>
-									</div>
-									<div class="third">
-									<p> Brazil's #1 app for POS and field teams management. I was the owner for the full cycle of Product Design: conception and vision of B2B web and mobile apps, user research, prototyping, wireframing, user testing, UI Design, front-end development, data analysis and iterations. Also responsible for designing and coding the company's main website and landing pages for SEO/SEM campaigns. Mentored new designers as the team started to expand. Some clients that used the solution include GSK, Unilever, Danone, Nestlé, and BRF.
-									</p>
-									</div>
-								</div>
-							</li>
-							<li class="wow fadeInUp">
-								<div class="list_inner">
-									<div class="first">
-										<h3>2011 - 2014</h3>
-									</div>
-									<div class="second">
-										<h3>UX Designer<br />Intuitive Intelligence CRO</h3>
-									</div>
-									<div class="third">
-										<p>The company was one of the pioneers for A/B testing and UX Design for e-Commerces in Brazil, with focus on conversion increase and improving user experience measured by each client's main metrics. Among the methods used there were user research, heat maps, user testing and heavy experimentation.</p><br/>
-										<p><small>Some clients: Grupo Nova Pontocom (Ponto Frio, Extra and Casas Bahia), Shoptime, Le Postiche, Vivo, AutoParts Online, Pitzi, Internet Innovation, Shoestock, Di Santinni, One Digital, Bradesco, FNAC. </small></p><br/>
-										<p>UX Design and Front-End Development for web and mobile B2B apps. Started Trade Force project, which later became a company of its own.</p>
-										
-									</div>
-								</div>
-							</li>
-							<li class="wow fadeInUp">
-								<div class="list_inner">
-									<div class="first">
-										<h3>2010 - 2011</h3>
-									</div>
-									<div class="second">
-										<h3>Web Designer & Front-end Developer<br />GC Web Design</h3>
-									</div>
-									<div class="third">
-										<p>As I went to study abroad in Spain to learn the language and get my Master's degree, I kept working as a Freelancer. Did several Web Design and Front-end development projects for Brazilian and Spanish clients.</p>
-									</div>
-								</div>
-							</li>
-							<li class="wow fadeInUp">
-								<div class="list_inner">
-									<div class="first">
-										<h3>2008 - 2010</h3>
-									</div>
-									<div class="second">
-										<h3>Landing Page Designer<br />SEO Marketing</h3>
-									</div>
-									<div class="third">
-										<p>At this data-driven company, I was responsible for creation, implementation, maintenance and experimentation of Google Adwords campaigns - for small, mid-sized and big clients. Also, I was responsible for landing pages design and development, with tons of A/B testing in them for conversion rate optimization according to each client's main metrics.
-									</div>
-								</div>
-							</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- /EXPERIENCE -->
-	
-
-	<!-- FAQ -->
-
-	<div class="shane_tm_one_page_portfolio" id="faq">
-		<div class="shane_tm_one_page_works">
-			<div class="container bigger">
-				<div class="shane_tm_one_page_main_title">
-					<h3>Frequently Asked Questions</h3>
-				</div>
-
-	<section class="faq-section">
-  <div class="faq">
-    <div class="accordion">
-      <!-- Each accordion item -->
-      <!-- Repeatable block -->
-      <!-- START -->
-       <div class="accordion-item">
-  <button class="accordion-button">What do you do?</button>
-  <div class="accordion-content">
-    <p>I’m a product designer with a strong UX/UI focus. I work across both execution and strategy. That means I can design and ship polished, responsive interfaces, but I also help teams define systems, improve workflows, and make better product decisions.</p>
-    <p>For example, I led the Design System initiative and helped unify internal and external tools at Clutch. At Booking.com, I worked on large-scale B2C and B2B products used by millions. Through Toptal, I’ve partnered with global clients on redesigns, product launches, and platform cleanups.</p>
-  </div>
-</div>
-
-<div class="accordion-item">
-  <button class="accordion-button">What’s your process?</button>
-  <div class="accordion-content">
-    <p>It always starts with context. I map out the problem space before jumping into pixels-understanding what users want to achieve, business constraints, and current friction points.</p>
-    <p>I use tools like Jobs To Be Done, “How Might We” questions, user journey mapping, or UX maturity assessments depending on the project. Then, I move quickly through flows, sketches, and prototypes, testing early and refining often. My process flexes based on the problem, the team, and the speed required.</p>
-    <p>I’m lean but intentional, balancing fast iteration with thoughtful design grounded in clear outcomes.</p>
-  </div>
-</div>
-
-<div class="accordion-item">
-  <button class="accordion-button">Can you work at both strategic and executional levels?</button>
-  <div class="accordion-content">
-    <p>Absolutely. I thrive in early-stage environments as well as large, established companies. I think holistically about product design and feel comfortable owning the entire process-from discovery through to delivery. I bring structure to ambiguity and move fast without losing sight of detail.</p>
-    <p>Whether it’s early discovery, leading workshops, defining UX patterns, or building high-fidelity UIs with design tokens and variants, I adapt quickly and keep a strong focus on outcomes.</p>
-  </div>
-</div>
-
-
-<div class="accordion-item">
-  <button class="accordion-button">How do you measure the impact of your design work?</button>
-  <div class="accordion-content">
-    <p>I define success upfront with the team-usually tied to both user and business outcomes. That can mean improving conversion rates, reducing friction, or driving engagement. I focus on primary metrics (like net conversion) as well as secondary ones (like bounce rate, time on task, or help center deflection) to get a fuller picture.</p>
-    <p>At Booking.com, every feature was launched behind A/B tests. I worked closely with analysts and PMs to review results, draw insights, and iterate based on real data. Whether it’s qualitative input or quantitative validation, I design with a clear hypothesis and track whether the changes move the needle.</p>
-  </div>
-</div>
-
-
-<div class="accordion-item">
-  <button class="accordion-button">What kinds of teams do you work well with?</button>
-  <div class="accordion-content">
-    <p>I’m comfortable working in any team size and with any process a company has. Whether it’s a small startup team moving fast and iterating rapidly, or a large product organization with established workflows and design systems, I adapt my approach to fit the context.</p>
-    <p>I collaborate best with PMs and engineers who seek clarity, care about outcomes, and value design as a strategic problem-solving tool.  I also work very well partnering with other designers, whether they’re juniors learning the ropes or principals and directors setting vision. I mentor when needed and actively contribute to team rituals and design reviews. I move independently, ask the right questions, and keep momentum high.
-
-</p>
-  </div>
-</div>
-
-<div class="accordion-item">
-  <button class="accordion-button">Can you work within an existing design system?</button>
-  <div class="accordion-content">
-    <p>Yes. I’ve worked with both mature and messy design systems. I can help clean up your system, build new components, or document what’s already there. I’ve built design systems from scratch too-including React-based libraries with theming and white-label support.</p>
-    <p>At Booking.com, I helped improve and extend a large-scale component library, ensuring consistency across multiple touchpoints.</p>
-  </div>
-</div>
-
-
-<div class="accordion-item">
-  <button class="accordion-button">How do you hand off designs to engineers?</button>
-  <div class="accordion-content">
-    <p>I keep Figma files clean, structured, and fully spec’d. I include responsive behavior, edge cases, and interaction notes. I also adapt to your team’s stack-whether that’s Figma + Jira, Storybook, or Notion-based documentation.</p>
-    <p>I’ve worked closely with engineers in continuous delivery environments and am proactive about reducing ambiguity and smoothing the handoff.</p>
-  </div>
-</div>
-
-<div class="accordion-item">
-  <button class="accordion-button">What industries have you worked in?</button>
-  <div class="accordion-content">
-    <p>Travel, fintech, e-commerce, SaaS, Fitness, AI, Retail, Sports, and internal tooling. I’ve designed account opening flows, booking experiences, loan and financial tools, and large-scale B2C interfaces. Most of my work focuses on simplifying complex experiences and making them scale.</p>
-  </div>
-</div>
-
-<div class="accordion-item">
-  <button class="accordion-button">Can you help with design cleanup or modernization?</button>
-  <div class="accordion-content">
-    <p>Yes. I’ve worked on products with fragmented UI and helped unify them into consistent, maintainable experiences. I focus on identifying patterns, reducing design debt, improving accessibility, and making systems that support future growth.</p>
-    <p>At Booking.com, I helped simplify legacy designs and improve performance. At Clutch, I led efforts to consolidate experiences into a shared design system.</p>
-  </div>
-</div>
-
-<div class="accordion-item">
-  <button class="accordion-button">Do you contribute to product strategy?</button>
-  <div class="accordion-content">
-    <p>Yes. I work closely with PMs to define priorities, identify opportunities, and shape roadmaps. I bring a user-centered lens to planning and help teams focus on what actually improves the experience.</p>
-    <p>At Booking.com, I contributed to product strategy on initiatives like the Deals Campaigns and the Genius fidelity program. I helped uncover usability issues, mapped user journeys, and collaborated with product and data teams to refine hypotheses. This often meant going beyond surface-level UI to question underlying assumptions, align on Jobs To Be Done, and improve the overall customer lifecycle. The goal was always the same: deliver measurable outcomes without compromising user experience.</p>
-  </div>
-</div>
-
-<div class="accordion-item">
-  <button class="accordion-button">Do you write code?</button>
-  <div class="accordion-content">
-    <p>Yes, when it adds value. I’ve built and maintained React components, worked in Storybook, and handled front-end polish such as layout, states, and transitions. At Booking.com, I contributed to production UI code, optimized performance, and worked closely with engineers to bring designs to life.</p>
-    <p>I don’t aim to replace front-end developers, but I speak their language and make implementation easier, faster, and more accurate.</p>
-  </div>
-</div>
-
-<div class="accordion-item">
-  <button class="accordion-button">Do you do branding or marketing design?</button>
-  <div class="accordion-content">
-    <p>Not as a core focus. I can extend brand into usable UI and support responsive marketing pages, but for full rebrands or deep visual identity work, I’d refer you to a specialist. My strength is applying brand consistently across interfaces.</p>
-  </div>
-</div>
-
-<div class="accordion-item">
-  <button class="accordion-button">What tools do you use?</button>
-  <div class="accordion-content">
-    <p>Figma for design and prototyping. FigJam for workshops. Storybook for component collaboration. Notion, Jira, and Loom for async updates. I’m flexible with tools but always prioritize clarity and maintainability.</p>
-  </div>
-</div>
-
-<div class="accordion-item">
-  <button class="accordion-button">Are you available for freelance or contract work?</button>
-  <div class="accordion-content">
-    <p>Yes. I take on freelance and contract work with product teams that need hands-on design support or someone to bring structure to the chaos. I’m used to jumping in quickly, aligning with existing teams, and helping you move faster without cutting corners.</p>
-  </div>
-</div>
-
-<div class="accordion-item">
-  <button class="accordion-button">Why should I hire you?</button>
-  <div class="accordion-content">
-   <p>Because I’ve done this at a high level, and I know how to deliver - without the fluff.</p>
-   <p>I’ve led design systems, crafted high-impact product flows, helped startups get funded, generated millions in revenue for big companies, and helped teams go from “we’re not sure what we need” to “this is exactly what we needed.” I cut through noise, get aligned quickly, and ship work that actually solves problems.</p>
-   <p>I’m not here to overcomplicate things or hide behind buzzwords. I ask the right questions, stay close to outcomes, and work tightly with PMs, engineers, and other designers to keep things moving. Strategy when it’s needed, execution always.</p>
-  </div>
-</div>
-
-
-<div class="accordion-item">
-  <button class="accordion-button">How do we get started?</button>
-  <div class="accordion-content">
-    <p>Send me a short message about what you're working on and what kind of help you need. I’ll reply within 24 hours to set up a quick call. From there, we can figure out the scope, timeline, and next steps.</p>
-  </div>
-</div>
-
-
+  <!-- Brands -->
+  <section class="brands-strip" aria-label="Companies I've worked with">
+    <p class="brands-label">Worked with</p>
+    <div class="brands-track">
+      <div class="brand-logo" aria-label="Brand placeholder"></div>
+      <div class="brand-logo" aria-label="Brand placeholder"></div>
+      <div class="brand-logo" aria-label="Brand placeholder"></div>
+      <div class="brand-logo" aria-label="Brand placeholder"></div>
+      <div class="brand-logo" aria-label="Brand placeholder"></div>
+      <div class="brand-logo" aria-label="Brand placeholder"></div>
     </div>
-  </div>
-</section>
-			</div></div></div>
-<!-- FAQ -->
-	
-	<!-- CONTACT -->
-	<div class="shane_tm_one_page_contact" id="contact">
-		<div class="container bigger">
-			<div class="shane_tm_one_page_main_title">
-					<h4>You can contact me <a href="mailto:gcerqueira.uxdesign@gmail.com" target="_blank">by email</a> or drop me a message <a href="https://www.linkedin.com/in/guilherme-cerqueira-b1b03131/" target="_blank">on LinkedIn</a></h3>
-				</div>
-		</div>
-	</div>
-	<!-- /CONTACT -->
-	
-	<!-- COPYRIGHT -->
-		<div class="shane_tm_one_page_copyright">
-			<div class="container full">
-				<div class="copyright_inner">
-					<div class="text">
-						<p>&copy; Designed & coded by Guilherme Cerqueira - 2025</p>
-					</div>
-					<div class="social">
-						<ul>
-						<li><a href="https://www.linkedin.com/in/guilherme-cerqueira-b1b03131/" target="_blank"><i class="xcon-linkedin"></i></a></li>
-							<li><a href="mailto:gcerqueira.uxdesign@gmail.com" target="_blank"><i class="xcon-mail"></i></a></li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-		<!-- /COPYRIGHT -->
-	
-	
-</div>
-<!-- / WRAPPER ALL -->
-	
+  </section>
 
-	<!-- PORTFOLIO MODAL
-	<div class="modal_portfolio">
-		<div class="modal_portfolio_container">
-			<div class="modal_portfolio_top_bar">
-				<div class="top_bar_content">
-					<img src="img/logo/gclogofinal.svg" alt="" />
-					<div class="project_title">Project name</div>
-						<div class="close_button">
-					X
-				</div>
-				</div>
+  <!-- Case Studies — Light Section -->
+  <section class="section-case-studies section-light" id="work">
+    <div class="container">
+      <header class="section-header">
+        <p class="section-label">Case Studies</p>
+        <h2 class="section-heading">Selected Work</h2>
+      </header>
 
-			</div>
-				<div class="modal_portfolio_content">
-					<div class="modal_portfolio_left">
-						<div class="portfolio_image"></div>
-						<div class="portfolio_gallery"></div>
-					</div>
-					<div class="modal_portfolio_sidebar">
-						<div class="modal_portfolio_description">
-						</div>
-					</div>
-				</div>
-		</div>
-	</div>  
--->
+      <div class="case-list">
 
-<!-- SCRIPTS -->
-<script
-  src="https://code.jquery.com/jquery-3.7.1.js"
-  ></script>
-<!--[if lt IE 10]> <script type="text/javascript" src="js/ie8.js"></script> <![endif]-->	
-<script src="js/plugins.js"></script>
-<script src="js/elements.js"></script>
-<script src="js/init.js"></script>
-<!-- /SCRIPTS -->
-<script src="js/portfolio.js" defer></script>
+        <article class="case-card">
+          <a href="bkng/index.html" class="case-card-link">
+            <div class="case-card-visual">
+              <img src="bkngthumb.png" alt="Smart Upselling After Payment Failure" class="case-img" />
+            </div>
+            <div class="case-card-body">
+              <p class="case-tag">Booking.com · Travel · 2019</p>
+              <h3 class="case-title">Smart Upselling After Payment Failure</h3>
+              <p class="case-desc">A recovery flow that offers users a comparable Booking.com room immediately after a third-party inventory payment fails, giving them a path forward instead of a dead end. Positive net conversion uplift on both app and web.</p>
+              <span class="btn-case">View case study <span class="arrow">›</span></span>
+            </div>
+          </a>
+        </article>
 
-<script>
-	document.addEventListener("DOMContentLoaded", function () {
-	  const topbar = document.querySelector(".shane_tm_one_page_topbar");
-  
-	  let lastScroll = 0;
-  
-	  window.addEventListener("scroll", () => {
-		const currentScroll = window.scrollY;
-  
-		if (currentScroll > 50) {
-		  if (currentScroll > lastScroll) {
-			// User is scrolling down
-			topbar.classList.add("visible");
-		  }
-		} else {
-		  // User is near the top
-		  topbar.classList.remove("visible");
-		}
-  
-		lastScroll = currentScroll;
-	  });
-	});
+        <article class="case-card">
+          <a href="https://gcerqueira.github.io/pdfs/GuilhermeCerqueira_Tradeforce_CaseStudy.pdf" target="_blank" rel="noopener" class="case-card-link">
+            <div class="case-card-visual">
+              <img src="tfthumb.png" alt="Field Team Management app" class="case-img" />
+            </div>
+            <div class="case-card-body">
+              <p class="case-tag">B2B SaaS · Field Operations · 2018</p>
+              <h3 class="case-title">Field Team Management App from MVP to A/B Testing</h3>
+              <p class="case-desc">As the sole designer at a B2B startup, I led the design of a field team management platform from MVP to a fully optimized product ready for A/B testing. I created a desktop app for managers to track routes, validate execution in real time, and monitor key performance through advanced dashboards.</p>
+              <span class="btn-case">View case study <span class="arrow">›</span></span>
+            </div>
+          </a>
+        </article>
 
+        <article class="case-card">
+          <a href="https://gcerqueira.github.io/cuidesignsystem.html" class="case-card-link">
+            <div class="case-card-visual">
+              <img src="cuithumb.png" alt="CUI Design System" class="case-img" />
+            </div>
+            <div class="case-card-body">
+              <p class="case-tag">Design System · Enterprise · 2024</p>
+              <h3 class="case-title">CUI Design System</h3>
+              <p class="case-desc">I led the creation of a scalable design system to unify Staff and Online Portals for 120+ credit unions. We replaced fragile UI with robust, themeable React components and design tokens, giving designers and engineers shared building blocks.</p>
+              <span class="btn-case">View case study <span class="arrow">›</span></span>
+            </div>
+          </a>
+        </article>
 
-	document.addEventListener("DOMContentLoaded", function () {
-	  const topbar = document.querySelector(".shane_tm_mobile_menu");
-  
-	  let lastScroll = 0;
-  
-	  window.addEventListener("scroll", () => {
-		const currentScroll = window.scrollY;
-  
-		if (currentScroll > 50) {
-		  if (currentScroll > lastScroll) {
-			// User is scrolling down
-			topbar.classList.add("visible");
-		  }
-		} else {
-		  // User is near the top
-		  topbar.classList.remove("visible");
-		}
-  
-		lastScroll = currentScroll;
-	  });
-	});
+      </div>
+    </div>
+  </section>
 
+  <!-- Working Experience — Dark Section -->
+  <section class="section-experience section-dark" id="about">
+    <div class="container">
+      <header class="section-header">
+        <p class="section-label">Experience</p>
+        <h2 class="section-heading">Working Experience</h2>
+      </header>
 
-	
-document.querySelectorAll('.accordion-button').forEach(button => {
-  button.addEventListener('click', () => {
-    // Remove 'active' class from all accordion items
-    document.querySelectorAll('.accordion-button').forEach(btn => {
-      btn.parentElement.classList.remove('active');
+      <div class="exp-list">
+
+        <div class="exp-item">
+          <div class="exp-left">
+            <p class="exp-company">Toptal</p>
+            <p class="exp-role">Senior Product Designer</p>
+            <p class="exp-period">2023 — Present</p>
+            <p class="exp-location">Global · Remote</p>
+          </div>
+          <div class="exp-right">
+            <ul class="exp-achievements">
+              <li>Delivered end-to-end design strategy and execution for B2B and B2C clients across startups and enterprise domains</li>
+              <li>Increased conversion ~10x for a speaker booking marketplace by redesigning the full platform experience</li>
+              <li>Designed the UX from scratch through MVP launch and Series A funding for an AI-powered data insights platform</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-left">
+            <p class="exp-company">Clipboard</p>
+            <p class="exp-role">Senior Product Designer · AI Special Projects</p>
+            <p class="exp-period">2025 — 2026</p>
+            <p class="exp-location">San Francisco, US · Remote</p>
+          </div>
+          <div class="exp-right">
+            <ul class="exp-achievements">
+              <li>Led 0-to-1 design for an AI-first caregiving platform and marketplace, including web portal, React Native mobile apps, conversational AI, and full design system from inception</li>
+              <li>Integrated AI-assisted design workflows to reduce iteration cycles and accelerate engineering handoff</li>
+              <li>Established design tokens, component library, and accessibility standards across web and mobile</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-left">
+            <p class="exp-company">Clutch</p>
+            <p class="exp-role">Senior Product Designer · Design Systems</p>
+            <p class="exp-period">2024 — 2025</p>
+            <p class="exp-location">San Francisco, US · Remote</p>
+          </div>
+          <div class="exp-right">
+            <ul class="exp-achievements">
+              <li>Defined the vision and strategy for a unified design system adopted across multiple cross-functional teams</li>
+              <li>Improved time-to-ship for design and Front-end teams, assuring long-term maintainability and scalability</li>
+              <li>Architectured token-based theming to support white-label use cases and accessibility standards</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-left">
+            <p class="exp-company">Anima</p>
+            <p class="exp-role">Senior Product Designer</p>
+            <p class="exp-period">2022 — 2023</p>
+            <p class="exp-location">Amsterdam, NL · Remote</p>
+          </div>
+          <div class="exp-right">
+            <ul class="exp-achievements">
+              <li>Owned end-to-end design for the #1 design-to-code Figma plugin with 1M+ installs</li>
+              <li>Led multiple product launches across the full lifecycle, from research through shipping</li>
+              <li>Served teams at Amazon, Cisco, Samsung, and Deloitte</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-left">
+            <p class="exp-company">Booking.com</p>
+            <p class="exp-role">UX Designer</p>
+            <p class="exp-period">2017 — 2022</p>
+            <p class="exp-location">Amsterdam, NL</p>
+          </div>
+          <div class="exp-right">
+            <ul class="exp-achievements">
+              <li>Owned and ran A/B testing at scale to optimize conversion for pricing products and drive bookings per day</li>
+              <li>Scaled the B2B Promotion Center from 10K to 1.6M users through strategic UX optimization</li>
+              <li>Designed and launched the Deals page — one of the highest-converting pages site-wide</li>
+              <li>Orchestrated the company's first Black Friday campaigns, driving major seasonal revenue</li>
+              <li>Drove multiple rounds of research and user testing for Genius Fidelity Program optimization for partners</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-left">
+            <p class="exp-company">Trade Force (Now Neogrid)</p>
+            <p class="exp-role">Head of Design</p>
+            <p class="exp-period">2014 — 2017</p>
+            <p class="exp-location">São Paulo, BR</p>
+          </div>
+          <div class="exp-right">
+            <ul class="exp-achievements">
+              <li>Owned end-to-end design and Front-end Development for web and mobile apps serving field retail teams</li>
+              <li>Launched 0->1 products used by major players like GSK, BRF, Nestlé and Danone</li>
+              <li>Shadowed field users to identify pain points and iterate on app improvements</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-left">
+            <p class="exp-company">Pakua IT</p>
+            <p class="exp-role">UX Designer & Front-End Developer</p>
+            <p class="exp-period">2011 — 2014</p>
+            <p class="exp-location">São Paulo, BR</p>
+          </div>
+          <div class="exp-right">
+            <ul class="exp-achievements">
+              <li>Ran A/B testing and CRO for major e-commerce clients including Casas Bahia, Ponto Frio, and Bradesco</li>
+              <li>Designed and developed responsive websites and mobile apps for enterprise clients</li>
+              <li>Started the Trade Force project, which later became its own company</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ — Light Section -->
+  <section id="faq" class="section-faq section-light">
+    <div class="container">
+      <header class="section-header">
+        <p class="section-label">FAQ</p>
+        <h2 class="section-heading">Frequently Asked Questions</h2>
+      </header>
+
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Can you work at both strategic and executional levels?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a" hidden>
+            <p>Yes. I move fluidly between shaping product strategy and shipping high-fidelity UI. In early-stage work, that means co-defining scope with founders and PMs — using Jobs to Be Done, opportunity mapping, and rapid prototyping. In mature organisations, it means running design critiques, owning the design system, and translating roadmap goals into polished, production-ready flows.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How do you integrate AI into your design process?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a" hidden>
+            <p>AI is now core infrastructure for how I work — not a side tool. I use LLMs for synthesis, generative tools to accelerate early visual exploration, and I design <em>for</em> AI products: chatbots, copilots, and agentic interfaces. I think carefully about where AI adds genuine value vs. where it creates noise.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How do you measure the impact of your design work?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a" hidden>
+            <p>I define success metrics before designing, not after. Primary metrics are typically business outcomes — conversion rate, activation, retention, revenue per user. Secondary metrics cover usability — task completion rate, error rate, time-on-task. At Booking.com, this approach translated directly: +16% conversion lift, +1,500 bookings/day.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What does your approach to design systems look like?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a" hidden>
+            <p>I treat design systems as products, not style guides. That means a token architecture (primitive → semantic → component), clear governance, contribution workflows, and versioned documentation. I focus on adoption, flexibility, and velocity. I work natively in Figma and hand off to React/Storybook.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What's your experience designing conversational AI products?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a" hidden>
+            <p>I've designed chatbots, copilots, and agentic interfaces — from the first user message to error recovery and human handoff flows. I design explicit affordances for uncertainty, graceful failure states, and progressive disclosure of AI capabilities.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How do you collaborate with engineering teams?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a" hidden>
+            <p>I keep Figma files production-ready: named layers, auto layout, responsive frames, complete component states, and interaction specs. I speak the language of constraints — I know what's expensive to build and design accordingly. My goal is zero ambiguity at handoff and zero surprises in QA.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            What industries have you worked across?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a" hidden>
+            <p>Travel, Fintech, e-Commerce, B2B SaaS, Fitness, AI, Retail, Sports, Logistics, and Dev Tools. The common thread is scale and complexity: products used by millions of people, or by small teams whose daily workflows depend on them.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            Are you available for freelance or contract work?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a" hidden>
+            <p>Yes. I take on freelance and contract engagements with product teams that need hands-on design leadership. I work through Toptal (top 3% vetted) and directly. Timezones are flexible; I've worked comfortably across US, EU, and APAC teams.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">
+            How do we get started?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-a" hidden>
+            <p>Send me a short message about what you're working on and what kind of help you need. I'll reply within 24 hours. If there's a fit, we'll set up a 30-minute call to map the scope, timeline, and working style.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact — Dark Section -->
+  <section class="section-contact section-dark" id="contact">
+    <div class="container">
+      <header class="section-header section-header--centered">
+        <p class="section-label">Contact</p>
+        <h2 class="section-heading">Let's work together.</h2>
+        <p class="contact-subtext">Available for freelance, contract, and full-time opportunities.</p>
+      </header>
+
+      <div class="contact-row">
+        <a href="mailto:gcerqueira.uxdesign@gmail.com" class="contact-btn contact-btn--primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            <polyline points="2,4 12,13 22,4"/>
+          </svg>
+          gcerqueira.uxdesign@gmail.com
+        </a>
+        <a href="https://www.linkedin.com/in/guilherme-cerqueira-b1b03131/" target="_blank" rel="noopener" class="contact-btn contact-btn--ghost">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>
+            <rect x="2" y="9" width="4" height="12"/>
+            <circle cx="4" cy="4" r="2"/>
+          </svg>
+          LinkedIn <span class="arrow">›</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Year badge -->
+  <span class="year-badge" aria-hidden="true">2026</span>
+
+  <script>
+    /* ─── Split Headline Animation ─── */
+    const lines = [
+      ["Hi,", "I'm"],
+      ["Guilherme"]
+    ];
+
+    const h1 = document.getElementById('headline');
+    lines.forEach((words, lineIdx) => {
+      const lineEl = document.createElement('div');
+      lineEl.style.display = 'block';
+      words.forEach((word, wordIdx) => {
+        const globalIdx = lines.slice(0, lineIdx).reduce((s, l) => s + l.length, 0) + wordIdx;
+        const wrap = document.createElement('span');
+        wrap.className = 'word-wrap';
+        const span = document.createElement('span');
+        span.className = 'word';
+        span.textContent = word;
+        span.style.animationDelay = (0.3 + globalIdx * 0.1) + 's';
+        span.style.animation = `fadeUp 0.7s ${0.3 + globalIdx * 0.1}s cubic-bezier(0.23,1,0.32,1) forwards`;
+        if (wordIdx > 0) wrap.style.marginLeft = '0.22em';
+        wrap.appendChild(span);
+        lineEl.appendChild(wrap);
+      });
+      h1.appendChild(lineEl);
     });
-    // Add 'active' class only to the clicked button's parent
-    button.parentElement.classList.add('active');
-  });
-});
 
+    /* ─── Scroll: Progress bar ─── */
+    const progressBar = document.getElementById('progress-bar');
 
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      const docH = document.documentElement.scrollHeight - window.innerHeight;
+      progressBar.style.width = (docH > 0 ? (scrolled / docH) * 100 : 0) + '%';
+    }, { passive: true });
+
+    /* ─── FAQ Accordion ─── */
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item   = btn.closest('.faq-item');
+        const answer = item.querySelector('.faq-a');
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+          i.querySelector('.faq-a').hidden = true;
+          i.querySelector('.faq-icon').textContent = '+';
+          i.classList.remove('faq-open');
+        });
+
+        if (!isOpen) {
+          btn.setAttribute('aria-expanded', 'true');
+          answer.hidden = false;
+          item.querySelector('.faq-icon').textContent = '×';
+          item.classList.add('faq-open');
+        }
+      });
+    });
+
+    /* ─── Scroll-reveal ─── */
+    const revealEls = document.querySelectorAll('.case-card, .exp-item');
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+          revealObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    revealEls.forEach(el => revealObs.observe(el));
+
+    /* ─── Smooth anchor scroll ─── */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
   </script>
-  
 </body>
 </html>

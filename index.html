@@ -53,10 +53,10 @@
    <div class="hero-wrap">
     <section class="hero container">
       <div class="hero-content">
-        <h1 class="headline" id="headline" aria-label="Hi, I'm Guilherme"></h1>
+        <h1 class="headline" id="headline" aria-label="Designing beyond the interface"></h1>
 
         <p class="subtitle">
-         Designing products that scale. 15+ years across B2C, B2B, and AI-driven experiences, from concept to system.
+         15+ years simplifying B2C and B2B products through strategy, systems thinking and execution.
         </p>
       </div>
 
@@ -71,12 +71,12 @@
   <section class="brands-strip" aria-label="Companies I've worked with">
     <p class="brands-label">Worked with</p>
     <div class="brands-track">
-      <div class="brand-logo" aria-label="Brand placeholder"></div>
-      <div class="brand-logo" aria-label="Brand placeholder"></div>
-      <div class="brand-logo" aria-label="Brand placeholder"></div>
-      <div class="brand-logo" aria-label="Brand placeholder"></div>
-      <div class="brand-logo" aria-label="Brand placeholder"></div>
-      <div class="brand-logo" aria-label="Brand placeholder"></div>
+      <div class="brand-logo"><img src="logos/booking.png" alt="Booking.com" /></div>
+      <div class="brand-logo"><img src="logos/toptal.png" alt="Toptal" /></div>
+      <div class="brand-logo"><img src="logos/unilever.png" alt="Unilever" /></div>
+      <div class="brand-logo"><img src="logos/gsk.png" alt="GSK" /></div>
+      <div class="brand-logo"><img src="logos/brf.png" alt="BRF" /></div>
+      <div class="brand-logo"><img src="logos/neogrid.png" alt="Neogrid" /></div>
     </div>
   </section>
 
@@ -167,6 +167,7 @@
           </div>
           <div class="exp-right">
             <ul class="exp-achievements">
+              <li>Shipped features for products used by United States' biggest Credit Unions</li>
               <li>Defined the vision and strategy for a unified design system adopted across multiple cross-functional teams</li>
               <li>Improved time-to-ship for design and Front-end teams, assuring long-term maintainability and scalability</li>
               <li>Architectured token-based theming to support white-label use cases and accessibility standards</li>
@@ -195,7 +196,7 @@
             <p class="exp-company">Anima</p>
             <p class="exp-role">Senior Product Designer</p>
             <p class="exp-period">2022 — 2023</p>
-            <p class="exp-location">Amsterdam, NL · Remote</p>
+            <p class="exp-location">Tel Aviv, IL · Remote</p>
           </div>
           <div class="exp-right">
             <ul class="exp-achievements">
@@ -399,8 +400,9 @@
   <script>
     /* ─── Split Headline Animation ─── */
     const lines = [
-      ["Hi,", "I'm"],
-      ["Guilherme"]
+      ["Designing"],
+      ["beyond", "the"],
+      ["interface"]
     ];
 
     const h1 = document.getElementById('headline');
@@ -416,12 +418,17 @@
         span.textContent = word;
         span.style.animationDelay = (0.3 + globalIdx * 0.1) + 's';
         span.style.animation = `fadeUp 0.7s ${0.3 + globalIdx * 0.1}s cubic-bezier(0.23,1,0.32,1) forwards`;
-        if (wordIdx > 0) wrap.style.marginLeft = '0.22em';
+        /* space between words handled by CSS ::before */
         wrap.appendChild(span);
         lineEl.appendChild(wrap);
       });
       h1.appendChild(lineEl);
     });
+
+    /* Remove overflow:hidden after animations complete */
+    setTimeout(() => {
+      document.querySelectorAll('.headline .word-wrap').forEach(w => w.classList.add('anim-done'));
+    }, 2000);
 
     /* ─── Scroll: Progress bar ─── */
     const progressBar = document.getElementById('progress-bar');

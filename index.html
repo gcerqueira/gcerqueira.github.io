@@ -8,6 +8,27 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="57x57" href="img/favicon/apple-icon-57x57.png" />
+  <link rel="apple-touch-icon" sizes="60x60" href="img/favicon/apple-icon-60x60.png" />
+  <link rel="apple-touch-icon" sizes="72x72" href="img/favicon/apple-icon-72x72.png" />
+  <link rel="apple-touch-icon" sizes="76x76" href="img/favicon/apple-icon-76x76.png" />
+  <link rel="apple-touch-icon" sizes="114x114" href="img/favicon/apple-icon-114x114.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="img/favicon/apple-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="144x144" href="img/favicon/apple-icon-144x144.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="img/favicon/apple-icon-152x152.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-icon-180x180.png" />
+  <link rel="icon" type="image/png" sizes="192x192" href="img/favicon/android-icon-192x192.png" />
+  <link rel="icon" type="image/png" sizes="96x96" href="img/favicon/favicon-96x96.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png" />
+  <link rel="shortcut icon" href="img/favicon/favicon.ico" />
+  <link rel="manifest" href="img/favicon/manifest.json" />
+  <meta name="msapplication-TileColor" content="#ffffff" />
+  <meta name="msapplication-TileImage" content="img/favicon/ms-icon-144x144.png" />
+  <meta name="msapplication-config" content="img/favicon/browserconfig.xml" />
+  <meta name="theme-color" content="#000000" />
 </head>
 <body>
 
@@ -16,13 +37,15 @@
 
   <!-- Nav — Translucent Glass -->
   <nav id="main-nav">
-    <a href="#" class="nav-name">Guilherme Cerqueira</a>
-    <ul class="nav-links">
-      <li><a href="#work">Work</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#faq">FAQ</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+    <div class="nav-inner">
+      <a href="#" class="nav-name">Guilherme Cerqueira</a>
+      <ul class="nav-links">
+        <li><a href="#work">Work</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
   </nav>
 
   <!-- Hero — Dark, Cinematic -->
@@ -33,12 +56,12 @@
         <h1 class="headline" id="headline" aria-label="Hi, I'm Guilherme"></h1>
 
         <p class="subtitle">
-          Product Designer and Builder with 15+ years of experience designing user-centric solutions across B2C and B2B platforms. Proven track record of driving business impact through data-driven design at scale, including a +16% conversion lift and +1,500 bookings/day at Booking.com.
+         Designing products that scale. 15+ years across B2C, B2B, and AI-driven experiences, from concept to system.
         </p>
       </div>
 
       <div class="hero-image">
-        <img src="gcfoto.jpg" alt="Guilherme Cerqueira" class="hero-photo" />
+        <img src="gcfoto.png" alt="Guilherme Cerqueira" class="hero-photo" />
       </div>
     </section>
    </div>
@@ -67,44 +90,38 @@
 
       <div class="case-list">
 
-        <article class="case-card">
-          <a href="bkng/index.html" class="case-card-link">
-            <div class="case-card-visual">
-              <img src="bkngthumb.png" alt="Smart Upselling After Payment Failure" class="case-img" />
-            </div>
-            <div class="case-card-body">
+        <article class="case-item">
+          <a href="bkng/index.html" class="case-link">
+            <div class="case-thumb" style="background:#003580"></div>
+            <div class="case-content">
               <p class="case-tag">Booking.com · Travel · 2019</p>
               <h3 class="case-title">Smart Upselling After Payment Failure</h3>
-              <p class="case-desc">A recovery flow that offers users a comparable Booking.com room immediately after a third-party inventory payment fails, giving them a path forward instead of a dead end. Positive net conversion uplift on both app and web.</p>
-              <span class="btn-case">View case study <span class="arrow">›</span></span>
+              <p class="case-desc">A recovery flow that offers users a comparable room immediately after a third-party payment fails, giving them a path forward instead of a dead end. Positive net conversion uplift on both app and web.</p>
+              <span class="case-cta">View case study <span class="arrow">›</span></span>
             </div>
           </a>
         </article>
 
-        <article class="case-card">
-          <a href="https://gcerqueira.github.io/pdfs/GuilhermeCerqueira_Tradeforce_CaseStudy.pdf" target="_blank" rel="noopener" class="case-card-link">
-            <div class="case-card-visual">
-              <img src="tfthumb.png" alt="Field Team Management app" class="case-img" />
-            </div>
-            <div class="case-card-body">
+        <article class="case-item">
+          <a href="https://gcerqueira.github.io/pdfs/GuilhermeCerqueira_Tradeforce_CaseStudy.pdf" target="_blank" rel="noopener" class="case-link">
+            <div class="case-thumb" style="background:#1a1a2e"></div>
+            <div class="case-content">
               <p class="case-tag">B2B SaaS · Field Operations · 2018</p>
               <h3 class="case-title">Field Team Management App from MVP to A/B Testing</h3>
-              <p class="case-desc">As the sole designer at a B2B startup, I led the design of a field team management platform from MVP to a fully optimized product ready for A/B testing. I created a desktop app for managers to track routes, validate execution in real time, and monitor key performance through advanced dashboards.</p>
-              <span class="btn-case">View case study <span class="arrow">›</span></span>
+              <p class="case-desc">As the sole designer at a B2B startup, I led the design of a field team management platform from MVP to a fully optimized product ready for A/B testing — including route tracking, real-time validation, and performance dashboards.</p>
+              <span class="case-cta">View case study <span class="arrow">›</span></span>
             </div>
           </a>
         </article>
 
-        <article class="case-card">
-          <a href="https://gcerqueira.github.io/cuidesignsystem.html" class="case-card-link">
-            <div class="case-card-visual">
-              <img src="cuithumb.png" alt="CUI Design System" class="case-img" />
-            </div>
-            <div class="case-card-body">
+        <article class="case-item">
+          <a href="https://gcerqueira.github.io/cuidesignsystem.html" class="case-link">
+            <div class="case-thumb" style="background:#2d2d3f"></div>
+            <div class="case-content">
               <p class="case-tag">Design System · Enterprise · 2024</p>
               <h3 class="case-title">CUI Design System</h3>
-              <p class="case-desc">I led the creation of a scalable design system to unify Staff and Online Portals for 120+ credit unions. We replaced fragile UI with robust, themeable React components and design tokens, giving designers and engineers shared building blocks.</p>
-              <span class="btn-case">View case study <span class="arrow">›</span></span>
+              <p class="case-desc">I led the creation of a scalable design system to unify Staff and Online Portals for 120+ credit unions. Replaced fragile UI with robust, themeable React components and design tokens.</p>
+              <span class="case-cta">View case study <span class="arrow">›</span></span>
             </div>
           </a>
         </article>
@@ -123,21 +140,7 @@
 
       <div class="exp-list">
 
-        <div class="exp-item">
-          <div class="exp-left">
-            <p class="exp-company">Toptal</p>
-            <p class="exp-role">Senior Product Designer</p>
-            <p class="exp-period">2023 — Present</p>
-            <p class="exp-location">Global · Remote</p>
-          </div>
-          <div class="exp-right">
-            <ul class="exp-achievements">
-              <li>Delivered end-to-end design strategy and execution for B2B and B2C clients across startups and enterprise domains</li>
-              <li>Increased conversion ~10x for a speaker booking marketplace by redesigning the full platform experience</li>
-              <li>Designed the UX from scratch through MVP launch and Series A funding for an AI-powered data insights platform</li>
-            </ul>
-          </div>
-        </div>
+
 
         <div class="exp-item">
           <div class="exp-left">
@@ -167,6 +170,22 @@
               <li>Defined the vision and strategy for a unified design system adopted across multiple cross-functional teams</li>
               <li>Improved time-to-ship for design and Front-end teams, assuring long-term maintainability and scalability</li>
               <li>Architectured token-based theming to support white-label use cases and accessibility standards</li>
+            </ul>
+          </div>
+        </div>
+
+      <div class="exp-item">
+          <div class="exp-left">
+            <p class="exp-company">Toptal</p>
+            <p class="exp-role">Senior Product Designer</p>
+            <p class="exp-period">2023 — Present</p>
+            <p class="exp-location">Global · Remote</p>
+          </div>
+          <div class="exp-right">
+            <ul class="exp-achievements">
+              <li>Delivered end-to-end design strategy and execution for B2B and B2C clients across startups and enterprise domains</li>
+              <li>Increased conversion ~10x for a speaker booking marketplace by redesigning the full platform experience</li>
+              <li>Designed the UX from scratch through MVP launch and Series A funding for an AI-powered data insights platform</li>
             </ul>
           </div>
         </div>
@@ -437,7 +456,7 @@
     });
 
     /* ─── Scroll-reveal ─── */
-    const revealEls = document.querySelectorAll('.case-card, .exp-item');
+    const revealEls = document.querySelectorAll('.case-item, .exp-item');
     const revealObs = new IntersectionObserver((entries) => {
       entries.forEach((e, i) => {
         if (e.isIntersecting) {

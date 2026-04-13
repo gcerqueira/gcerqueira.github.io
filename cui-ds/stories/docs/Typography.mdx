@@ -1,0 +1,101 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Foundations/Typography" />
+
+# Typography
+
+CUI Design System uses **Albert Sans** as its primary typeface. The type scale is designed for clarity in financial interfaces.
+
+## Font Family
+
+```
+'Albert Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif
+```
+
+## Font Weights
+
+| Weight | Value | Usage |
+|--------|-------|-------|
+| Light | 300 | Decorative / large display |
+| Regular | 400 | Body text |
+| Medium | 500 | Headings, emphasis |
+| Bold | 700 | CTAs, labels, strong emphasis |
+
+## Type Scale
+
+| Token | Size | Preview |
+|-------|------|---------|
+| `fontSize.xs` | 12px | <span style={{fontSize:12}}>The quick brown fox</span> |
+| `fontSize.sm` | 13px | <span style={{fontSize:13}}>The quick brown fox</span> |
+| `fontSize.base` | 14px | <span style={{fontSize:14}}>The quick brown fox</span> |
+| `fontSize.md` | 16px | <span style={{fontSize:16}}>The quick brown fox</span> |
+| `fontSize.lg` | 18px | <span style={{fontSize:18}}>The quick brown fox</span> |
+| `fontSize.xl` | 21px | <span style={{fontSize:21}}>The quick brown fox</span> |
+| `fontSize.2xl` | 24px | <span style={{fontSize:24}}>The quick brown fox</span> |
+| `fontSize.3xl` | 32px | <span style={{fontSize:32}}>The quick brown fox</span> |
+| `fontSize.4xl` | 40px | <span style={{fontSize:40}}>The quick brown fox</span> |
+
+## Text Styles
+
+### Titles
+
+<div style={{display:'flex',flexDirection:'column',gap:16,marginBottom:32}}>
+  <div>
+    <span style={{fontSize:12,color:'#888'}}>Title/Primary — 40px Medium</span>
+    <div style={{fontSize:40,fontWeight:500}}>Page Title</div>
+  </div>
+  <div>
+    <span style={{fontSize:12,color:'#888'}}>Title/Section Primary — 32px Medium</span>
+    <div style={{fontSize:32,fontWeight:500,letterSpacing:'-0.02em'}}>Section Heading</div>
+  </div>
+  <div>
+    <span style={{fontSize:12,color:'#888'}}>Title/Section Secondary — 24px Medium</span>
+    <div style={{fontSize:24,fontWeight:500}}>Sub Section</div>
+  </div>
+  <div>
+    <span style={{fontSize:12,color:'#888'}}>Title/Section Tertiary — 21px Medium</span>
+    <div style={{fontSize:21,fontWeight:500}}>Card Heading</div>
+  </div>
+  <div>
+    <span style={{fontSize:12,color:'#888'}}>Title/Section Smallest — 18px Medium</span>
+    <div style={{fontSize:18,fontWeight:500}}>Small Heading</div>
+  </div>
+</div>
+
+### Body
+
+<div style={{display:'flex',flexDirection:'column',gap:12,marginBottom:32}}>
+  <div>
+    <span style={{fontSize:12,color:'#888'}}>Body/Primary/Regular — 16px Regular</span>
+    <div style={{fontSize:16,fontWeight:400}}>Primary body text for main content areas and descriptions.</div>
+  </div>
+  <div>
+    <span style={{fontSize:12,color:'#888'}}>Body/Primary/Medium — 16px Medium</span>
+    <div style={{fontSize:16,fontWeight:500}}>Primary body text with medium weight for emphasis.</div>
+  </div>
+  <div>
+    <span style={{fontSize:12,color:'#888'}}>Body/Primary/Bold — 16px Bold</span>
+    <div style={{fontSize:16,fontWeight:700}}>Primary body text with bold weight for strong emphasis.</div>
+  </div>
+  <div>
+    <span style={{fontSize:12,color:'#888'}}>Body/Secondary/Regular — 14px Regular</span>
+    <div style={{fontSize:14,fontWeight:400}}>Secondary body text for supporting content and metadata.</div>
+  </div>
+</div>
+
+### Actions & Support
+
+<div style={{display:'flex',flexDirection:'column',gap:12}}>
+  <div>
+    <span style={{fontSize:12,color:'#888'}}>Action/CTA — 14px Bold</span>
+    <div style={{fontSize:14,fontWeight:700}}>CALL TO ACTION</div>
+  </div>
+  <div>
+    <span style={{fontSize:12,color:'#888'}}>Action/Label — 12px Bold</span>
+    <div style={{fontSize:12,fontWeight:700}}>LABEL TEXT</div>
+  </div>
+  <div>
+    <span style={{fontSize:12,color:'#888'}}>Supporting/Disclaimer — 12px Regular</span>
+    <div style={{fontSize:12,fontWeight:400,color:'#888'}}>Disclaimer and fine print text for legal notices.</div>
+  </div>
+</div>

@@ -1,0 +1,45 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Introduction" />
+
+# CUI Design System
+
+<div style={{display:'flex',gap:8,marginBottom:24}}>
+  <span style={{background:'#7146b5',color:'white',padding:'4px 12px',borderRadius:360,fontSize:12,fontWeight:700}}>v1.0.0</span>
+  <span style={{background:'#ebf5eb',color:'#008000',padding:'4px 12px',borderRadius:360,fontSize:12,fontWeight:700}}>React</span>
+  <span style={{background:'#eef2fa',color:'#2b5cbb',padding:'4px 12px',borderRadius:360,fontSize:12,fontWeight:700}}>TypeScript</span>
+  <span style={{background:'#eee6f5',color:'#7146b5',padding:'4px 12px',borderRadius:360,fontSize:12,fontWeight:700}}>styled-components</span>
+</div>
+
+CUI (Clutch User Interface) is a comprehensive design system built for credit union digital products. It provides a consistent, accessible, and themeable set of components, tokens, and patterns.
+
+## Key Features
+
+- **Multi-brand theming** — 4 brand themes switchable via the toolbar (paintbrush icon)
+- **30 components** — From buttons to tables, covering all common UI patterns
+- **Design tokens** — Colors, typography, spacing, and radius systemized as code
+- **Built with React + TypeScript + styled-components**
+
+## Structure
+
+### Foundations
+- **Colors** — 5 color scales with 10 shades each + semantic tokens
+- **Typography** — Albert Sans type system with 9 sizes and 4 weights
+- **Spacing & Radius** — Consistent spatial scale from 2px to 32px
+
+### Components
+- **Base** — Button, Badge, Card, Avatar, Chip, Link, Divider, Tooltip
+- **Forms** — Input, Select, Checkbox, Radio, Switch, TextArea
+- **Feedback** — Alert, Callout, Spinner, Skeleton, LinearProgress, Snackbar, Notification
+- **Layout** — Modal, Tabs, Pagination, Breadcrumbs, Table, List, Popover, EmptyState, Overlay
+
+## Theme Switching
+
+Use the **paintbrush icon** in the toolbar above to switch between brand themes:
+
+| Theme | Primary Color |
+|-------|--------------|
+| Brand Default | <span style={{display:'inline-flex',alignItems:'center',gap:8}}><span style={{display:'inline-block',width:16,height:16,background:'#7146b5',borderRadius:4}} /> `#7146b5`</span> |
+| Redstone Credit Union | <span style={{display:'inline-flex',alignItems:'center',gap:8}}><span style={{display:'inline-block',width:16,height:16,background:'#c41230',borderRadius:4}} /> `#c41230`</span> |
+| GoldenOne Credit Union | <span style={{display:'inline-flex',alignItems:'center',gap:8}}><span style={{display:'inline-block',width:16,height:16,background:'#005f3b',borderRadius:4}} /> `#005f3b`</span> |
+| Georgia Own Credit Union | <span style={{display:'inline-flex',alignItems:'center',gap:8}}><span style={{display:'inline-block',width:16,height:16,background:'#1a3a6b',borderRadius:4}} /> `#1a3a6b`</span> |

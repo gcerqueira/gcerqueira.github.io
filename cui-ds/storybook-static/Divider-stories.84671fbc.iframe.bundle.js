@@ -1,0 +1,8 @@
+"use strict";(self.webpackChunkcui_ds=self.webpackChunkcui_ds||[]).push([[186],{"./stories/Divider.stories.tsx"(__unused_webpack_module,__webpack_exports__,__webpack_require__){__webpack_require__.r(__webpack_exports__),__webpack_require__.d(__webpack_exports__,{Default:()=>Default,__namedExportsOrder:()=>__namedExportsOrder,default:()=>Divider_stories});var jsx_runtime=__webpack_require__("./node_modules/react/jsx-runtime.js");__webpack_require__("./node_modules/react/index.js");const StyledDivider=__webpack_require__("./node_modules/styled-components/dist/styled-components.browser.esm.js").Ay.hr`
+  border: none;
+  height: 1px;
+  background: ${({theme})=>theme.colors.gray[300]};
+  margin: ${({$spacing})=>$spacing} 0;
+  width: 100%;
+`,Divider=({spacing="16px"})=>(0,jsx_runtime.jsx)(StyledDivider,{$spacing:spacing});Divider.__docgenInfo={description:"",methods:[],displayName:"Divider",props:{spacing:{required:!1,tsType:{name:"string"},description:"",defaultValue:{value:"'16px'",computed:!1}}}};const Divider_stories={title:"Components/Divider",component:Divider},Default={decorators:[Story=>(0,jsx_runtime.jsxs)("div",{style:{width:400},children:[(0,jsx_runtime.jsx)("p",{children:"Content above"}),(0,jsx_runtime.jsx)(Story,{}),(0,jsx_runtime.jsx)("p",{children:"Content below"})]})]},__namedExportsOrder=["Default"];Default.parameters={...Default.parameters,docs:{...Default.parameters?.docs,source:{originalSource:"{\n  decorators: [Story => <div style={{\n    width: 400\n  }}>\n      <p>Content above</p>\n      <Story />\n      <p>Content below</p>\n    </div>]\n}",...Default.parameters?.docs?.source}}}}}]);
+//# sourceMappingURL=Divider-stories.84671fbc.iframe.bundle.js.map

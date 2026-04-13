@@ -1,0 +1,84 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Foundations/Colors" />
+
+# Color System
+
+CUI Design System uses a structured color palette with 5 color scales (Blue, Gray, Green, Orange, Red), each with 10 shades (0–900). Colors are themeable across 4 brand modes.
+
+## Primitives
+
+### Gray
+| Token | Value | Preview |
+|-------|-------|---------|
+| gray.0 | `#ffffff` | <span style={{display:'inline-block',width:24,height:24,background:'#ffffff',border:'1px solid #ddd',borderRadius:4,verticalAlign:'middle'}} /> |
+| gray.200 | `#f7f7f7` | <span style={{display:'inline-block',width:24,height:24,background:'#f7f7f7',border:'1px solid #ddd',borderRadius:4,verticalAlign:'middle'}} /> |
+| gray.300 | `#e7e7e7` | <span style={{display:'inline-block',width:24,height:24,background:'#e7e7e7',borderRadius:4,verticalAlign:'middle'}} /> |
+| gray.400 | `#d9d9d9` | <span style={{display:'inline-block',width:24,height:24,background:'#d9d9d9',borderRadius:4,verticalAlign:'middle'}} /> |
+| gray.500 | `#888888` | <span style={{display:'inline-block',width:24,height:24,background:'#888888',borderRadius:4,verticalAlign:'middle'}} /> |
+| gray.600 | `#424242` | <span style={{display:'inline-block',width:24,height:24,background:'#424242',borderRadius:4,verticalAlign:'middle'}} /> |
+| gray.700 | `#585858` | <span style={{display:'inline-block',width:24,height:24,background:'#585858',borderRadius:4,verticalAlign:'middle'}} /> |
+| gray.900 | `#121212` | <span style={{display:'inline-block',width:24,height:24,background:'#121212',borderRadius:4,verticalAlign:'middle'}} /> |
+
+### Blue
+| Token | Value | Preview |
+|-------|-------|---------|
+| blue.0 | `#eef2fa` | <span style={{display:'inline-block',width:24,height:24,background:'#eef2fa',borderRadius:4,verticalAlign:'middle'}} /> |
+| blue.100 | `#d7e0f2` | <span style={{display:'inline-block',width:24,height:24,background:'#d7e0f2',borderRadius:4,verticalAlign:'middle'}} /> |
+| blue.300 | `#8da7da` | <span style={{display:'inline-block',width:24,height:24,background:'#8da7da',borderRadius:4,verticalAlign:'middle'}} /> |
+| blue.500 | `#2b5cbb` | <span style={{display:'inline-block',width:24,height:24,background:'#2b5cbb',borderRadius:4,verticalAlign:'middle'}} /> |
+| blue.700 | `#1f3e88` | <span style={{display:'inline-block',width:24,height:24,background:'#1f3e88',borderRadius:4,verticalAlign:'middle'}} /> |
+| blue.900 | `#131e53` | <span style={{display:'inline-block',width:24,height:24,background:'#131e53',borderRadius:4,verticalAlign:'middle'}} /> |
+
+### Green
+| Token | Value | Preview |
+|-------|-------|---------|
+| green.0 | `#ebf5eb` | <span style={{display:'inline-block',width:24,height:24,background:'#ebf5eb',borderRadius:4,verticalAlign:'middle'}} /> |
+| green.300 | `#76bb76` | <span style={{display:'inline-block',width:24,height:24,background:'#76bb76',borderRadius:4,verticalAlign:'middle'}} /> |
+| green.500 | `#008000` | <span style={{display:'inline-block',width:24,height:24,background:'#008000',borderRadius:4,verticalAlign:'middle'}} /> |
+| green.900 | `#003809` | <span style={{display:'inline-block',width:24,height:24,background:'#003809',borderRadius:4,verticalAlign:'middle'}} /> |
+
+### Red
+| Token | Value | Preview |
+|-------|-------|---------|
+| red.0 | `#fcefef` | <span style={{display:'inline-block',width:24,height:24,background:'#fcefef',borderRadius:4,verticalAlign:'middle'}} /> |
+| red.300 | `#e99191` | <span style={{display:'inline-block',width:24,height:24,background:'#e99191',borderRadius:4,verticalAlign:'middle'}} /> |
+| red.500 | `#d63333` | <span style={{display:'inline-block',width:24,height:24,background:'#d63333',borderRadius:4,verticalAlign:'middle'}} /> |
+| red.900 | `#6f163c` | <span style={{display:'inline-block',width:24,height:24,background:'#6f163c',borderRadius:4,verticalAlign:'middle'}} /> |
+
+### Orange
+| Token | Value | Preview |
+|-------|-------|---------|
+| orange.0 | `#f9f4ee` | <span style={{display:'inline-block',width:24,height:24,background:'#f9f4ee',borderRadius:4,verticalAlign:'middle'}} /> |
+| orange.300 | `#d3b28b` | <span style={{display:'inline-block',width:24,height:24,background:'#d3b28b',borderRadius:4,verticalAlign:'middle'}} /> |
+| orange.500 | `#ae7028` | <span style={{display:'inline-block',width:24,height:24,background:'#ae7028',borderRadius:4,verticalAlign:'middle'}} /> |
+| orange.900 | `#571b14` | <span style={{display:'inline-block',width:24,height:24,background:'#571b14',borderRadius:4,verticalAlign:'middle'}} /> |
+
+---
+
+## Semantic Tokens
+
+Semantic tokens map to specific UI purposes and change per brand theme.
+
+| Token | Purpose | Default Value |
+|-------|---------|---------------|
+| `brand.primary` | Primary brand color | `#7146b5` |
+| `brand.secondary` | Light brand tint | `#eee6f5` |
+| `text.primary` | Main text | `#121212` |
+| `text.secondary` | Supporting text | `#424242` |
+| `text.tertiary` | Placeholder/muted | `#888888` |
+| `status.positive` | Success states | `#008000` |
+| `status.negative` | Error states | `#d63333` |
+| `status.info` | Information | `#2b5cbb` |
+| `status.alert` | Warning states | `#ae7028` |
+| `surface.neutral` | Default background | `#ffffff` |
+| `surface.card` | Card background | `#f7f7f7` |
+
+## Theme Modes
+
+The color system supports 4 brand themes. Switch between them using the toolbar above.
+
+- **Brand Default** - Purple (`#7146b5`)
+- **Redstone Credit Union** - Red (`#c41230`)
+- **GoldenOne Credit Union** - Green (`#005f3b`)
+- **Georgia Own Credit Union** - Blue (`#1a3a6b`)

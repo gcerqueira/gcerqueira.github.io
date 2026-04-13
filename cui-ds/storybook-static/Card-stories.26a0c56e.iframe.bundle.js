@@ -1,0 +1,17 @@
+"use strict";(self.webpackChunkcui_ds=self.webpackChunkcui_ds||[]).push([[633],{"./stories/Card.stories.tsx"(__unused_webpack_module,__webpack_exports__,__webpack_require__){__webpack_require__.r(__webpack_exports__),__webpack_require__.d(__webpack_exports__,{Default:()=>Default,Selected:()=>Selected,__namedExportsOrder:()=>__namedExportsOrder,default:()=>Card_stories});var jsx_runtime=__webpack_require__("./node_modules/react/jsx-runtime.js"),styled_components_browser_esm=(__webpack_require__("./node_modules/react/index.js"),__webpack_require__("./node_modules/styled-components/dist/styled-components.browser.esm.js"));const StyledCard=styled_components_browser_esm.Ay.div`
+  background: ${({theme})=>theme.semantic.surface.neutral};
+  border: 1px solid ${({theme})=>theme.colors.gray[300]};
+  border-radius: ${({theme})=>theme.radius.md};
+  padding: ${({theme})=>theme.spacing[24]};
+  transition: all 0.2s ease;
+
+  ${({$selected,theme})=>$selected&&styled_components_browser_esm.AH`
+      border-color: ${theme.semantic.brand.primary};
+      box-shadow: 0 0 0 1px ${theme.semantic.brand.primary};
+    `}
+
+  &:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+`,Card=({selected=!1,children,...props})=>(0,jsx_runtime.jsx)(StyledCard,{$selected:selected,...props,children});Card.__docgenInfo={description:"",methods:[],displayName:"Card",props:{state:{required:!1,tsType:{name:"union",raw:"'Default' | 'Hover' | 'Selected'",elements:[{name:"literal",value:"'Default'"},{name:"literal",value:"'Hover'"},{name:"literal",value:"'Selected'"}]},description:""},selected:{required:!1,tsType:{name:"boolean"},description:"",defaultValue:{value:"false",computed:!1}}}};const Card_stories={title:"Components/Card",component:Card},Default={args:{children:(0,jsx_runtime.jsxs)("div",{children:[(0,jsx_runtime.jsx)("h3",{style:{margin:"0 0 8px"},children:"Card Title"}),(0,jsx_runtime.jsx)("p",{style:{margin:0,color:"#424242"},children:"Card content goes here with some description text."})]})},decorators:[Story=>(0,jsx_runtime.jsx)("div",{style:{width:360},children:(0,jsx_runtime.jsx)(Story,{})})]},Selected={args:{selected:!0,children:(0,jsx_runtime.jsxs)("div",{children:[(0,jsx_runtime.jsx)("h3",{style:{margin:"0 0 8px"},children:"Selected Card"}),(0,jsx_runtime.jsx)("p",{style:{margin:0,color:"#424242"},children:"This card is in selected state."})]})},decorators:[Story=>(0,jsx_runtime.jsx)("div",{style:{width:360},children:(0,jsx_runtime.jsx)(Story,{})})]},__namedExportsOrder=["Default","Selected"];Default.parameters={...Default.parameters,docs:{...Default.parameters?.docs,source:{originalSource:"{\n  args: {\n    children: <div>\n        <h3 style={{\n        margin: '0 0 8px'\n      }}>Card Title</h3>\n        <p style={{\n        margin: 0,\n        color: '#424242'\n      }}>Card content goes here with some description text.</p>\n      </div>\n  },\n  decorators: [Story => <div style={{\n    width: 360\n  }}><Story /></div>]\n}",...Default.parameters?.docs?.source}}},Selected.parameters={...Selected.parameters,docs:{...Selected.parameters?.docs,source:{originalSource:"{\n  args: {\n    selected: true,\n    children: <div>\n        <h3 style={{\n        margin: '0 0 8px'\n      }}>Selected Card</h3>\n        <p style={{\n        margin: 0,\n        color: '#424242'\n      }}>This card is in selected state.</p>\n      </div>\n  },\n  decorators: [Story => <div style={{\n    width: 360\n  }}><Story /></div>]\n}",...Selected.parameters?.docs?.source}}}}}]);
+//# sourceMappingURL=Card-stories.26a0c56e.iframe.bundle.js.map

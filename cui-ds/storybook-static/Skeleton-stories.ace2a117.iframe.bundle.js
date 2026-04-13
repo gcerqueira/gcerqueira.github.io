@@ -1,0 +1,18 @@
+"use strict";(self.webpackChunkcui_ds=self.webpackChunkcui_ds||[]).push([[618],{"./stories/Skeleton.stories.tsx"(__unused_webpack_module,__webpack_exports__,__webpack_require__){__webpack_require__.r(__webpack_exports__),__webpack_require__.d(__webpack_exports__,{CardSkeleton:()=>CardSkeleton,Circle:()=>Circle,Rect:()=>Rect,__namedExportsOrder:()=>__namedExportsOrder,default:()=>Skeleton_stories});var jsx_runtime=__webpack_require__("./node_modules/react/jsx-runtime.js"),styled_components_browser_esm=(__webpack_require__("./node_modules/react/index.js"),__webpack_require__("./node_modules/styled-components/dist/styled-components.browser.esm.js"));const shimmer=styled_components_browser_esm.i7`
+  0% { background-position: -200px 0; }
+  100% { background-position: calc(200px + 100%) 0; }
+`,StyledSkeleton=styled_components_browser_esm.Ay.div`
+  width: ${({$width})=>$width};
+  height: ${({$height})=>$height};
+  border-radius: ${({$type,theme})=>"Circle"===$type?"50%":theme.radius.sm};
+  background: ${({theme})=>theme.colors.gray[300]};
+  background-image: linear-gradient(
+    90deg,
+    ${({theme})=>theme.colors.gray[300]} 0px,
+    ${({theme})=>theme.colors.gray[200]} 40px,
+    ${({theme})=>theme.colors.gray[300]} 80px
+  );
+  background-size: 200px 100%;
+  animation: ${shimmer} 1.5s ease-in-out infinite;
+`,toCSS=val=>"number"==typeof val?`${val}px`:val,Skeleton=({type="Rect",width="100%",height="Circle"===type?40:20})=>(0,jsx_runtime.jsx)(StyledSkeleton,{$type:type,$width:toCSS(width),$height:toCSS(height)});Skeleton.__docgenInfo={description:"",methods:[],displayName:"Skeleton",props:{type:{required:!1,tsType:{name:"union",raw:"'Rect' | 'Circle'",elements:[{name:"literal",value:"'Rect'"},{name:"literal",value:"'Circle'"}]},description:"",defaultValue:{value:"'Rect'",computed:!1}},width:{required:!1,tsType:{name:"union",raw:"string | number",elements:[{name:"string"},{name:"number"}]},description:"",defaultValue:{value:"'100%'",computed:!1}},height:{required:!1,tsType:{name:"union",raw:"string | number",elements:[{name:"string"},{name:"number"}]},description:"",defaultValue:{value:"type === 'Circle' ? 40 : 20",computed:!1}}}};const Skeleton_stories={title:"Components/Skeleton",component:Skeleton},Rect={args:{type:"Rect",width:300,height:20}},Circle={args:{type:"Circle",width:48,height:48}},CardSkeleton={render:()=>(0,jsx_runtime.jsxs)("div",{style:{display:"flex",flexDirection:"column",gap:12,width:300},children:[(0,jsx_runtime.jsx)(Skeleton,{type:"Circle",width:48,height:48}),(0,jsx_runtime.jsx)(Skeleton,{width:"80%",height:16}),(0,jsx_runtime.jsx)(Skeleton,{width:"100%",height:12}),(0,jsx_runtime.jsx)(Skeleton,{width:"60%",height:12})]})},__namedExportsOrder=["Rect","Circle","CardSkeleton"];Rect.parameters={...Rect.parameters,docs:{...Rect.parameters?.docs,source:{originalSource:"{\n  args: {\n    type: 'Rect',\n    width: 300,\n    height: 20\n  }\n}",...Rect.parameters?.docs?.source}}},Circle.parameters={...Circle.parameters,docs:{...Circle.parameters?.docs,source:{originalSource:"{\n  args: {\n    type: 'Circle',\n    width: 48,\n    height: 48\n  }\n}",...Circle.parameters?.docs?.source}}},CardSkeleton.parameters={...CardSkeleton.parameters,docs:{...CardSkeleton.parameters?.docs,source:{originalSource:'{\n  render: () => <div style={{\n    display: \'flex\',\n    flexDirection: \'column\',\n    gap: 12,\n    width: 300\n  }}>\n      <Skeleton type="Circle" width={48} height={48} />\n      <Skeleton width="80%" height={16} />\n      <Skeleton width="100%" height={12} />\n      <Skeleton width="60%" height={12} />\n    </div>\n}',...CardSkeleton.parameters?.docs?.source}}}}}]);
+//# sourceMappingURL=Skeleton-stories.ace2a117.iframe.bundle.js.map

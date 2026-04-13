@@ -80,49 +80,79 @@
     </div>
   </section>
 
-  <!-- Case Studies — Light Section -->
-  <section class="section-case-studies section-light" id="work">
+  <!-- Case Studies — Carousel Cards -->
+  <section class="section-cases-v2 section-light" id="work">
     <div class="container">
-      <header class="section-header">
+      <header class="section-header" style="text-align:left;">
         <p class="section-label">Case Studies</p>
-        <h2 class="section-heading">Selected Work</h2>
+        <div class="cases-v2-header-row">
+          <h2 class="section-heading">Selected Work</h2>
+          <div class="cases-v2-nav">
+            <button class="cases-v2-arrow cases-v2-prev" aria-label="Previous" disabled>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="cases-v2-arrow cases-v2-next" aria-label="Next">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 6 15 12 9 18"/></svg>
+            </button>
+          </div>
+        </div>
       </header>
+    </div>
 
-      <div class="case-list">
+    <div class="cases-v2-track-wrap">
+      <div class="cases-v2-track">
 
-        <article class="case-item">
-          <a href="bkng/index.html" class="case-link">
-            <div class="case-thumb" style="background:#003580"></div>
-            <div class="case-content">
-              <p class="case-tag">Booking.com · Travel · 2019</p>
-              <h3 class="case-title">Smart Upselling After Payment Failure</h3>
-              <p class="case-desc">A recovery flow that offers users a comparable room immediately after a third-party payment fails, giving them a path forward instead of a dead end. Positive net conversion uplift on both app and web.</p>
-              <span class="case-cta">View case study <span class="arrow">›</span></span>
-            </div>
+        <article class="cases-v2-card">
+          <a href="bkng/index.html" class="cases-v2-link">
+            <p class="cases-v2-tag">Booking.com · Travel · 2019</p>
+            <h3 class="cases-v2-title">Smart Upselling After Payment Failure</h3>
+            <p class="cases-v2-desc">A recovery flow that offers users a comparable room immediately after a third-party payment fails, giving them a path forward instead of a dead end.</p>
+            <div class="cases-v2-thumb"><img src="img/casestudy-thumbnails/upselling.png" alt="Smart Upselling After Payment Failure" /></div>
           </a>
         </article>
 
-        <article class="case-item">
-          <a href="https://gcerqueira.github.io/pdfs/GuilhermeCerqueira_Tradeforce_CaseStudy.pdf" target="_blank" rel="noopener" class="case-link">
-            <div class="case-thumb" style="background:#1a1a2e"></div>
-            <div class="case-content">
-              <p class="case-tag">B2B SaaS · Field Operations · 2018</p>
-              <h3 class="case-title">Field Team Management App from MVP to A/B Testing</h3>
-              <p class="case-desc">As the sole designer at a B2B startup, I led the design of a field team management platform from MVP to a fully optimized product ready for A/B testing — including route tracking, real-time validation, and performance dashboards.</p>
-              <span class="case-cta">View case study <span class="arrow">›</span></span>
-            </div>
+        <article class="cases-v2-card">
+          <a href="#" class="cases-v2-link">
+            <p class="cases-v2-tag">Healthcare · AI · 2025</p>
+            <h3 class="cases-v2-title">0→1 AI-Powered Caregiver Workplace</h3>
+            <p class="cases-v2-desc">Designed an AI-first caregiving platform from scratch — web portal, React Native apps, conversational AI, and a full design system.</p>
+            <div class="cases-v2-thumb"><img src="img/casestudy-thumbnails/nivocare.png" alt="AI-Powered Caregiver Workplace" /></div>
           </a>
         </article>
 
-        <article class="case-item">
-          <a href="https://gcerqueira.github.io/cuidesignsystem.html" class="case-link">
-            <div class="case-thumb" style="background:#2d2d3f"></div>
-            <div class="case-content">
-              <p class="case-tag">Design System · Enterprise · 2024</p>
-              <h3 class="case-title">CUI Design System</h3>
-              <p class="case-desc">I led the creation of a scalable design system to unify Staff and Online Portals for 120+ credit unions. Replaced fragile UI with robust, themeable React components and design tokens.</p>
-              <span class="case-cta">View case study <span class="arrow">›</span></span>
-            </div>
+        <article class="cases-v2-card">
+          <a href="https://gcerqueira.github.io/cuidesignsystem.html" class="cases-v2-link">
+            <p class="cases-v2-tag">Design System · Enterprise · 2024</p>
+            <h3 class="cases-v2-title">Designing a White-Label Design System</h3>
+            <p class="cases-v2-desc">A scalable design system to unify Staff and Online Portals for 120+ credit unions with themeable React components and design tokens.</p>
+            <div class="cases-v2-thumb" style="background:#2d2d3f"></div>
+          </a>
+        </article>
+
+        <article class="cases-v2-card">
+          <a href="#" class="cases-v2-link">
+            <p class="cases-v2-tag">Fintech · Insurance · 2023</p>
+            <h3 class="cases-v2-title">Reducing Decision Time for Underwriters</h3>
+            <p class="cases-v2-desc">Redesigned the underwriting review flow to surface key risk signals upfront, cutting average decision time by 40%.</p>
+            <div class="cases-v2-thumb" style="background:#1c2b3a"></div>
+          </a>
+        </article>
+
+        <article class="cases-v2-card">
+          <a href="https://gcerqueira.github.io/pdfs/GuilhermeCerqueira_Tradeforce_CaseStudy.pdf" target="_blank" rel="noopener" class="cases-v2-link">
+            <p class="cases-v2-tag">B2B SaaS · Field Operations · 2018</p>
+            <h3 class="cases-v2-title">0→1 Field Team Management App</h3>
+            <p class="cases-v2-desc">Led the design of a field team management platform from MVP to A/B testing — route tracking, real-time validation, and performance dashboards.</p>
+            <div class="cases-v2-thumb" style="background:#1a1a2e"></div>
+          </a>
+        </article>
+
+        <article class="cases-v2-card">
+          <a href="#" class="cases-v2-link">
+            <p class="cases-v2-tag">Dev Tools · B2B · 2022</p>
+            <h3 class="cases-v2-title">Redesigning a Design-to-Code Plugin</h3>
+            <p class="cases-v2-desc">Owned end-to-end design for the #1 Figma plugin with 1M+ installs, serving teams at Amazon, Cisco, Samsung and Deloitte.</p>
+            <div class="cases-v2-thumb" style="background:#2a1f3d"></div>
           </a>
         </article>
 
@@ -481,6 +511,27 @@
         if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
       });
     });
+
+    /* ─── Cases v2 Carousel ─── */
+    (function() {
+      const track = document.querySelector('.cases-v2-track');
+      const prev  = document.querySelector('.cases-v2-prev');
+      const next  = document.querySelector('.cases-v2-next');
+      if (!track || !prev || !next) return;
+
+      const card = track.querySelector('.cases-v2-card');
+      const scrollAmount = () => card.offsetWidth + 20; /* card width + gap */
+
+      const updateArrows = () => {
+        prev.disabled = track.scrollLeft <= 5;
+        next.disabled = track.scrollLeft >= track.scrollWidth - track.clientWidth - 5;
+      };
+
+      prev.addEventListener('click', () => { track.scrollBy({ left: -scrollAmount(), behavior: 'smooth' }); });
+      next.addEventListener('click', () => { track.scrollBy({ left: scrollAmount(), behavior: 'smooth' }); });
+      track.addEventListener('scroll', updateArrows, { passive: true });
+      updateArrows();
+    })();
   </script>
 </body>
 </html>

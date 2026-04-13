@@ -703,6 +703,147 @@ nav {
 
 
 /* ============================================================
+   9b. CASE STUDIES V2 — Carousel Cards
+   ============================================================ */
+
+.section-cases-v2 {
+  padding: var(--space-32) 0;
+  overflow: hidden;
+}
+
+.cases-v2-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cases-v2-nav {
+  display: flex;
+  gap: var(--space-3);
+}
+
+.cases-v2-arrow {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-circle);
+  border: 1px solid var(--color-border-light);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-near-black);
+  transition: background var(--dur-base), color var(--dur-base), border-color var(--dur-base), opacity var(--dur-base);
+}
+.cases-v2-arrow:hover {
+  background: var(--color-near-black);
+  color: var(--color-white);
+  border-color: var(--color-near-black);
+}
+.cases-v2-arrow:disabled {
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.cases-v2-track-wrap {
+  position: relative;
+  padding-left: max(var(--container-pad), calc((100vw - var(--container-max)) / 2 + var(--container-pad)));
+  margin-top: var(--space-10);
+}
+
+.cases-v2-track {
+  display: flex;
+  gap: var(--space-5);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-right: var(--space-10);
+  padding-bottom: var(--space-2);
+}
+.cases-v2-track::-webkit-scrollbar {
+  display: none;
+}
+
+.cases-v2-card {
+  flex: 0 0 375px;
+  min-width: 260px;
+  scroll-snap-align: start;
+  background: var(--color-white);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+.cases-v2-card:hover {
+  transform: scale(1.01);
+}
+
+.cases-v2-link {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+  padding: var(--space-6);
+}
+
+.cases-v2-tag {
+  font-size: var(--text-micro);
+  font-weight: var(--weight-semibold);
+  letter-spacing: -0.12px;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  margin-bottom: var(--space-3);
+}
+
+.cases-v2-title {
+  font-family: var(--font-display);
+  font-weight: var(--weight-semibold);
+  font-size: var(--text-sub);
+  line-height: 1.19;
+  letter-spacing: 0.231px;
+  color: var(--color-near-black);
+  margin-bottom: var(--space-3);
+}
+
+.cases-v2-desc {
+  font-size: var(--text-caption);
+  font-weight: var(--weight-regular);
+  line-height: 1.43;
+  letter-spacing: -0.224px;
+  color: var(--color-text-secondary);
+  flex: 1;
+}
+
+.cases-v2-thumb {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  margin-top: auto;
+  padding-top: var(--space-5);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.cases-v2-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+}
+
+@media (max-width: 834px) {
+  .cases-v2-card {
+    flex: 0 0 280px;
+  }
+  .cases-v2-header-row {
+    flex-direction: row;
+  }
+}
+
+
+/* ============================================================
    10. WORKING EXPERIENCE
    ============================================================ */
 

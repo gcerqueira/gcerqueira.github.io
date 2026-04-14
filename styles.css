@@ -497,6 +497,7 @@ nav {
 
 .section-case-studies,
 .section-experience,
+.section-about-exp,
 .section-faq,
 .section-contact {
   padding: var(--space-32) 0;
@@ -986,6 +987,209 @@ nav {
 
 
 /* ============================================================
+   10b. ABOUT + EXPERIENCE (Two-Column)
+   ============================================================ */
+
+.about-exp-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-16);
+  align-items: stretch;
+}
+
+/* ── About Column ── */
+.about-col {}
+
+.about-photo-wrap {
+  width: 100%;
+  margin-bottom: var(--space-8);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.about-photo {
+  width: 100%;
+  display: block;
+  border-radius: var(--radius-lg);
+}
+
+.about-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.about-text .section-label {
+  margin-bottom: var(--space-2);
+}
+
+.about-text p:not(.section-label) {
+  font-size: var(--text-caption);
+  font-weight: var(--weight-regular);
+  line-height: 1.6;
+  letter-spacing: -0.224px;
+  color: var(--color-text-on-dark-secondary);
+}
+
+/* ── Experience Column ── */
+.exp-col {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.exp-col > .section-label {
+  margin-bottom: var(--space-5);
+}
+
+/* ── Scrollable Experience Container ── */
+.exp-scroll-container {
+  flex: 1 1 0;
+  min-height: 0;
+  border: 1px solid var(--color-border-dark);
+  border-radius: var(--radius-lg);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
+  transition: scrollbar-color var(--dur-base);
+}
+
+.exp-scroll-container:hover {
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
+
+/* Webkit scrollbar */
+.exp-scroll-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.exp-scroll-container::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.exp-scroll-container::-webkit-scrollbar-thumb {
+  background: transparent;
+  border-radius: 3px;
+  transition: background var(--dur-base);
+}
+
+.exp-scroll-container:hover::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.exp-compact-list {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-4) var(--space-5);
+}
+
+.exp-compact-item {
+  padding: var(--space-4) 0;
+  border-top: 1px solid var(--color-border-dark);
+}
+
+.exp-compact-item:last-child {
+  border-bottom: 1px solid var(--color-border-dark);
+}
+
+.exp-compact-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: var(--space-3);
+}
+
+.exp-compact-company {
+  font-family: var(--font-display);
+  font-size: var(--text-caption);
+  font-weight: var(--weight-semibold);
+  letter-spacing: -0.224px;
+  color: var(--color-white);
+}
+
+.exp-compact-period {
+  font-size: var(--text-micro);
+  font-weight: var(--weight-regular);
+  letter-spacing: -0.1px;
+  color: var(--color-text-on-dark-tertiary);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.exp-compact-role {
+  font-size: var(--text-micro);
+  font-weight: var(--weight-regular);
+  letter-spacing: -0.1px;
+  color: var(--color-text-on-dark-secondary);
+  margin-top: 2px;
+}
+
+.exp-compact-location {
+  font-size: var(--text-nano);
+  font-weight: var(--weight-regular);
+  color: var(--color-text-on-dark-tertiary);
+  margin-top: 1px;
+}
+
+.exp-compact-achievements {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: var(--space-2);
+}
+
+.exp-compact-achievements li {
+  font-size: var(--text-micro);
+  font-weight: var(--weight-regular);
+  line-height: 1.45;
+  letter-spacing: -0.1px;
+  color: var(--color-text-on-dark-secondary);
+  padding-left: var(--space-4);
+  position: relative;
+}
+
+.exp-compact-achievements li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 7px;
+  width: 3px;
+  height: 3px;
+  border-radius: var(--radius-circle);
+  background: var(--color-blue);
+}
+
+/* ── Download CV Button ── */
+.cv-download-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: var(--space-14);
+}
+
+.cv-download-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: 14px 32px;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: var(--text-body);
+  font-weight: var(--weight-medium);
+  letter-spacing: -0.374px;
+  text-decoration: none;
+  background: var(--color-blue);
+  border: 1px solid transparent;
+  color: var(--color-white);
+  transition: background var(--dur-base);
+}
+
+.cv-download-btn:hover {
+  background: #0077ed;
+}
+
+
+/* ============================================================
    11. FAQ ACCORDION
    ============================================================ */
 
@@ -1247,6 +1451,7 @@ nav {
 
   .section-case-studies,
   .section-experience,
+  .section-about-exp,
   .section-faq,
   .section-contact {
     padding: var(--space-20) 0;
@@ -1279,6 +1484,30 @@ nav {
     grid-template-columns: 1fr;
     gap: var(--space-4);
     padding: var(--space-8) 0;
+  }
+
+  .about-exp-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-16);
+  }
+
+  .about-col {
+    position: static;
+  }
+
+  .about-photo-wrap {
+    max-width: 280px;
+  }
+
+  .exp-scroll-container {
+    flex: none;
+    overflow-y: visible;
+    border: none;
+    border-radius: 0;
+  }
+
+  .exp-compact-list {
+    padding: 0;
   }
 
   .faq-q {

@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CUI Design System | Guilherme Cerqueira</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <!-- Favicons -->
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon/favicon-16x16.png">
+  <link rel="shortcut icon" href="../img/favicon/favicon.ico">
+  <meta name="theme-color" content="#000000">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-white:          #ffffff;
+      --color-grey:           #f5f5f7;
+      --color-near-black:     #1d1d1f;
+      --color-text-primary:   #1d1d1f;
+      --color-text-secondary: rgba(0, 0, 0, 0.56);
+      --color-text-tertiary:  rgba(0, 0, 0, 0.44);
+      --color-blue:           #0071e3;
+      --color-border:         rgba(0, 0, 0, 0.08);
+      --color-highlight-bg:   #f0f6ff;
+      --color-highlight-text: #004499;
+      --color-impact-bg:      #f0fdf4;
+      --color-impact-border:  #4ade80;
+      --color-impact-text:    #15803d;
+
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      --radius-sm:   5px;
+      --radius-md:   8px;
+      --radius-lg:   12px;
+      --max:    880px;
+      --section: 96px;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background: var(--color-white);
+      color: var(--color-text-primary);
+      font-family: var(--font);
+      font-size: 17px;
+      line-height: 1.6;
+      letter-spacing: -0.374px;
+    }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* -- NAV -- */
+    .case-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      transition: color 150ms ease;
+    }
+    .back-link:hover { color: var(--color-text-primary); }
+    .back-link svg { width: 12px; height: 12px; flex-shrink: 0; }
+
+    /* -- SECTION BACKGROUNDS -- */
+    .section-white { background: var(--color-white); }
+    .section-grey  { background: var(--color-grey); }
+
+    /* -- HEADER -- */
+    .header { padding: 96px 0 72px; }
+
+    .project-tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+      color: var(--color-near-black);
+      margin-bottom: 36px;
+      max-width: 700px;
+    }
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 36px;
+      padding-top: 28px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .meta-item { display: flex; flex-direction: column; gap: 4px; }
+
+    .meta-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+    }
+
+    .meta-value {
+      font-size: 14px;
+      letter-spacing: -0.224px;
+      color: var(--color-text-secondary);
+    }
+
+    /* -- TL;DR -- */
+    .tldr {
+      background: var(--color-grey);
+      border-radius: var(--radius-lg);
+      padding: 36px 40px;
+      margin-bottom: var(--section);
+    }
+
+    .tldr-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-blue);
+      margin-bottom: 28px;
+      display: block;
+    }
+
+    .tldr-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px 48px;
+    }
+
+    .tldr-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .tldr-item p {
+      font-size: 15px;
+      line-height: 1.6;
+      letter-spacing: -0.2px;
+      color: var(--color-text-primary);
+      margin-bottom: 0;
+    }
+
+    .tldr-item.span-2 { grid-column: 1 / -1; }
+
+    /* -- CASE SECTION -- */
+    .case-section { padding: var(--section) 0; }
+
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    h2 {
+      font-size: clamp(22px, 3vw, 28px);
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      line-height: 1.2;
+      margin-bottom: 24px;
+      color: var(--color-near-black);
+    }
+
+    h3 {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.3;
+      letter-spacing: -0.2px;
+      margin-bottom: 14px;
+      margin-top: 48px;
+      color: var(--color-near-black);
+    }
+
+    p {
+      font-size: 17px;
+      line-height: 1.6;
+      letter-spacing: -0.374px;
+      color: var(--color-text-secondary);
+      margin-bottom: 20px;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    ul.detail-list {
+      list-style: none;
+      padding: 0;
+      margin: 24px 0;
+    }
+
+    ul.detail-list li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 14px;
+      font-size: 15px;
+      line-height: 1.6;
+      letter-spacing: -0.2px;
+      color: var(--color-text-secondary);
+    }
+
+    ul.detail-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-blue);
+    }
+
+    ul.detail-list li strong {
+      color: var(--color-text-primary);
+      font-weight: 600;
+    }
+
+    /* -- CALLOUT -- Impact -- */
+    .impact {
+      background: var(--color-impact-bg);
+      border-left: 3px solid var(--color-impact-border);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 18px 22px;
+      margin: 32px 0;
+    }
+
+    .impact p {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color-impact-text);
+      line-height: 1.6;
+      letter-spacing: -0.2px;
+      margin-bottom: 0;
+    }
+
+    /* -- CALLOUT -- Highlight -- */
+    .highlight-box {
+      background: var(--color-highlight-bg);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      margin: 32px 0;
+    }
+
+    .highlight-box p {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color-highlight-text);
+      line-height: 1.6;
+      letter-spacing: -0.2px;
+      margin-bottom: 0;
+    }
+
+    /* -- STATS -- */
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 32px 0;
+    }
+
+    .stat-card {
+      border-radius: var(--radius-md);
+      padding: 24px 16px;
+      text-align: center;
+    }
+
+    .section-white .stat-card { background: var(--color-grey); }
+    .section-grey  .stat-card { background: var(--color-white); border: 1px solid var(--color-border); }
+
+    .stat-number {
+      font-size: 30px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      line-height: 1;
+      margin-bottom: 10px;
+      display: block;
+      color: var(--color-blue);
+    }
+
+    .stat-label {
+      font-size: 13px;
+      letter-spacing: -0.1px;
+      line-height: 1.45;
+      color: var(--color-text-tertiary);
+    }
+
+    /* -- CTA BUTTON -- */
+    .cta-block {
+      margin: 44px 0;
+      text-align: center;
+    }
+
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      background: var(--color-blue);
+      color: var(--color-white);
+      font-family: var(--font);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.2px;
+      text-decoration: none;
+      border-radius: var(--radius-md);
+      transition: background 150ms ease, transform 150ms ease;
+    }
+
+    .cta-btn:hover {
+      background: #005bb5;
+      transform: translateY(-1px);
+    }
+
+    .cta-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    /* -- LIGHTBOX -- */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 200ms ease;
+      cursor: zoom-out;
+    }
+
+    .lightbox.active { opacity: 1; pointer-events: auto; }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 88vh;
+      border-radius: var(--radius-lg);
+      object-fit: contain;
+      transform: scale(0.97);
+      transition: transform 200ms ease;
+    }
+
+    .lightbox.active img { transform: scale(1); }
+
+    .lightbox-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      width: 36px;
+      height: 36px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 150ms ease;
+    }
+
+    .lightbox-close:hover { background: rgba(255, 255, 255, 0.28); }
+
+    /* -- IMAGES -- */
+    .img-block { margin: 44px 0; }
+
+    .img-block img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      display: block;
+      cursor: zoom-in;
+    }
+
+    .img-caption {
+      font-size: 13px;
+      letter-spacing: -0.1px;
+      margin-top: 12px;
+      line-height: 1.5;
+      color: var(--color-text-tertiary);
+      font-style: italic;
+    }
+
+    .img-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 44px 0;
+    }
+
+    .img-grid img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      display: block;
+      cursor: zoom-in;
+    }
+
+    .img-grid-caption {
+      grid-column: 1 / -1;
+      font-size: 13px;
+      letter-spacing: -0.1px;
+      line-height: 1.5;
+      color: var(--color-text-tertiary);
+      font-style: italic;
+    }
+
+    /* -- FOOTER -- */
+    .footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--color-border);
+      text-align: center;
+    }
+
+    .footer p { font-size: 13px; color: var(--color-text-tertiary); }
+
+    /* -- RESPONSIVE -- */
+    @media (max-width: 640px) {
+      .header { padding: 64px 0 48px; }
+      h1 { font-size: 26px; }
+      h2 { font-size: 20px; }
+      .tldr { padding: 24px; }
+      .tldr-grid { grid-template-columns: 1fr; }
+      .img-grid { grid-template-columns: 1fr; }
+      .project-meta { gap: 20px; }
+      .stat-row { grid-template-columns: 1fr; gap: 8px; }
+      .case-section { padding: 56px 0; }
+    }
+
+    @media print {
+      body { background: white; }
+      .case-nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="case-nav">
+    <a href="../index.html" class="back-link">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M10 3L5 8l5 5"/>
+      </svg>
+      Back to portfolio
+    </a>
+  </nav>
+
+  <!-- HEADER -->
+  <div class="section-white">
+    <div class="container">
+      <header class="header">
+        <span class="project-tag">Design System</span>
+        <h1>Designing a White-Label Design System for 120+ Credit Unions</h1>
+        <div class="project-meta">
+          <div class="meta-item">
+            <span class="meta-label">Role</span>
+            <span class="meta-value">Lead Designer</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Company</span>
+            <span class="meta-value">Clutch</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Timeline</span>
+            <span class="meta-value">2024</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Team</span>
+            <span class="meta-value">Designers, Front-End Engineers, PMs, QA</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- HERO IMAGE -->
+      <div class="img-block" style="margin-bottom: 72px;">
+        <img src="../img/cui/Hero2.png" alt="CUI Design System hero showing components and theming">
+      </div>
+
+      <!-- TL;DR -->
+      <section class="tldr">
+        <span class="tldr-eyebrow">TL;DR</span>
+        <div class="tldr-grid">
+          <div class="tldr-item">
+            <span class="tldr-label">What</span>
+            <p>A unified design system replacing fragile MUI components with <strong>themeable React components and design tokens</strong> across Staff and Online Portals for 120+ credit unions.</p>
+          </div>
+          <div class="tldr-item">
+            <span class="tldr-label">Problem</span>
+            <p>Two separate frontends, broken MUI components, duplicate engineering effort, and <strong>no shared design language</strong> across products. Every new feature added more inconsistency.</p>
+          </div>
+          <div class="tldr-item">
+            <span class="tldr-label">Approach</span>
+            <p>UI audit, token architecture, 40+ components in Figma and React, <strong>stakeholder buy-in through working prototypes</strong>, and documented onboarding for adoption.</p>
+          </div>
+          <div class="tldr-item">
+            <span class="tldr-label">Challenges</span>
+            <p>Cross-team alignment, legacy MUI deprecation, <strong>white-labeling for 120+ brands</strong> while maintaining WCAG AA accessibility.</p>
+          </div>
+          <div class="tldr-item span-2">
+            <span class="tldr-label">Result</span>
+            <p>Faster feature delivery, fewer visual QA bugs, and a <strong>single source of truth</strong> adopted across all new product work. Engineering began replacing MUI component by component.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- SECTION 1 -- OVERVIEW -->
+  <div class="section-grey">
+    <div class="container">
+      <section class="case-section">
+        <span class="section-eyebrow">Overview</span>
+        <h2>Multiple fintech products, zero shared design infrastructure</h2>
+        <p>The company was shipping fintech tools across two portals without shared components, tokens, or design principles. Legacy MUI was tightly coupled, theming was rigid, and <strong>white-labeling for 120+ credit unions was unsustainable</strong>.</p>
+        <p>I owned the full design system effort -- from strategic framing to component delivery:</p>
+
+        <ul class="detail-list">
+          <li><strong>UI audit and component inventory</strong> across both portals</li>
+          <li><strong>Token architecture</strong> -- primitive, semantic, and component-level</li>
+          <li><strong>Figma library</strong> -- production-ready, maintained, and documented</li>
+          <li><strong>React + Storybook</strong> -- coded core components, managed documentation</li>
+          <li><strong>MUI deprecation strategy</strong> -- partnered with engineering on phased rollout</li>
+          <li><strong>Adoption and advocacy</strong> -- cross-team workshops, onboarding, governance</li>
+        </ul>
+
+        <div class="highlight-box">
+          <p>Stakeholders: product leadership, engineering managers, marketing, exec team. I collaborated across multiple squads with designers, front-end engineers, PMs, and QA.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- SECTION 2 -- THE PROBLEM -->
+  <div class="section-white">
+    <div class="container">
+      <section class="case-section">
+        <span class="section-eyebrow">The Problem</span>
+        <h2>Scaling fast, but every feature shipped more inconsistency</h2>
+
+        <ul class="detail-list">
+          <li><strong>Broken MUI components</strong> across all products -- no one owned them</li>
+          <li><strong>Two separate frontends</strong> for branch officers and loan applicants, built independently</li>
+          <li><strong>120+ credit unions</strong> each needing brand-matched UI</li>
+          <li><strong>Duplicate work</strong> -- teams rebuilding the same components with minor variations</li>
+          <li><strong>Inconsistent UX</strong> -- same interaction patterns behaving differently per product</li>
+        </ul>
+
+        <div class="img-block">
+          <img src="../img/cui/cui1.png" alt="UI inconsistencies across existing products">
+          <p class="img-caption">Spot the inconsistencies. Each element had separate code. No shared components existed between products.</p>
+        </div>
+
+        <div class="stat-row">
+          <div class="stat-card">
+            <span class="stat-number">120+</span>
+            <span class="stat-label">credit unions requiring unique branding</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">2</span>
+            <span class="stat-label">portals with zero shared components</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">40+</span>
+            <span class="stat-label">components designed with full variants</span>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- SECTION 3 -- STRATEGIC FRAMING -->
+  <div class="section-grey">
+    <div class="container">
+      <section class="case-section">
+        <span class="section-eyebrow">Strategy</span>
+        <h2>Framing the system around jobs, not components</h2>
+        <p>I anchored the system's direction in four strategic questions:</p>
+
+        <ul class="detail-list">
+          <li><strong>How might we</strong> reduce handoff friction with shared building blocks?</li>
+          <li><strong>How might we</strong> support white-labeling without fragmenting the experience?</li>
+          <li><strong>How might we</strong> build consistency without killing flexibility?</li>
+          <li><strong>How might we</strong> scale for future products and teams?</li>
+        </ul>
+
+        <p>Then grounded the approach in <strong>Jobs to Be Done</strong>:</p>
+
+        <div class="highlight-box">
+          <p><strong>Designer:</strong> Assemble UI quickly with confidence it scales. <strong>Engineer:</strong> Build features without rethinking every visual decision. <strong>Product:</strong> Launch fast while preserving quality and accessibility.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- SECTION 4 -- EXECUTION -->
+  <div class="section-white">
+    <div class="container">
+      <section class="case-section">
+        <span class="section-eyebrow">Execution</span>
+        <h2>Audit, tokens, components, adoption -- in that order</h2>
+
+        <h3>Audit & Inventory</h3>
+        <p>Mapped every component across both portals, identified UI debt, and worked with engineering to assess the cost of replacing MUI.</p>
+
+        <div class="img-block">
+          <img src="../img/cui/componentsaudit.png" alt="Component audit of most used and problematic components">
+          <p class="img-caption">Audit of the most used and most problematic components, excluding MUI internals.</p>
+        </div>
+
+        <h3>Token Architecture</h3>
+        <p>Built a <strong>three-tier token system</strong> (primitive, semantic, component) for colors, typography, and spacing. Separated System Colors (consistent across all CUs) from Partner Colors (brand-customizable).</p>
+
+        <div class="img-block">
+          <img src="../img/cui/cui2.png" alt="System colors and partner colors architecture">
+          <p class="img-caption">System colors stay consistent across all credit unions. The 500 shade meets WCAG 2.0 AA contrast ratio (4.5:1).</p>
+        </div>
+
+        <div class="img-block">
+          <img src="../img/cui/tokens.png" alt="Color token system mapping primitives to semantic usage">
+          <p class="img-caption">First version of the token map -- primitives to semantic usage.</p>
+        </div>
+
+        <h3>Typography</h3>
+        <div class="img-block">
+          <img src="../img/cui/cui3.png" alt="Typography system and text styling">
+          <p class="img-caption">Type scale and styling abstraction standardizing text across both portals.</p>
+        </div>
+
+        <h3>Component Library</h3>
+        <p>Designed <strong>40+ components</strong> with full state coverage and usage guidelines. Built each in React and documented in Storybook with the same variant structure as Figma.</p>
+
+        <div class="img-grid">
+          <img src="../img/cui/figmasidebar.gif" alt="Figma file organization">
+          <img src="../img/cui/cui0.png" alt="Design principles overview">
+          <p class="img-grid-caption">Figma file structure: tokens, primitives, 40+ components. Right: the design principles that guided every decision.</p>
+        </div>
+
+        <div class="img-grid">
+          <img src="../img/cui/cui4.png" alt="Component variants">
+          <img src="../img/cui/cui5.png" alt="Component variants">
+          <p class="img-grid-caption">Component variants organized in grids per Figma page -- same structure mirrored in Storybook.</p>
+        </div>
+
+        <div class="img-block">
+          <img src="../img/cui/storybook.png" alt="Storybook component documentation">
+          <p class="img-caption">Storybook documentation mirroring the Figma structure for consistent dev reference.</p>
+        </div>
+
+        <!-- STORYBOOK CTA -->
+        <div class="cta-block">
+          <a href="https://gcerqueira.github.io/cui-ds/storybook-static/" target="_blank" rel="noopener" class="cta-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/>
+              <polyline points="15 3 21 3 21 9"/>
+              <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+            Browse the live Storybook
+          </a>
+        </div>
+
+        <h3>Documentation & Onboarding</h3>
+        <p>Created Figma docs, Notion guides, and Loom walkthroughs. Led cross-functional workshops to establish principles: simplicity, consistency, accessibility, scalability.</p>
+      </section>
+    </div>
+  </div>
+
+  <!-- SECTION 5 -- STAKEHOLDER BUY-IN -->
+  <div class="section-grey">
+    <div class="container">
+      <section class="case-section">
+        <span class="section-eyebrow">Stakeholder Buy-In</span>
+        <h2>MUI was "working" -- convincing the org to invest in infrastructure</h2>
+        <p>Buy-in wasn't immediate. Teams were shipping features and MUI was "good enough." My approach: <strong>use the new Staff Portal as a proof of concept</strong> -- build it right from day one, no MUI, clean components in Storybook.</p>
+
+        <ul class="detail-list">
+          <li><strong>Prototyped the pain:</strong> rebuilt our worst components to show the new system's clarity and maintainability</li>
+          <li><strong>Side-by-side comparisons:</strong> broken MUI vs. unified system -- made the gap undeniable</li>
+          <li><strong>Estimated dev-time savings:</strong> worked with engineers to quantify the ROI of shared components</li>
+        </ul>
+
+        <div class="img-block">
+          <img src="../img/cui/cardcomponent.png" alt="Card component demonstrating scalability">
+          <p class="img-caption">The card component became the proof point -- scalable, reusable, and immediately valuable across multiple contexts.</p>
+        </div>
+
+        <div class="img-block">
+          <img src="../img/cui/hero.png" alt="Card component in production">
+          <p class="img-caption">The same card component in production after rollout.</p>
+        </div>
+
+        <div class="impact">
+          <p>The Staff Portal proved the system worked. Engineering began deprecating MUI in the Online Portal, replacing it <strong>component by component</strong>.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- SECTION 6 -- WHITE-LABELING -->
+  <div class="section-white">
+    <div class="container">
+      <section class="case-section">
+        <span class="section-eyebrow">White-Labeling</span>
+        <h2>One system, 120+ brand identities</h2>
+        <p>Every product needed to match the partner credit union's brand. I designed a <strong>flexible token architecture</strong> with a Figma theming system to toggle between brand presets -- validating themes visually without duplicating files.</p>
+
+        <div class="img-block">
+          <img src="../img/cui/partnercolors.png" alt="Brand colors per credit union">
+          <p class="img-caption">Each credit union's primary brand color, applied to interactive elements only.</p>
+        </div>
+
+        <div class="img-block">
+          <img src="../img/cui/whitelabel.gif" alt="Live theme switching in Figma">
+          <p class="img-caption">Live theme switching in Figma. Interactive elements use brand colors; system colors (like status badges) stay fixed. Same capability existed in Storybook.</p>
+        </div>
+
+        <div class="img-block">
+          <img src="../img/cui/whitelabelmobileafter.png" alt="White-labeled mobile experience">
+          <p class="img-caption">White-labeled mobile experience with brand palette and customizable copy.</p>
+        </div>
+
+        <h3>The trade-off: controlled customization</h3>
+        <p>Credit unions wanted full brand control. That wasn't scalable or accessible. I aligned with Customer Success on a constraint: <strong>one primary brand color per CU</strong> -- everything else follows system rules. For inaccessible brand colors, I built fallback system colors to preserve contrast.</p>
+
+        <div class="highlight-box">
+          <p><strong>Trade-off:</strong> One primary color, not unlimited overrides. <strong>Why:</strong> Prevents fragmentation, maintains accessibility, keeps theming logic predictable. <strong>Result:</strong> CUs felt represented. The system stayed cohesive.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- SECTION 7 -- STAFF VS ONLINE -->
+  <div class="section-grey">
+    <div class="container">
+      <section class="case-section">
+        <span class="section-eyebrow">Two Portals, One System</span>
+        <h2>Same building blocks, different contexts</h2>
+
+        <ul class="detail-list">
+          <li><strong>Staff Portal:</strong> Desktop-only, information-dense, task-focused. Used by CU employees in-branch</li>
+          <li><strong>Online Portal:</strong> Mobile-first, embedded in CU apps. Used by members applying for loans. Trust and simplicity are critical</li>
+        </ul>
+
+        <div class="img-grid">
+          <img src="../img/cui/staffportal.png" alt="Staff Portal interface">
+          <img src="../img/cui/onlineportal.png" alt="Online Portal interface">
+          <p class="img-grid-caption">Left: Staff Portal -- dense, task-oriented. Right: Online Portal -- clean, mobile-first, embedded.</p>
+        </div>
+
+        <p>The goal was <strong>flexibility without fragmentation</strong>:</p>
+
+        <ul class="detail-list">
+          <li><strong>Responsive variants</strong> for navigation, tables, and forms</li>
+          <li><strong>Adaptive theming</strong> -- broader color use on Staff, stricter brand adherence on Online</li>
+          <li><strong>Context-aware documentation</strong> per audience and portal</li>
+          <li><strong>Shared core, different wrappers</strong> -- base components reused in portal-specific layouts</li>
+        </ul>
+
+        <div class="img-block">
+          <img src="../img/cui/dsapplied1.png" alt="Online Portal before and after">
+          <p class="img-caption">Online Portal before and after the Design System.</p>
+        </div>
+
+        <div class="img-block">
+          <img src="../img/cui/dsapplied2.png" alt="Staff Portal with shared components">
+          <p class="img-caption">Same components on Staff Portal, adapted for different density and workflow needs.</p>
+        </div>
+
+        <div class="impact">
+          <p>One system, two contexts. Engineers and designers shared building blocks. <strong>Users got consistent, context-appropriate experiences.</strong></p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- SECTION 8 -- MEASURING SUCCESS -->
+  <div class="section-white">
+    <div class="container">
+      <section class="case-section">
+        <span class="section-eyebrow">Measuring Success</span>
+        <h2>Tracking impact across design, engineering, and delivery</h2>
+
+        <ul class="detail-list">
+          <li><strong>Feature delivery time:</strong> design-to-dev handoff and release cycle durations before and after adoption</li>
+          <li><strong>Visual QA issues:</strong> UI inconsistency bugs tracked through QA tickets and customer feedback</li>
+          <li><strong>Adoption metrics:</strong> Figma usage analytics, Storybook contributions, production component usage</li>
+          <li><strong>Theming efficiency:</strong> time to implement new Credit Union themes using the token system</li>
+          <li><strong>Team feedback:</strong> surveys and 1:1s on design-dev collaboration friction</li>
+          <li><strong>Accessibility:</strong> WCAG AA compliance through automated and manual audits</li>
+        </ul>
+      </section>
+    </div>
+  </div>
+
+  <!-- SECTION 9 -- REFLECTION -->
+  <div class="section-grey">
+    <div class="container">
+      <section class="case-section">
+        <span class="section-eyebrow">Reflection</span>
+        <h2>What I learned, what I'd change</h2>
+
+        <h3>Key takeaways</h3>
+        <ul class="detail-list">
+          <li><strong>Buy-in requires proof, not pitches.</strong> Working prototypes and dev-time estimates moved stakeholders faster than slide decks</li>
+          <li><strong>Design with engineering constraints.</strong> Token architecture decisions shaped what engineers could build efficiently</li>
+          <li><strong>Systems are products.</strong> Governance, contribution paths, and onboarding matter as much as the components themselves</li>
+        </ul>
+
+        <h3>What I'd do differently</h3>
+        <ul class="detail-list">
+          <li><strong>Involve stakeholders earlier</strong> -- co-create the vision from day one to accelerate ownership</li>
+          <li><strong>Define contribution paths upfront</strong> -- reduce confusion around proposing and updating components</li>
+          <li><strong>Automate accessibility checks sooner</strong> -- catch WCAG issues across white-label variations before they compound</li>
+          <li><strong>Test with end users earlier</strong> -- especially for the mobile-heavy Online Portal</li>
+        </ul>
+
+        <div class="highlight-box">
+          <p>This project reinforced a core belief: <strong>design systems succeed when they unify people, not just pixels.</strong> Strategy, cross-functional alignment, and adoption matter as much as the component library itself.</p>
+        </div>
+
+        <div class="img-block">
+          <img src="../img/cui/hero.png" alt="CUI Design System in production">
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="section-white">
+    <div class="container">
+      <footer class="footer">
+        <p>Case study by Guilherme Cerqueira, 2026</p>
+      </footer>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" aria-label="Close">&times;</button>
+    <img src="" alt="">
+  </div>
+
+  <script>
+    (function() {
+      var lb = document.getElementById('lightbox');
+      var lbImg = lb.querySelector('img');
+      var lbClose = lb.querySelector('.lightbox-close');
+
+      document.querySelectorAll('.img-block img, .img-grid img').forEach(function(img) {
+        img.addEventListener('click', function() {
+          lbImg.src = this.src;
+          lbImg.alt = this.alt;
+          lb.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+
+      function close() {
+        lb.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      lbClose.addEventListener('click', close);
+      lb.addEventListener('click', function(e) { if (e.target === lb) close(); });
+      document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close(); });
+    })();
+  </script>
+
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guilherme Cerqueira — Portfolio 2026</title>
+  <title>Guilherme Cerqueira | Digital Product Design</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
@@ -84,7 +84,6 @@
   <section class="section-cases-v2 section-light" id="work">
     <div class="container">
       <header class="section-header" style="text-align:left;">
-        <p class="section-label">Case Studies</p>
         <div class="cases-v2-header-row">
           <h2 class="section-heading">Selected Work</h2>
           <div class="cases-v2-nav">
@@ -103,7 +102,7 @@
       <div class="cases-v2-track">
 
              <article class="cases-v2-card">
-          <a href="https://gcerqueira.github.io/pdfs/GuilhermeCerqueira_Tradeforce_CaseStudy.pdf" target="_blank" rel="noopener" class="cases-v2-link">
+          <a href="tradeforce/index.html" target="_blank" rel="noopener" class="cases-v2-link">
             <p class="cases-v2-tag">B2B SaaS · Field Operations · 2018</p>
             <h3 class="cases-v2-title">0→1 Field Team Management App</h3>
             <p class="cases-v2-desc">Led the design of a field team management platform from MVP to A/B testing — route tracking, real-time validation, and performance dashboards.</p>
@@ -181,8 +180,12 @@
           </div>
           <div class="about-text">
             <p>I'm a Brazilian product designer with 15+ years of experience building interfaces for millions of users. At Booking.com, I spent nearly six years in Amsterdam designing core flows and systems for one of the world's largest travel platforms, work that directly improved conversion and user experience at scale.</p>
-            <p>Since then, I've scaled design systems at fintech, led zero-to-one design for AI-first platforms, and consulted on complex product problems for enterprise brands. I'm energized by the intersection of thoughtful interaction design and strategic product thinking, whether that's designing conversational AI interfaces or building systems from the ground up.</p>
-            <p>I'm part of Toptal's top 3% of designers. When I'm not designing, I've been shredding guitar for over 20 years, currently in a thrash metal band. I'm also a Brazilian Jiu-Jitsu brown belt. I believe discipline and craft matter in everything.</p>
+            <div class="about-more" id="about-more">
+              <p>Since then, I've scaled design systems at fintech, led zero-to-one design for AI-first platforms, and consulted on complex product problems for enterprise brands. I'm energized by the intersection of thoughtful interaction design and strategic product thinking, whether that's designing conversational AI interfaces or building systems from the ground up. I'm also part of Toptal's top 3% of designers. </p>
+              <br/>
+              <p>When I'm not designing, I've been shredding guitar for over 20 years, playing mostly in metal bands. I'm also a Brazilian Jiu-Jitsu brown belt. I believe discipline and craft matter in everything.</p>
+            </div>
+            <button type="button" class="read-more-btn" data-target="about-more" data-label-more="More About Me" data-label-less="Read less" aria-expanded="false" aria-controls="about-more">More About Me</button>
           </div>
         </div>
 
@@ -260,34 +263,38 @@
               </ul>
             </div>
 
-            <div class="exp-compact-item">
-              <div class="exp-compact-header">
-                <p class="exp-compact-company">Trade Force (Neogrid)</p>
-                <p class="exp-compact-period">2014 — 2017</p>
+            <div class="exp-more" id="exp-more">
+              <div class="exp-compact-item">
+                <div class="exp-compact-header">
+                  <p class="exp-compact-company">Trade Force (Neogrid)</p>
+                  <p class="exp-compact-period">2014 — 2017</p>
+                </div>
+                <p class="exp-compact-role">Head of Design</p>
+                <p class="exp-compact-location">São Paulo, BR</p>
+                <ul class="exp-compact-achievements">
+                  <li>End-to-end design and front-end for web and mobile apps serving field retail teams</li>
+                  <li>Launched 0-to-1 products for GSK, BRF, Nestlé and Danone</li>
+                </ul>
               </div>
-              <p class="exp-compact-role">Head of Design</p>
-              <p class="exp-compact-location">São Paulo, BR</p>
-              <ul class="exp-compact-achievements">
-                <li>End-to-end design and front-end for web and mobile apps serving field retail teams</li>
-                <li>Launched 0-to-1 products for GSK, BRF, Nestlé and Danone</li>
-              </ul>
-            </div>
 
-            <div class="exp-compact-item">
-              <div class="exp-compact-header">
-                <p class="exp-compact-company">Pakua IT</p>
-                <p class="exp-compact-period">2011 — 2014</p>
+              <div class="exp-compact-item">
+                <div class="exp-compact-header">
+                  <p class="exp-compact-company">Pakua IT</p>
+                  <p class="exp-compact-period">2011 — 2014</p>
+                </div>
+                <p class="exp-compact-role">UX Designer & Front-End Developer</p>
+                <p class="exp-compact-location">São Paulo, BR</p>
+                <ul class="exp-compact-achievements">
+                  <li>A/B testing and CRO for Casas Bahia, Ponto Frio, and Bradesco</li>
+                  <li>Started the Trade Force project, which later became its own company</li>
+                </ul>
               </div>
-              <p class="exp-compact-role">UX Designer & Front-End Developer</p>
-              <p class="exp-compact-location">São Paulo, BR</p>
-              <ul class="exp-compact-achievements">
-                <li>A/B testing and CRO for Casas Bahia, Ponto Frio, and Bradesco</li>
-                <li>Started the Trade Force project, which later became its own company</li>
-              </ul>
             </div>
 
           </div>
           </div>
+
+          <button type="button" class="read-more-btn read-more-btn--exp" data-target="exp-more" data-label-more="Show earlier experience" data-label-less="Show less" aria-expanded="false" aria-controls="exp-more">Show earlier experience</button>
 
         </div>
 
@@ -310,7 +317,6 @@
   <section id="faq" class="section-faq section-light">
     <div class="container">
       <header class="section-header">
-        <p class="section-label">FAQ</p>
         <h2 class="section-heading">Frequently Asked Questions</h2>
       </header>
 
@@ -414,7 +420,6 @@
   <section class="section-contact section-dark" id="contact">
     <div class="container">
       <header class="section-header section-header--centered">
-        <p class="section-label">Contact</p>
         <h2 class="section-heading">Let's work together.</h2>
         <p class="contact-subtext">Available for freelance, contract, and full-time opportunities.</p>
       </header>
@@ -524,6 +529,17 @@
       a.addEventListener('click', e => {
         const target = document.querySelector(a.getAttribute('href'));
         if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+
+    /* ─── Read more toggles (mobile) ─── */
+    document.querySelectorAll('.read-more-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = document.getElementById(btn.dataset.target);
+        if (!target) return;
+        const isOpen = target.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+        btn.textContent = isOpen ? btn.dataset.labelLess : btn.dataset.labelMore;
       });
     });
 

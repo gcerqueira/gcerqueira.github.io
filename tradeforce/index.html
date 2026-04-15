@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Trade Force: 0 to 1 product design case study by Guilherme Cerqueira">
+  <meta name="author" content="Guilherme Cerqueira">
+  <title>Trade Force | Guilherme Cerqueira</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="../img/favicon/apple-icon-180x180.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="../img/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../img/favicon/favicon-16x16.png">
+  <link rel="shortcut icon" href="../img/favicon/favicon.ico">
+  <meta name="theme-color" content="#000000">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --color-white:          #ffffff;
+      --color-grey:           #f5f5f7;
+      --color-near-black:     #1d1d1f;
+      --color-text-primary:   #1d1d1f;
+      --color-text-secondary: rgba(0, 0, 0, 0.56);
+      --color-text-tertiary:  rgba(0, 0, 0, 0.44);
+      --color-blue:           #0071e3;
+      --color-border:         rgba(0, 0, 0, 0.08);
+      --color-highlight-bg:   #f0f6ff;
+      --color-highlight-text: #004499;
+      --color-impact-bg:      #f0fdf4;
+      --color-impact-border:  #4ade80;
+      --color-impact-text:    #15803d;
+
+      --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+      --radius-sm:   5px;
+      --radius-md:   8px;
+      --radius-lg:   12px;
+      --max:    880px;
+      --section: 96px;
+    }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      background: var(--color-white);
+      color: var(--color-text-primary);
+      font-family: var(--font);
+      font-size: 17px;
+      line-height: 1.6;
+      letter-spacing: -0.374px;
+    }
+
+    .container {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* -- NAV -- */
+    .case-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      padding: 0 24px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      transition: color 150ms ease;
+    }
+    .back-link:hover { color: var(--color-text-primary); }
+    .back-link svg { width: 12px; height: 12px; flex-shrink: 0; }
+
+    /* -- SECTION BACKGROUNDS -- */
+    .section-white { background: var(--color-white); }
+    .section-grey  { background: var(--color-grey); }
+
+    /* -- HEADER -- */
+    .header { padding: 96px 0 72px; }
+
+    .project-tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: clamp(28px, 5vw, 44px);
+      font-weight: 600;
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+      color: var(--color-near-black);
+      margin-bottom: 36px;
+      max-width: 640px;
+    }
+
+    .project-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 36px;
+      padding-top: 28px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .meta-item { display: flex; flex-direction: column; gap: 4px; }
+
+    .meta-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+    }
+
+    .meta-value {
+      font-size: 14px;
+      letter-spacing: -0.224px;
+      color: var(--color-text-secondary);
+    }
+
+    /* -- TL;DR -- */
+    .tldr {
+      background: var(--color-grey);
+      border-radius: var(--radius-lg);
+      padding: 36px 40px;
+      margin-bottom: var(--section);
+    }
+
+    .tldr-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-blue);
+      margin-bottom: 28px;
+      display: block;
+    }
+
+    .tldr-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px 48px;
+    }
+
+    .tldr-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .tldr-item p {
+      font-size: 15px;
+      line-height: 1.6;
+      letter-spacing: -0.2px;
+      color: var(--color-text-primary);
+      margin-bottom: 0;
+    }
+
+    .tldr-item.span-2 { grid-column: 1 / -1; }
+
+    /* -- CASE SECTION -- */
+    .case-section { padding: var(--section) 0; }
+
+    .section-eyebrow {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--color-text-tertiary);
+      margin-bottom: 14px;
+      display: block;
+    }
+
+    h2 {
+      font-size: clamp(22px, 3vw, 28px);
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      line-height: 1.2;
+      margin-bottom: 24px;
+      color: var(--color-near-black);
+    }
+
+    h3 {
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.3;
+      letter-spacing: -0.2px;
+      margin-bottom: 14px;
+      margin-top: 56px;
+      color: var(--color-near-black);
+    }
+
+    h3:first-of-type { margin-top: 40px; }
+
+    p {
+      font-size: 17px;
+      line-height: 1.6;
+      letter-spacing: -0.374px;
+      color: var(--color-text-secondary);
+      margin-bottom: 20px;
+    }
+
+    p:last-child { margin-bottom: 0; }
+
+    /* -- CALLOUT — Impact -- */
+    .impact {
+      background: var(--color-impact-bg);
+      border-left: 3px solid var(--color-impact-border);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 18px 22px;
+      margin: 32px 0;
+    }
+
+    .impact p {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color-impact-text);
+      line-height: 1.6;
+      letter-spacing: -0.2px;
+      margin-bottom: 0;
+    }
+
+    /* -- CALLOUT — Highlight -- */
+    .highlight {
+      background: var(--color-highlight-bg);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      margin: 32px 0;
+    }
+
+    .highlight p {
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color-highlight-text);
+      line-height: 1.6;
+      letter-spacing: -0.2px;
+      margin-bottom: 0;
+    }
+
+    /* -- STATS -- */
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 32px 0;
+    }
+
+    .stat-card {
+      border-radius: var(--radius-md);
+      padding: 24px 16px;
+      text-align: center;
+    }
+
+    .section-white .stat-card { background: var(--color-grey); }
+    .section-grey  .stat-card { background: var(--color-white); border: 1px solid var(--color-border); }
+
+    .stat-number {
+      font-size: 30px;
+      font-weight: 600;
+      letter-spacing: -0.5px;
+      line-height: 1;
+      margin-bottom: 10px;
+      display: block;
+      color: var(--color-blue);
+    }
+
+    .stat-label {
+      font-size: 13px;
+      letter-spacing: -0.1px;
+      line-height: 1.45;
+      color: var(--color-text-tertiary);
+    }
+
+    /* -- LIGHTBOX -- */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 200ms ease;
+      cursor: zoom-out;
+    }
+
+    .lightbox.active { opacity: 1; pointer-events: auto; }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 88vh;
+      border-radius: var(--radius-lg);
+      object-fit: contain;
+      transform: scale(0.97);
+      transition: transform 200ms ease;
+    }
+
+    .lightbox.active img { transform: scale(1); }
+
+    .lightbox-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      width: 36px;
+      height: 36px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.15);
+      color: white;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 150ms ease;
+    }
+
+    .lightbox-close:hover { background: rgba(255, 255, 255, 0.28); }
+
+    /* -- IMAGES -- */
+    .img-block { margin: 44px 0; }
+
+    .img-block img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      display: block;
+      cursor: zoom-in;
+    }
+
+    .img-caption {
+      font-size: 13px;
+      letter-spacing: -0.1px;
+      margin-top: 12px;
+      line-height: 1.5;
+      color: var(--color-text-tertiary);
+      font-style: italic;
+    }
+
+    .img-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 44px 0;
+    }
+
+    .img-grid img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      display: block;
+      cursor: zoom-in;
+    }
+
+    .img-grid-caption {
+      grid-column: 1 / -1;
+      font-size: 13px;
+      letter-spacing: -0.1px;
+      line-height: 1.5;
+      color: var(--color-text-tertiary);
+      font-style: italic;
+    }
+
+    .img-grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin: 44px 0;
+    }
+
+    .img-grid-3 img {
+      width: 100%;
+      height: auto;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border);
+      display: block;
+      cursor: zoom-in;
+    }
+
+    .img-grid-3-caption {
+      grid-column: 1 / -1;
+      font-size: 13px;
+      letter-spacing: -0.1px;
+      line-height: 1.5;
+      color: var(--color-text-tertiary);
+      font-style: italic;
+    }
+
+    /* -- FOOTER -- */
+    .footer {
+      padding: 40px 0;
+      border-top: 1px solid var(--color-border);
+      text-align: center;
+    }
+
+    .footer p { font-size: 13px; color: var(--color-text-tertiary); }
+
+    /* -- RESPONSIVE -- */
+    @media (max-width: 640px) {
+      .header { padding: 64px 0 48px; }
+      h1 { font-size: 26px; }
+      h2 { font-size: 20px; }
+      .tldr { padding: 24px; }
+      .tldr-grid { grid-template-columns: 1fr; }
+      .img-grid { grid-template-columns: 1fr; }
+      .img-grid-3 { grid-template-columns: 1fr; }
+      .project-meta { gap: 20px; }
+      .stat-row { grid-template-columns: 1fr; gap: 8px; }
+      .case-section { padding: 56px 0; }
+    }
+
+    @media print {
+      body { background: white; }
+      .case-nav { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="case-nav">
+    <a href="../index.html" class="back-link">
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M10 3L5 8l5 5"/>
+      </svg>
+      Back to portfolio
+    </a>
+  </nav>
+
+  <!-- HEADER -->
+  <div class="section-white">
+    <div class="container">
+      <header class="header">
+        <span class="project-tag">0 &rarr; 1</span>
+        <h1>Designing Trade Force: a two-part product suite for trade marketing field teams</h1>
+        <div class="project-meta">
+          <div class="meta-item">
+            <span class="meta-label">Role</span>
+            <span class="meta-value">Sole UX Designer</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Company</span>
+            <span class="meta-value">Trade Force (startup)</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Timeline</span>
+            <span class="meta-value">2016&ndash;2018</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Team</span>
+            <span class="meta-value">Solo designer, 3 engineers, 1 PM</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- HERO IMAGE -->
+      <div class="img-block" style="margin-bottom: 72px;">
+        <img src="../img/tf/hero.png" alt="Trade Force web portal and mobile app">
+        <p class="img-caption">The shipped Trade Force product suite: the web portal for managers and the mobile app for field team members.</p>
+      </div>
+
+      <!-- TL;DR -->
+      <section class="tldr">
+        <span class="tldr-eyebrow">TL;DR</span>
+        <div class="tldr-grid">
+          <div class="tldr-item">
+            <span class="tldr-label">What</span>
+            <p>A two-part product built from zero: a mobile app for field team members and a web portal for managers, replacing paper-based trade marketing workflows with a connected, real-time solution.</p>
+          </div>
+          <div class="tldr-item">
+            <span class="tldr-label">Problem</span>
+            <p>Trade marketing companies in Brazil had no dedicated software for field operations. Managers relied on phone calls and end-of-day spreadsheets. Field members planned routes manually and filled forms on paper. The gap between what happened at the point of sale and what managers knew was measured in hours, not minutes.</p>
+          </div>
+          <div class="tldr-item">
+            <span class="tldr-label">My Role</span>
+            <p>I owned the entire design process: setting product direction through research, defining the MVP scope with the founding team, and designing both platforms end to end. That included a shared style guide, high-fidelity prototypes, usability testing, and post-launch A/B experimentation.</p>
+          </div>
+          <div class="tldr-item">
+            <span class="tldr-label">Approach</span>
+            <p>Ten structured interviews to build the problem framing, a HMW session to align the founding team before any design work started, six scoped MVP requirements, and an iterative post-launch cycle using Hotjar and Google Analytics before scaling to A/B testing.</p>
+          </div>
+          <div class="tldr-item span-2">
+            <span class="tldr-label">Impact</span>
+            <p>Trade Force grew into a market-leading solution for trade marketing teams in Brazil. Post-launch experiments confirmed form UX was the highest-leverage area: unanswered form submissions dropped <strong>21%</strong>, average completion time fell <strong>8%</strong>, and a badge redesign improved readability without hurting conversion.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- SECTION 1 — CONTEXT -->
+  <div class="section-grey">
+    <div class="container">
+      <section class="case-section">
+        <span class="section-eyebrow">Context</span>
+        <h2>A market running on phone calls, paper forms, and end-of-day spreadsheets</h2>
+        <p>Trade marketing in Brazil is a field-heavy operation. Companies send teams of promoters and merchandisers to visit points of sale to audit product availability, validate promotions, and collect merchandising data. At the time, most of this was managed by phone, paper forms, and manual re-entry.</p>
+        <p>Managers had no visibility into what was happening in the field until it was too late to act. Field members had no routing support, no digital forms, and no way to log their work in real time. <strong>Trade Force was founded to close that gap.</strong> I joined as the sole designer with no prior product to build on.</p>
+      </section>
+    </div>
+  </div>
+
+  <!-- SECTION 2 — THE PROBLEM -->
+  <div class="section-white">
+    <div class="container">
+      <section class="case-section">
+        <span class="section-eyebrow">The Problem</span>
+        <h2>Two audiences, the same root failure: no tools that fit their actual work</h2>
+        <p>I started with ten structured interviews, five managers and five field team members. The problems were concrete. Managers spent hours each week re-entering handwritten field data into spreadsheets with no ability to react during the day. Field members planned their own routes without any tooling, filled forms by hand, and had no way to track what they had already done. Errors compounded across large teams.</p>
+        <p>Competitive analysis confirmed what the interviews suggested. Every existing tool had a mobile app and a web portal, but none had consistent design across platforms, smart routing, or customizable reports. <strong>The design bar was low, which framed the opportunity clearly: this was not a feature gap but a product quality gap.</strong></p>
+
+        <div class="img-block">
+          <img src="competitionanalysis.jpg" alt="Competitive analysis: screenshots of existing trade marketing tools showing fragmented and inconsistent interfaces">
+          <p class="img-caption">Competitive landscape review. Every tool benchmarked shared the same structural problems: inconsistent design across platforms, no clear information hierarchy, rigid forms, and limited routing. None had a design system in place.</p>
+        </div>
+
+        <div class="stat-row">
+          <div class="stat-card">
+            <span class="stat-number">10</span>
+            <span class="stat-label">structured interviews across managers and field team members</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">0</span>
+            <span class="stat-label">existing tools with consistent cross-platform design in the market</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">2</span>
+            <span class="stat-label">connected products designed in parallel from the start</span>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- SECTION 3 — DISCOVERY -->
+  <div class="section-grey">
+    <div class="container">
+      <section class="case-section">
+        <span class="section-eyebrow">Discovery</span>
+        <h2>Three insights that changed what actually got built</h2>
+        <p>I organized the interview data into an affinity diagram, grouping observations for both user groups in parallel. Keeping manager and field team insights in the same view made cross-product tensions visible early, which mattered when design decisions would later trade off one group's needs against the other's.</p>
+
+        <div class="img-block">
+          <img src="affinitydiagram.png" alt="Affinity diagram with four columns: Goals, Activities and tasks, Pain points, Improvement opportunities, for both managers and field team members">
+          <p class="img-caption">Affinity diagram built from the ten interviews. The green rows represent managers, the white rows represent field team members. Keeping both groups in the same diagram made cross-product tensions visible early.</p>
+        </div>
+
+        <p>Three findings shaped what actually got built. <strong>Field team members were not tech enthusiasts.</strong> Many used work-issued low-end Android phones and would abandon anything that required learning a new pattern. <strong>Managers' primary anxiety was real-time status</strong>, not historical reporting; every interview surfaced the same question: "where is my team right now?" And form execution was consuming up to 30 minutes of paperwork per visit, which pushed mobile form speed much higher on the priority stack than the initial brief suggested.</p>
+        <p>I built two personas to keep the team anchored on real users. Every significant design trade-off went back to Carla and Camila.</p>
+
+        <div class="img-grid">
+          <img src="persona1.jpg" alt="Carla César persona, 22-year-old retail merchandising promoter, field team member">
+          <img src="persona2.jpg" alt="Camila Droghetti persona, 37-year-old merchandising coordinator, trade marketing manager">
+          <p class="img-grid-caption">The two personas that guided every major design decision. Carla is a 22-year-old retail promoter who manages a full daily route on a work-issued device and distrusts complex software. Camila is a 37-year-old coordinator drowning in spreadsheets who needs real-time visibility on her team.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- SECTION 4 — DIRECTION -->
+  <div class="section-white">
+    <div class="container">
+      <section class="case-section">
+        <span class="section-eyebrow">Direction</span>
+        <h2>From six HMW questions to a concrete MVP with six core requirements</h2>
+        <p>I facilitated a HMW session with the founding team to translate research into a shared problem framing. <strong>The goal was alignment on what the product needed to solve before anyone touched a wireframe.</strong> Five questions came out of it: reduce commuting time for field members; help them fill forms faster; let managers track their team in real time; make it easy to create routes and tasks; give field members visibility into their own daily progress.</p>
+        <p>From those, <strong>I defined six core MVP requirements</strong> and mapped them to user stories and acceptance criteria that engineering could act on directly: team registration, a POS database, route creation, check-in and check-out, form creation and execution, and a reporting dashboard.</p>
+
+        <div class="img-block">
+          <img src="userstories.png" alt="User stories table mapping MVP requirements to user stories and acceptance criteria for both managers and field team members">
+          <p class="img-caption">The user stories and MVP requirements table. Each of the six core requirements mapped to specific user stories and acceptance criteria for both personas, giving engineering a clear scope to build from.</p>
+        </div>
+
+        <p>Before touching any pixels, I mapped the end-to-end flows for both personas in parallel. This was the most consequential structural decision I made early: <strong>treating the two products as one connected system</strong>, not two separate builds. A manager's route-building on the web was what made the field member's day possible. Getting that loop right in the flows prevented architecture mismatches downstream.</p>
+
+        <div class="img-grid">
+          <img src="userflowfieldteammember.png" alt="Field team member user flow: login at home, check planned route, go to POS, check-in, fill forms, check-out, go home">
+          <img src="userflowmanager.png" alt="Manager user flow: login to web portal, register team, register POS, assign routes, create forms, analyze data, take action">
+          <p class="img-grid-caption">Left: the field team member flow, a linear daily loop anchored on check-in and check-out at each POS. Right: the manager flow, a hub-and-spoke structure around the dashboard, with team setup, route creation, and form building feeding the field.</p>
+        </div>
+
+        <p>Sitemaps for both products followed, then paper sketches and Crazy 8's before committing to wireframes. Early sketches focused on the four areas with the most open design questions: the mobile POS flow, the manager dashboard, the form builder, and the map-based route creator.</p>
+
+        <div class="img-grid-3">
+          <img src="20211011_125905%201.jpg" alt="Paper sketches of mobile screens: login, daily POS list, check-in, forms flow">
+          <img src="20211011_130653%201.jpg" alt="Paper sketches of web dashboard and map-based route creator">
+          <img src="20211011_130657%201.jpg" alt="Paper sketches of form creator, POS detail page, and reports">
+          <p class="img-grid-3-caption">Early paper sketches covering the four areas with the most open design questions: the mobile POS execution flow, the manager dashboard, the form builder, and the map-based route creator. Done before any digital wireframing to explore structure without commitment.</p>
+        </div>
+
+        <div class="img-grid">
+          <img src="sitemapmobile.png" alt="Mobile app sitemap: Login, Daily POS list, Selected POS with branches for Route suggestion, Absence, Check-in, Form List, Check-out">
+          <img src="sitemapweb.png" alt="Web portal sitemap: Login, Dashboard, Team, Points of sale, SKUs, Forms, Routes, Reports">
+          <p class="img-grid-caption">Left: mobile app sitemap, structured around the daily POS execution loop. Right: web portal sitemap, with six top-level sections branching from the dashboard. Mapping both together made the data handoffs between products visible before any design work started.</p>
+        </div>
+
+        <p>With the architecture clear, I moved into wireframes for both products: mobile first, covering the complete field member flow end to end, then the web portal across all six MVP sections.</p>
+
+        <div class="img-block">
+          <img src="wireframes.png" alt="Mobile app wireframes showing the complete field team member flow: login, daily list, POS selection, check-in, forms, check-out, completion">
+          <p class="img-caption">Mobile app wireframes for the full field team member flow. Each step from login through daily POS list, check-in, form execution, and end-of-day completion mapped out before moving to high-fidelity design.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- SECTION 5 — DESIGN DECISIONS -->
+  <div class="section-grey">
+    <div class="container">
+      <section class="case-section">
+        <span class="section-eyebrow">Design Decisions</span>
+        <h2>Building two connected products from a shared foundation</h2>
+        <p>Before any high-fidelity work started, <strong>I built a style guide covering typography, spacing tokens, colors, and component states</strong>. Two connected products, no prior system: this foundation was what kept the web portal and mobile app visually coherent rather than two separately-designed products that happened to share a name.</p>
+
+        <h3>Manager dashboard</h3>
+        <p>I validated the dashboard's specific metrics through a targeted survey of ten managers, asking what data they needed most on a daily basis. The answers were nearly unanimous. <strong>The card-and-column layout kept all critical information visible without any interaction:</strong> visits completed, forms answered, tasks pending, and individual team member status at a glance. Charts showed intraday trends so managers could spot problems while there was still time to act.</p>
+
+        <div class="img-block">
+          <img src="dashboard.png" alt="Trade Force manager dashboard showing real-time metrics: 78% completion rate, 48% form completion, 453 visits, charts and team status">
+          <p class="img-caption">The manager dashboard. Real-time metrics validated through manager interviews occupy the top row; trend charts and team breakdown fill the bottom. The card layout kept the portal responsive across browser sizes. Shipped design.</p>
+        </div>
+
+        <h3>My team</h3>
+        <p>The team list used the same table structure as every other list view in the portal. <strong>Consistency was a deliberate decision.</strong> Once a manager learned the pattern in one place, it worked everywhere. Clicking any member opened a personal dashboard scoped to that individual, using the same validated metrics from the main dashboard. Managers could add members manually or import a CSV for bulk registration.</p>
+
+        <div class="img-grid">
+          <img src="myteam1.png" alt="My team list view: table showing all team members with role, home address, last login, and action buttons">
+          <img src="myteam2.png" alt="Individual team member dashboard for Carlos Cesar showing today's route, battery level, check-in stats, forms answered, and today's timeline">
+          <p class="img-grid-caption">Left: the team list. The table structure was consistent across all list pages in the product; once a manager learned it in one place, it worked everywhere. Right: the individual member dashboard, with the metrics voted most important by managers in the validation survey. Shipped designs.</p>
+        </div>
+
+        <p>The route calendar was designed around Google Calendar familiarity. Managers could assign, duplicate, or set recurring routes without learning anything new.</p>
+
+        <div class="img-block">
+          <img src="mycalendar2.png" alt="Route calendar for Carlos Cesar showing August 2019 with daily routes assigned across the month">
+          <p class="img-caption">The route calendar with routes assigned across the month. The calendar-style layout was immediately familiar to managers who already used Google Calendar for scheduling. Shipped design.</p>
+        </div>
+
+        <h3>Reports</h3>
+        <p>The reports section let managers extract visit data filtered by date, team member, or POS and export to .xls or .csv. The export formats came directly from interviews: managers needed to bring data into Excel, and that was non-negotiable.</p>
+
+        <div class="img-block">
+          <img src="reports1.png" alt="Reports list view with filters for date range, team member, and POS, with a table of visit results below">
+          <p class="img-caption">The reports list view. Filters for date range, member, and POS let managers narrow results before exporting. The table structure matched the rest of the portal for consistency. Shipped design.</p>
+        </div>
+
+        <p><strong>The original report detail was a modal. After testing with five users, I stopped defending it.</strong> Forms with 15 or more questions broke the interaction completely. Moving to a full page solved it and made deep linking possible as a bonus.</p>
+
+        <div class="img-grid">
+          <img src="oldreportdetails.png" alt="Original report detail as a modal overlay on top of the reports list, with form answers cramped inside">
+          <img src="newreportdetails.png" alt="Updated report detail as a full dedicated page with breadcrumb navigation, export buttons, and tabbed form sections">
+          <p class="img-grid-caption">Left: the original modal approach, functional for short forms but broken for long ones. Right: the redesigned full-page report detail, with breadcrumb navigation, export actions, and tabs for each form category. The page approach also made deep linking possible. Shipped design.</p>
+        </div>
+
+        <h3>Points of sale</h3>
+        <p>The POS section was the product's master store database. Managers could add POS manually, import via CSV, or pull from Trade Force's own location database. <strong>The last-visit date column came directly from a user request:</strong> managers wanted to spot locations that had quietly dropped off the rotation. Each POS had its own detail page with a map, visit history, and a form assignment panel.</p>
+
+        <div class="img-grid">
+          <img src="pointofsales.png" alt="Points of sale list view showing a table with brand logos, addresses, number of forms, and last visit dates">
+          <img src="POSdetails.png" alt="POS detail page for Carrefour Pamplona 201 showing a map, general information, last visits chart, last visit team members, and form assignment panel">
+          <p class="img-grid-caption">Left: the POS list. Brand logos made large lists scannable at a glance. Right: the POS detail with a map, visit history, and form assignment in a single view. Shipped designs.</p>
+        </div>
+
+        <h3>Form creator</h3>
+        <p>The form creator supported six question types, drag-and-drop reordering, required field flags, and SKU association for product-level reporting. <strong>The key structural decision was a fixed right-hand action column,</strong> keeping Save and Add question always visible regardless of form length. In the first version these actions were at the bottom of the page; after early user feedback, fixing them in place cut the workflow time significantly.</p>
+
+        <div class="img-block">
+          <img src="formcreator1.png" alt="Form creator page showing question list on the left with different question types, and a fixed right column with Add new question and Save form buttons">
+          <p class="img-caption">The form creator. The fixed right-hand action column kept Save and Add question reachable regardless of form length, a detail that had measurable impact on the efficiency of the manager's most frequent task. Shipped design.</p>
+        </div>
+
+        <p>Two features differentiated the form creator from anything available in the market: <strong>SKU association per question</strong> for product-level filtering in reports, and <strong>reverse POS assignment</strong> (attaching multiple stores to one form instead of multiple forms to one store), essential for category-wide audits.</p>
+
+        <div class="img-grid">
+          <img src="formcreator2.png" alt="Associate product modal showing a search field with autocomplete results for Shampoo Seda Ceramidas SKUs">
+          <img src="formcreator3.png" alt="Assign to POS screen showing a list of POS on the left and selected POS on the right with addresses visible">
+          <p class="img-grid-caption">Left: the SKU association modal, allowing managers to link specific products to individual form questions for product-level reporting. Right: the reverse POS assignment flow, attaching multiple store locations to a single form, with addresses shown to distinguish same-brand stores. Shipped designs.</p>
+        </div>
+
+        <h3>Route creator</h3>
+        <p>Users consistently mentioned Google Maps in interviews, so I used it as the design reference rather than inventing something new. The map dominated the screen, POS were added from a proximity-filtered list with an adjustable radius slider, and numbered pins appeared on the map as the route was built. <strong>Drag-and-drop reordering with automatic recalculation meant managers could optimize a route in seconds.</strong></p>
+
+        <div class="img-grid">
+          <img src="routecreator3.png" alt="Route creator blank state for Carlos Cesar showing start address and Add POS button">
+          <img src="routecreator4.png" alt="Route creator with Add POS panel showing a radius slider set to 4km and a filtered list of nearby POS with distances">
+          <p class="img-grid-caption">Left: the route creator after selecting a team member; the start address is automatically pulled from their profile. Right: the POS selection panel with a configurable radius slider filtering stores by proximity to the member's home. Only relevant POS appear, reducing the cognitive load of route building.</p>
+        </div>
+
+        <p>Completed routes were saved to a list for reuse and direct scheduling in the calendar, closing the loop between route creation and daily planning.</p>
+
+        <div class="img-grid">
+          <img src="routecreator5.png" alt="Completed route for Carlos Cesar showing numbered pins on the map, POS sequence in the left column with travel times between each stop">
+          <img src="routecreator6.png" alt="Saved routes list showing Monday through Christmas routes with copy, edit, and delete actions">
+          <p class="img-grid-caption">Left: a completed route, with numbered pins showing the visit sequence and travel times between each stop in the left column. Right: the saved routes list, reusable across the calendar for recurring daily patterns. Shipped designs.</p>
+        </div>
+
+        <h3>Mobile app</h3>
+        <p>The login screen was deliberately minimal: three fields, one action. After login, the app needed up to 15 seconds to download route data. <strong>Without a progress indicator, early testers assumed the app had crashed and force-closed it.</strong> A loading screen with a clear message resolved first-day abandonment entirely and was one of the smallest implementations with the biggest impact.</p>
+
+        <div class="img-grid">
+          <img src="mobilelogin.jpg" alt="Trade Force mobile login screen with company ID, username, and password fields on a dark background with the Trade Force logo">
+          <img src="mobileloading.png" alt="Mobile loading screen showing welcome message, user profile photo, and a progress bar with Loading your daily routes text">
+          <p class="img-grid-caption">Left: the login screen, intentionally simple, three fields and one action. Right: the loading screen with progress bar. Without this indicator, early testers force-closed the app before their data finished downloading. Shipped designs.</p>
+        </div>
+
+        <p>The daily POS list showed the current day in focus with the next three days visible for planning ahead. Tapping any store opened three options: route suggestion, check-in, or absence. <strong>Execution order was deliberately flexible.</strong> Field members could visit POS in any sequence if real conditions required it, a decision that came directly from what the research showed about daily unpredictability in the field.</p>
+
+        <div class="img-grid">
+          <img src="mobilevisitlist.jpg" alt="Mobile daily POS list showing four stores for today: Carrefour, Pao de Acucar, Extra Albino, and Dia Henrique, with distances">
+          <img src="mobileposoptions.png" alt="Mobile POS detail screen for Carrefour Sapucaia 201 showing three options: Route suggestion, Check-in, and Absence">
+          <p class="img-grid-caption">Left: the daily POS list. The current day shows all stores to visit in order, with distances that updated as the user moved. Future days let field members plan commuting logistics the day before. Right: the POS action screen, three clear options with no extraneous controls. Shipped designs.</p>
+        </div>
+
+        <p>Route suggestions linked directly to Google Maps for turn-by-turn navigation. After checking in, users saw pending form categories with counts per category. Once all forms across all categories were done, check-out appeared, sending all collected data back to the manager's dashboard.</p>
+
+        <div class="img-grid">
+          <img src="mobileroutesuggestions.png" alt="Mobile route suggestion screen for Carrefour Sapucaia 201 showing a map with the route highlighted and distance and time estimates">
+          <img src="mobiletasks.png" alt="Mobile task list after check-in showing Execution (4 forms pending), Solicitations (3 forms pending), and Negotiations (2 forms pending)">
+          <p class="img-grid-caption">Left: the route suggestion screen. Tapping the map opened Google Maps directly, with no new mental model for navigation. Right: the post-check-in task list, showing pending forms per category with counts. Shipped designs.</p>
+        </div>
+
+        <p>Forms opened as a scrollable view per category with required fields clearly marked and a completion indicator per tab. The moment all categories were done, the check-out option appeared. No ambiguity about what was left.</p>
+
+        <div class="img-grid">
+          <img src="mobileforms.jpg" alt="Mobile form answering screen for Execution at Carrefour Sapucaia 201 with text input, camera prompt, and multiple choice questions">
+          <img src="mobileformcomplete.jpg" alt="Mobile all-forms-completed screen showing Execution, Solicitations, and Negotiations all marked as Completed with a congratulations message">
+          <p class="img-grid-caption">Left: a form in progress. Required questions are flagged clearly. The tab bar shows completion status across form categories. Right: all forms completed, a clear confirmation state before check-out. Shipped designs.</p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- SECTION 6 — CHALLENGES -->
+  <div class="section-white">
+    <div class="container">
+      <section class="case-section">
+        <span class="section-eyebrow">Challenges</span>
+        <h2>Two connected products, one designer, and users who would abandon anything complex</h2>
+        <p><strong>The hardest constraint was keeping two deeply connected products in sync throughout the design process.</strong> Every web portal decision had a mobile implication. Form types defined on the web had to render on a 5-inch screen. Manager route sequences had to be followable in the field with one hand. Keeping both products in the same Figma file, side by side, was a practical solution, but it required constant discipline to maintain.</p>
+        <p>Designing for low-tech-comfort users on low-end hardware was a consistent filter. I removed any feature that required explanation rather than documenting my way around a confusing design. The Google Maps reference for routing was the most deliberate application of this: <strong>don't invent a new mental model when users already have a reliable one.</strong></p>
+
+        <div class="highlight">
+          <p>Pre-launch usability testing was limited by time and budget. The product launched without a complete test pass on the final designs. No structural problems surfaced post-launch; issues found through Hotjar were refinements, not rework. <strong>That result was the return on the research and architecture investment made before any pixels were touched.</strong></p>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- SECTION 7 — OUTCOME -->
+  <div class="section-grey">
+    <div class="container">
+      <section class="case-section">
+        <span class="section-eyebrow">Outcome</span>
+        <h2>An MVP that held up, and the experiments that confirmed what actually mattered</h2>
+        <p>The MVP launched without structural failures. Hotjar surveys and Google Analytics confirmed the design held up; feedback was about specific refinements, not rework. That validated the research-first approach more clearly than any internal review could.</p>
+
+        <div class="img-block">
+          <img src="hotjarsurveys.png" alt="Hotjar survey results table showing user feedback across multiple feature areas of the Trade Force web portal">
+          <p class="img-caption">A sample of Hotjar survey results collected from real users on the web portal. Feedback was positive overall but surfaced specific friction points (collapsible sidebar, better table sorting, improved filters) that drove the next round of iterations.</p>
+        </div>
+
+        <p>The next iteration round consolidated around three principles: <strong>flexibility, clarity, and friendliness.</strong> That translated into a lighter palette, collapsible sidebar, improved table sorting and filtering, and contextual tooltips that surfaced information without cluttering the primary view.</p>
+
+        <div class="img-grid">
+          <img src="designimprovement1.png" alt="Redesigned reports page shown on a laptop with updated layout, cleaner typography, and improved filter controls">
+          <img src="designimprovement2.png" alt="Redesigned team member dashboard on a laptop showing the updated lighter design with card-based layout and improved charts">
+          <p class="img-grid-caption">The redesigned reports page (left) and team member dashboard (right) after iterating based on Hotjar feedback. Lighter palette, cleaner hierarchy, and more breathing room compared to the MVP versions.</p>
+        </div>
+
+        <div class="img-block">
+          <img src="designimprovement3.png" alt="Redesigned route creator on a laptop showing the updated interface with improved map controls and POS list">
+          <p class="img-caption">The redesigned route creator. The core Google Maps-inspired structure stayed the same; what changed was the visual refinement and improved controls for the radius slider and POS list.</p>
+        </div>
+
+        <p>Once mobile traffic was large enough for statistical power, I designed and ran three A/B tests, each tied to a specific hypothesis from the original research.</p>
+
+        <div class="img-block">
+          <img src="abtesting1.png" alt="A/B test 1: daily POS list, original list view on the left versus a redesigned version with a welcome card and structured POS cards on the right">
+          <p class="img-caption">A/B test 1: a timeline-style POS list tested whether restructuring the daily visit list with a welcome card and cleaner POS cards would improve execution compliance (routes completed in the suggested order). The primary metric showed no significant movement. Not shipped.</p>
+        </div>
+
+        <div class="img-block">
+          <img src="abstesting2.png" alt="A/B test 2: badge redesign, original task list with text-based pending badges on the left versus simplified numeric badges on the right">
+          <p class="img-caption">A/B test 2: a badge redesign tested whether simplified numeric form-count badges would improve readability without hurting conversion. A non-inferiority test confirmed all success criteria: time on page decreased 8%, and the design was easier to extend with new form types. Shipped.</p>
+        </div>
+
+        <div class="img-block">
+          <img src="abtesting3.png" alt="A/B test 3: collapsible form questions, original expanded form view on the left versus a collapsible question list with inline answers on the right">
+          <p class="img-caption">A/B test 3: collapsible form questions tested whether making questions expandable and showing answers inline would reduce errors and completion time. Average time per section decreased 8%. Form submissions with unanswered questions dropped 21%. Users said it gave them a better overview of what they had answered. Shipped.</p>
+        </div>
+
+        <div class="impact">
+          <p><strong>Two of three experiments shipped.</strong> The strongest results came from form UX improvements, exactly the area the original research had flagged as highest-leverage. The data confirmed what the interviews had already told us, two years earlier.</p>
+        </div>
+
+        <div class="stat-row">
+          <div class="stat-card">
+            <span class="stat-number">&minus;21%</span>
+            <span class="stat-label">form submissions with unanswered questions after collapsible questions shipped</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">&minus;8%</span>
+            <span class="stat-label">average time per form section after form UX improvements</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">2/3</span>
+            <span class="stat-label">A/B experiments shipped with confirmed positive results</span>
+          </div>
+        </div>
+
+        <p>Trade Force became a market-leading solution for trade marketing teams in Brazil. The biggest thing I would do differently: <strong>formalize the style guide into a proper design system before the product scaled</strong>. What I built was functional for launch, but the absence of documented component rules created drift as the product grew. It was good enough for v1. It was not built for what came after.</p>
+      </section>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="section-white">
+    <div class="container">
+      <footer class="footer">
+        <p>Case study by Guilherme Cerqueira, 2025</p>
+      </footer>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" aria-label="Close">&times;</button>
+    <img src="" alt="">
+  </div>
+
+  <script>
+    (function() {
+      const lb = document.getElementById('lightbox');
+      const lbImg = lb.querySelector('img');
+      const lbClose = lb.querySelector('.lightbox-close');
+
+      document.querySelectorAll('.img-block img, .img-grid img, .img-grid-3 img').forEach(function(img) {
+        img.addEventListener('click', function() {
+          lbImg.src = this.src;
+          lbImg.alt = this.alt;
+          lb.classList.add('active');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+
+      function close() {
+        lb.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      lbClose.addEventListener('click', close);
+      lb.addEventListener('click', function(e) { if (e.target === lb) close(); });
+      document.addEventListener('keydown', function(e) { if (e.key === 'Escape') close(); });
+    })();
+  </script>
+
+</body>
+</html>

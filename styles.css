@@ -52,9 +52,9 @@
   /* ── Shadow ── */
   --shadow-card:         rgba(0, 0, 0, 0.22) 3px 5px 30px 0px;
 
-  /* ── Typography — Inter as SF Pro substitute ── */
-  --font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
-  --font-body:    'Inter', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  /* ── Typography — PT Sans ── */
+  --font-display: 'PT Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --font-body:    'PT Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
 
   /* ── Type Scale ── */
   --text-nano:    10px;
@@ -92,7 +92,7 @@
   --space-32: 128px;
 
   /* ── Layout ── */
-  --container-max: 1020px;
+  --container-max: 1400px;
   --container-pad: 24px;
   --nav-height:    48px;
 
@@ -235,8 +235,7 @@ nav {
 
 .hero-wrap {
   position: relative;
-  background:
-    radial-gradient(ellipse 70% 60% at 50% 50%, #1e1e1e 0%, #111 40%, #060606 100%);
+  background: var(--color-light);
   overflow: hidden;
 }
 
@@ -251,15 +250,15 @@ nav {
 }
 
 .hero {
-  padding-top: calc(var(--nav-height) + var(--space-32));
-  padding-bottom: var(--space-32);
+  padding-top: calc(var(--nav-height) + var(--space-16));
+  padding-bottom: var(--space-16);
   display: flex;
   flex-direction: row;
   align-items: center;
   gap: var(--space-20);
   position: relative;
   z-index: 2;
-  min-height: 80vh;
+  min-height: 40vh;
 }
 
 .hero-content {
@@ -272,7 +271,7 @@ nav {
 .hero-image {
   flex: 0 1 auto;
   max-width: 40%;
-  max-height: 70vh;
+  max-height: 35vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -284,7 +283,7 @@ nav {
 .hero-photo {
   width: 100%;
   height: 100%;
-  max-height: 70vh;
+  max-height: 35vh;
   object-fit: contain;
   object-position: center center;
   border-radius: var(--radius-lg, 12px);
@@ -306,23 +305,13 @@ nav {
   letter-spacing: -0.5px;
   margin-bottom: var(--space-7);
   overflow: visible;
+  text-wrap: balance;
 }
 
-.headline .word-wrap {
-  overflow: hidden;
-  display: inline-block;
-  padding-bottom: 0.15em;
-  margin-bottom: -0.15em;
-}
-
-.headline .word-wrap.anim-done {
-  overflow: visible;
-}
-.headline .word {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(100%);
-  background: linear-gradient(135deg, #b6d5e1 0%, #8aafbf 40%, #6e8898 100%);
+.headline > div {
+  text-wrap: balance;
+  line-height: 0.97;
+  background: linear-gradient(110deg, #6d28d9 0%, #2563eb 45%, #0891b2 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -331,15 +320,13 @@ nav {
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
 }
-.headline .word-wrap + .word-wrap::before { content: '\00a0'; }
-.headline div + div .word-wrap:first-child::before { content: ''; }
 
 .subtitle {
   font-size: var(--text-sub);
   font-weight: var(--weight-regular);
   line-height: 1.38;
   letter-spacing: 0.231px;
-  color: var(--color-text-on-dark-secondary);
+  color: var(--color-text-secondary);
   max-width: 520px;
   opacity: 0;
   transform: translateY(16px);
@@ -445,14 +432,12 @@ nav {
 
 .brands-strip {
   width: 100%;
-  background: var(--color-surface-dark);
+  background: var(--color-light);
   padding: var(--space-10) var(--container-pad);
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--space-6);
-  opacity: 0;
-  animation: fadeUp var(--dur-enter) 1.5s var(--ease-out) forwards;
 }
 
 .brands-label {
@@ -460,23 +445,26 @@ nav {
   font-weight: var(--weight-semibold);
   letter-spacing: -0.12px;
   text-transform: uppercase;
-  color: var(--color-text-on-dark-tertiary);
+  color: var(--color-text-tertiary);
 }
 
 .brands-track {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: var(--space-10);
+  justify-content: space-between;
+  gap: var(--space-6);
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--container-pad);
 }
 
 .brand-logo {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 28px;
-  min-width: 80px;
-  max-width: 120px;
+  flex: 1 1 0;
+  height: 56px;
   transition: opacity var(--dur-base);
   opacity: 0.5;
 }
@@ -487,7 +475,7 @@ nav {
   max-height: 100%;
   max-width: 100%;
   object-fit: contain;
-  filter: brightness(0) invert(1);
+  filter: brightness(0);
 }
 
 
@@ -522,11 +510,15 @@ nav {
   background: var(--color-light);
   color: var(--color-text-primary);
 }
-.section-about-exp.section-dark > .container {
+.section-about-exp.section-dark > .about-card {
   background: var(--color-black);
   color: var(--color-text-on-dark);
   border-radius: 24px;
   padding: var(--space-16) var(--space-12);
+}
+
+.section-about-exp.section-dark .section-heading {
+  color: var(--color-near-black);
 }
 
 .section-header {
@@ -760,35 +752,15 @@ nav {
   pointer-events: none;
 }
 
-.cases-v2-track-wrap {
-  position: relative;
-  padding-left: max(var(--container-pad), calc((100vw - var(--container-max)) / 2 + var(--container-pad)));
+.cases-v2-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-5);
   margin-top: var(--space-10);
 }
 
-.cases-v2-track {
-  display: flex;
-  gap: var(--space-5);
-  overflow-x: auto;
-  overflow-y: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  padding-right: var(--space-10);
-  padding-top: var(--space-10);
-  padding-bottom: var(--space-10);
-  margin-top: calc(var(--space-10) * -1);
-  margin-bottom: calc(var(--space-10) * -1);
-}
-.cases-v2-track::-webkit-scrollbar {
-  display: none;
-}
-
 .cases-v2-card {
-  flex: 0 0 460px;
-  min-width: 320px;
-  scroll-snap-align: start;
+  width: 100%;
   background: var(--color-white);
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -884,11 +856,8 @@ nav {
 }
 
 @media (max-width: 834px) {
-  .cases-v2-card {
-    flex: 0 0 280px;
-  }
-  .cases-v2-header-row {
-    flex-direction: row;
+  .cases-v2-grid {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1025,6 +994,7 @@ nav {
 
 .about-photo-wrap {
   width: 100%;
+  max-width: 240px;
   margin-bottom: var(--space-8);
   border-radius: var(--radius-lg);
   overflow: hidden;
@@ -1047,11 +1017,11 @@ nav {
 }
 
 .about-text p:not(.section-label) {
-  font-size: var(--text-caption);
+  font-size: var(--text-body);
   font-weight: var(--weight-regular);
   line-height: 1.6;
   letter-spacing: -0.224px;
-  color: var(--color-text-on-dark-secondary);
+  color: rgba(255, 255, 255, 0.85);
 }
 
 /* ── Experience Column ── */
@@ -1124,33 +1094,33 @@ nav {
 
 .exp-compact-company {
   font-family: var(--font-display);
-  font-size: var(--text-caption);
+  font-size: var(--text-body);
   font-weight: var(--weight-semibold);
   letter-spacing: -0.224px;
   color: var(--color-white);
 }
 
 .exp-compact-period {
-  font-size: var(--text-micro);
+  font-size: var(--text-caption);
   font-weight: var(--weight-regular);
   letter-spacing: -0.1px;
-  color: var(--color-text-on-dark-tertiary);
+  color: rgba(255, 255, 255, 0.7);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
 }
 
 .exp-compact-role {
-  font-size: var(--text-micro);
+  font-size: var(--text-caption);
   font-weight: var(--weight-regular);
   letter-spacing: -0.1px;
-  color: var(--color-text-on-dark-secondary);
+  color: rgba(255, 255, 255, 0.85);
   margin-top: 2px;
 }
 
 .exp-compact-location {
-  font-size: var(--text-nano);
+  font-size: var(--text-micro);
   font-weight: var(--weight-regular);
-  color: var(--color-text-on-dark-tertiary);
+  color: rgba(255, 255, 255, 0.6);
   margin-top: 1px;
 }
 
@@ -1163,11 +1133,11 @@ nav {
 }
 
 .exp-compact-achievements li {
-  font-size: var(--text-micro);
+  font-size: var(--text-caption);
   font-weight: var(--weight-regular);
-  line-height: 1.45;
+  line-height: 1.5;
   letter-spacing: -0.1px;
-  color: var(--color-text-on-dark-secondary);
+  color: rgba(255, 255, 255, 0.85);
   padding-left: var(--space-4);
   position: relative;
 }
@@ -1264,9 +1234,26 @@ nav {
    11. FAQ ACCORDION
    ============================================================ */
 
+.faq-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--space-16);
+  align-items: start;
+}
+
+.faq-grid .section-header {
+  margin-bottom: 0;
+}
+
 .faq-list {
-  max-width: 720px;
-  margin: 0 auto;
+  margin: 0;
+}
+
+@media (max-width: 834px) {
+  .faq-grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
 }
 
 .section-dark .faq-list {

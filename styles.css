@@ -52,9 +52,9 @@
   /* ── Shadow ── */
   --shadow-card:         rgba(0, 0, 0, 0.22) 3px 5px 30px 0px;
 
-  /* ── Typography — PT Sans ── */
-  --font-display: 'PT Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
-  --font-body:    'PT Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  /* ── Typography — Source Sans 3 ── */
+  --font-display: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+  --font-body:    'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
 
   /* ── Type Scale ── */
   --text-nano:    10px;
@@ -253,7 +253,7 @@ nav {
 }
 
 .hero {
-  padding-top: calc(var(--nav-height) + var(--space-16));
+  padding-top: var(--space-16);
   padding-bottom: var(--space-16);
   display: flex;
   flex-direction: row;
@@ -311,17 +311,29 @@ nav {
   text-wrap: balance;
 }
 
-.headline > div {
-  text-wrap: balance;
-  line-height: 0.97;
+#terminal-text {
   background: linear-gradient(110deg, #6d28d9 0%, #2563eb 45%, #0891b2 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   padding-bottom: 0.12em;
-  margin-bottom: -0.12em;
   box-decoration-break: clone;
   -webkit-box-decoration-break: clone;
+}
+
+.terminal-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 0.78em;
+  background: #2563eb;
+  vertical-align: 0.08em;
+  margin-left: 6px;
+  animation: cursorBlink 0.65s step-end infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
 }
 
 .subtitle {
@@ -874,6 +886,15 @@ nav {
 .cases-v2-card--soon {
   position: relative;
 }
+.cases-v2-card--soon:hover {
+  transform: none;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06);
+}
+.cases-v2-card--soon:hover .cases-v2-bg { opacity: 0; }
+.cases-v2-card--soon:hover .cases-v2-title { color: var(--color-near-black); }
+.cases-v2-card--soon:hover .cases-v2-logo-wrap { opacity: 1; }
+.cases-v2-card--soon:hover .cases-v2-footer { background: transparent; backdrop-filter: none; -webkit-backdrop-filter: none; }
+.cases-v2-card--soon:hover .cases-v2-desc { color: var(--color-text-secondary); }
 .cases-v2-card--soon .cases-v2-link {
   pointer-events: none;
 }
@@ -1443,7 +1464,7 @@ nav {
 
 #progress-bar {
   position: fixed;
-  top: var(--nav-height);
+  top: 0;
   left: 0;
   height: 1px;
   background: var(--color-blue);
@@ -1521,7 +1542,7 @@ nav {
   }
 
   .hero {
-    padding-top: calc(var(--nav-height) + var(--space-16));
+    padding-top: var(--space-16);
     padding-bottom: var(--space-16);
     flex-direction: column;
     gap: var(--space-10);

@@ -6,7 +6,7 @@
   <title>Guilherme Cerqueira | Digital Product Design</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <script src="https://cdn.jsdelivr.net/npm/lottie-web@latest/build/player/lottie.min.js"></script>
 
@@ -36,25 +36,12 @@
   <!-- Scroll Progress -->
   <div id="progress-bar"></div>
 
-  <!-- Nav — Translucent Glass -->
-  <nav id="main-nav">
-    <div class="nav-inner">
-      <a href="#" class="nav-name"><img src="logosmall.png" alt="Guilherme Cerqueira" class="nav-logo" /></a>
-      <ul class="nav-links">
-        <li><a href="#work">Work</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#faq">FAQ</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
-    </div>
-  </nav>
-
   <!-- Hero — Dark, Cinematic -->
   <main>
    <div class="hero-wrap">
     <section class="hero container">
       <div class="hero-content">
-        <h1 class="headline" id="headline"><div>Design beyond the</div><div>interface</div></h1>
+        <h1 class="headline" id="headline"><span id="terminal-text"></span><span class="terminal-cursor" id="terminal-cursor"></span></h1>
 
         <p class="subtitle">
          15+ years simplifying B2C and B2B products through strategy, systems thinking and execution.
@@ -108,7 +95,7 @@
 
         <article class="cases-v2-card">
           <a href="cui/index.html" class="cases-v2-link">
-            <div class="cases-v2-bg"></div>
+            <div class="cases-v2-bg" style="background-image:url('cardcui.png')"></div>
             <h3 class="cases-v2-title">Designing a White-Label Design System</h3>
             <div class="cases-v2-logo-wrap">
               <img src="logos/Clutch.svg" class="cases-v2-logo" alt="Company Logo" />
@@ -123,7 +110,7 @@
 
         <article class="cases-v2-card">
           <a href="bkng/index.html" class="cases-v2-link">
-            <div class="cases-v2-bg"></div>
+            <div class="cases-v2-bg" style="background-image:url('cardbkng.png')"></div>
             <h3 class="cases-v2-title">Smart Upselling After Payment Failure</h3>
             <div class="cases-v2-logo-wrap">
               <img src="logos/bkngsvg.svg" class="cases-v2-logo" alt="Company Logo" />
@@ -467,6 +454,44 @@ Besides designing: Dad. Brown belt in Brazilian Jiu-Jitsu. Shredding guitar for 
   <span class="year-badge" aria-hidden="true">2026</span>
 
   <script>
+
+    /* ─── Terminal text effect ─── */
+    (function() {
+      var words = [
+        'Design beyond the interface.',
+        'Systems that scale. Experiences that land.',
+        'Zero to one. One to millions.',
+        'Where craft meets strategy.'
+      ];
+      var letterCount = 1;
+      var x = 1;
+      var waiting = false;
+      var target = document.getElementById('terminal-text');
+
+      setInterval(function() {
+        if (letterCount === 0 && !waiting) {
+          waiting = true;
+          target.textContent = '';
+          setTimeout(function() {
+            var used = words.shift();
+            words.push(used);
+            x = 1;
+            letterCount += x;
+            waiting = false;
+          }, 500);
+        } else if (letterCount === words[0].length + 1 && !waiting) {
+          waiting = true;
+          setTimeout(function() {
+            x = -1;
+            letterCount += x;
+            waiting = false;
+          }, 2600);
+        } else if (!waiting) {
+          target.textContent = words[0].substring(0, letterCount);
+          letterCount += x;
+        }
+      }, 75);
+    })();
 
     /* ─── Scroll: Progress bar ─── */
     const progressBar = document.getElementById('progress-bar');

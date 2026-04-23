@@ -75,7 +75,8 @@
   <section class="section-cases-v2 section-light" id="work">
     <div class="container">
       <header class="section-header" style="text-align:left;">
-        <h2 class="section-heading">Selected Work</h2>
+        <h2 class="section-heading">Case Studies</h2>
+        <p class="section-subheading">Complete case studies across different brands and products.</p>
       </header>
 
       <div class="cases-v2-grid">
@@ -136,36 +137,61 @@
 
    
 
-        <article class="cases-v2-card cases-v2-card--soon">
-          <a href="#" class="cases-v2-link">
-            <div class="cases-v2-bg"></div>
-            <h3 class="cases-v2-title">Reducing Decision Time for Underwriters</h3>
-            <div class="cases-v2-logo-wrap">
-              <img src="logotemplate.png" class="cases-v2-logo" alt="Company Logo" />
-            </div>
-            <div class="cases-v2-footer">
-              <p class="cases-v2-desc">Redesigned the underwriting review flow to surface key risk signals upfront, cutting average decision time by 40%.</p>
-            </div>
-          </a>
-        </article>
-
-
-
-        <article class="cases-v2-card cases-v2-card--soon">
-          <a href="#" class="cases-v2-link">
-            <div class="cases-v2-bg"></div>
-            <h3 class="cases-v2-title">Redesigning a Design-to-Code Plugin</h3>
-            <div class="cases-v2-logo-wrap">
-              <img src="logotemplate.png" class="cases-v2-logo" alt="Company Logo" />
-            </div>
-            <div class="cases-v2-footer">
-              <p class="cases-v2-desc">Owned end-to-end design for the #1 Figma plugin with 1M+ installs, serving teams at Amazon, Cisco, Samsung and Deloitte.</p>
-            </div>
-          </a>
-        </article>
-
       </div>
     </div>
+  </section>
+
+  <!-- Showcase — Image Carousel with Lightbox -->
+  <section class="section-showcase section-light" id="showcase">
+    <div class="container">
+      <header class="section-header" style="text-align:left;">
+        <h2 class="section-heading">Showcase</h2>
+        <p class="section-subheading">Things and projects I've designed throughout the years.</p>
+      </header>
+    </div>
+
+    <div class="container">
+      <div class="showcase-grid">
+
+        <div class="showcase-item" data-full="ui-work/TomFitnessApp.png" data-index="0" data-desc="A fitness app designed for a reowned Personal Trainer, focused on guided workout routines and progress tracking for each of his clients.">
+          <img src="ui-work/TomFitnessApp.png" alt="Fitness App" />
+          <div class="showcase-overlay">
+            <span class="showcase-item-title">Fitness App</span>
+          </div>
+        </div>
+
+        <div class="showcase-item" data-full="ui-work/promixsales.png" data-index="1" data-desc="A retail management application designed to streamline the day-to-day workflow of field sales representatives.">
+          <img src="ui-work/promixsales.png" alt="Retail management application for sales representatives" />
+          <div class="showcase-overlay">
+            <span class="showcase-item-title">Retail management application for sales representatives</span>
+          </div>
+        </div>
+
+        <div class="showcase-item" data-full="ui-work/geniuslp.png" data-index="2" data-desc="A landing page crafted for Booking.com's Genius loyalty programme, targeting property partners and highlighting programme benefits.">
+          <img src="ui-work/geniuslp.png" alt="Booking.com - Genius Landing Page for Partners" />
+          <div class="showcase-overlay">
+            <span class="showcase-item-title">Booking.com - Genius Landing Page for Partners</span>
+          </div>
+        </div>
+
+       
+      </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="showcase-lightbox" id="showcaseLightbox" aria-hidden="true">
+      <button class="showcase-lightbox-close" id="showcaseLightboxClose" aria-label="Close lightbox">
+        <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M2 2L18 18M18 2L2 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <div class="showcase-lightbox-frame">
+        <img src="" alt="" class="showcase-lightbox-img" id="showcaseLightboxImg" />
+        <div class="showcase-lightbox-caption">
+          <p class="showcase-lightbox-title" id="showcaseLightboxTitle"></p>
+          <p class="showcase-lightbox-desc" id="showcaseLightboxDesc"></p>
+        </div>
+      </div>
+    </div>
+
   </section>
 
   <!-- About & Experience — Dark Section -->
@@ -555,6 +581,52 @@ Besides designing: Dad. Brown belt in Brazilian Jiu-Jitsu. Shredding guitar for 
         btn.textContent = isOpen ? btn.dataset.labelLess : btn.dataset.labelMore;
       });
     });
+
+    /* ─── Showcase Grid + Lightbox ─── */
+    (function() {
+      var items    = document.querySelectorAll('.showcase-item');
+      var lightbox = document.getElementById('showcaseLightbox');
+      var lbImg    = document.getElementById('showcaseLightboxImg');
+      var lbTitle  = document.getElementById('showcaseLightboxTitle');
+      var lbClose  = document.getElementById('showcaseLightboxClose');
+      var lbDesc   = document.getElementById('showcaseLightboxDesc');
+
+      /* ── Lightbox ── */
+      function openLightbox(item) {
+        var img   = item.querySelector('img');
+        var title = item.querySelector('.showcase-item-title');
+        lbImg.src = item.dataset.full || img.src;
+        lbImg.alt = img.alt;
+        lbTitle.textContent = title ? title.textContent : '';
+        lbDesc.textContent  = item.dataset.desc || '';
+        lightbox.classList.add('is-open');
+        lightbox.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+        lbClose.focus();
+      }
+      function closeLightbox() {
+        lightbox.classList.remove('is-open');
+        lightbox.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      items.forEach(function(item) {
+        item.addEventListener('click', function() { openLightbox(item); });
+        item.addEventListener('keydown', function(e) {
+          if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(item); }
+        });
+        item.setAttribute('tabindex', '0');
+        item.setAttribute('role', 'button');
+      });
+
+      lbClose.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) closeLightbox();
+      });
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && lightbox.classList.contains('is-open')) closeLightbox();
+      });
+    })();
 
   </script>
 </body>

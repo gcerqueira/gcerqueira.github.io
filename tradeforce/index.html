@@ -448,6 +448,66 @@
       body { background: white; }
       .case-nav { display: none; }
     }
+
+    /* -- SECTION INDEX NAV -- */
+    .section-index {
+      position: fixed;
+      left: max(16px, calc(50% - 580px));
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 90;
+      display: none;
+    }
+
+    @media (min-width: 1240px) {
+      .section-index { display: block; }
+    }
+
+    .section-index ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .sec-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 10px 5px 8px;
+      border-left: 2px solid transparent;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: -0.1px;
+      line-height: 1.3;
+      color: var(--color-text-tertiary);
+      white-space: nowrap;
+      border-radius: 0 4px 4px 0;
+      transition: color 180ms ease, border-color 180ms ease, background 180ms ease;
+    }
+
+    .sec-link svg {
+      width: 13px;
+      height: 13px;
+      flex-shrink: 0;
+      transition: opacity 180ms ease;
+      opacity: 0.55;
+    }
+
+    .sec-link:hover {
+      color: var(--color-text-secondary);
+    }
+
+    .sec-link:hover svg { opacity: 0.8; }
+
+    .sec-link.active {
+      color: var(--color-near-black);
+      font-weight: 600;
+      border-left-color: var(--color-blue);
+    }
+
+    .sec-link.active svg { opacity: 1; }
   </style>
 </head>
 <body>
@@ -460,6 +520,78 @@
       </svg>
       Back to portfolio
     </a>
+  </nav>
+
+  <!-- SECTION INDEX -->
+  <nav class="section-index" aria-label="Section index">
+    <ul>
+      <li>
+        <a href="#section-context" class="sec-link">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M8 1.5C5.8 1.5 4 3.3 4 5.5c0 3.5 4 9 4 9s4-5.5 4-9c0-2.2-1.8-4-4-4z"/>
+            <circle cx="8" cy="5.5" r="1.4"/>
+          </svg>
+          Context
+        </a>
+      </li>
+      <li>
+        <a href="#section-problem" class="sec-link">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="8" cy="8" r="6.5"/>
+            <line x1="8" y1="5.5" x2="8" y2="9"/>
+            <circle cx="8" cy="11.5" r="0.6" fill="currentColor" stroke="none"/>
+          </svg>
+          Problem
+        </a>
+      </li>
+      <li>
+        <a href="#section-discovery" class="sec-link">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="6.5" cy="6.5" r="4.5"/>
+            <line x1="10" y1="10" x2="14" y2="14"/>
+          </svg>
+          Discovery
+        </a>
+      </li>
+      <li>
+        <a href="#section-decision" class="sec-link">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="4.5" cy="3.5" r="1.5"/>
+            <circle cx="11.5" cy="3.5" r="1.5"/>
+            <circle cx="4.5" cy="12.5" r="1.5"/>
+            <path d="M4.5 5v1.5c0 1.8 1.2 2.5 3.5 2.5s3.5-.7 3.5-2.5V5"/>
+            <line x1="4.5" y1="9" x2="4.5" y2="11"/>
+          </svg>
+          Decision
+        </a>
+      </li>
+      <li>
+        <a href="#section-design" class="sec-link">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9.5 2.5l4 4-7.5 7.5H2v-4l7.5-7.5z"/>
+            <line x1="8" y1="4" x2="12" y2="8"/>
+          </svg>
+          Design
+        </a>
+      </li>
+      <li>
+        <a href="#section-challenges" class="sec-link">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M8.5 1.5L2 9.5h5.5L7 14.5l6.5-8H8L8.5 1.5z"/>
+          </svg>
+          Challenges
+        </a>
+      </li>
+      <li>
+        <a href="#section-outcome" class="sec-link">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="1.5,12.5 5,8 8,10.5 14.5,3.5"/>
+            <polyline points="10.5,3.5 14.5,3.5 14.5,7.5"/>
+          </svg>
+          Outcome
+        </a>
+      </li>
+    </ul>
   </nav>
 
   <!-- HEADER -->
@@ -511,8 +643,8 @@
             <p>I owned the entire design process: setting product direction through research, defining the MVP scope with the founding team, and designing both platforms end to end. That included a shared style guide, high-fidelity prototypes, usability testing, and post-launch A/B experimentation.</p>
           </div>
           <div class="tldr-item">
-            <span class="tldr-label">Approach</span>
-            <p>Ten structured interviews to build the problem framing, a HMW session to align the founding team before any design work started, six scoped MVP requirements, and an iterative post-launch cycle using Hotjar and Google Analytics before scaling to A/B testing.</p>
+            <span class="tldr-label">Decision</span>
+            <p>Chose to build the mobile app and web portal in parallel as a single connected system rather than shipping the manager portal first and treating the mobile app as a follow-up phase. The field team was the source of all manager data; sequencing them separately would have broken the core value loop at the point where it cost the most to fix.</p>
           </div>
           <div class="tldr-item span-2">
             <span class="tldr-label">Impact</span>
@@ -524,7 +656,7 @@
   </div>
 
   <!-- SECTION 1 — CONTEXT -->
-  <div class="section-grey">
+  <div id="section-context" class="section-grey">
     <div class="container">
       <section class="case-section">
         <span class="section-eyebrow">Context</span>
@@ -536,7 +668,7 @@
   </div>
 
   <!-- SECTION 2 — THE PROBLEM -->
-  <div class="section-white">
+  <div id="section-problem" class="section-white">
     <div class="container">
       <section class="case-section">
         <span class="section-eyebrow">The Problem</span>
@@ -568,7 +700,7 @@
   </div>
 
   <!-- SECTION 3 — DISCOVERY -->
-  <div class="section-grey">
+  <div id="section-discovery" class="section-grey">
     <div class="container">
       <section class="case-section">
         <span class="section-eyebrow">Discovery</span>
@@ -592,13 +724,19 @@
     </div>
   </div>
 
-  <!-- SECTION 4 — DIRECTION -->
-  <div class="section-white">
+  <!-- SECTION 4 — THE DECISION -->
+  <div id="section-decision" class="section-white">
     <div class="container">
       <section class="case-section">
-        <span class="section-eyebrow">Direction</span>
-        <h2>From six HMW questions to a concrete MVP with six core requirements</h2>
-        <p>I facilitated a HMW session with the founding team to translate research into a shared problem framing. <strong>The goal was alignment on what the product needed to solve before anyone touched a wireframe.</strong> Five questions came out of it: reduce commuting time for field members; help them fill forms faster; let managers track their team in real time; make it easy to create routes and tasks; give field members visibility into their own daily progress.</p>
+        <span class="section-eyebrow">The Decision</span>
+        <h2>Designing two connected products as one system: the choice that defined the product</h2>
+        <p>The central design decision came before any wireframe: build both the mobile app and the web portal in parallel as a single connected system, not two separate products sequenced over time. The alternative was to ship the manager portal first and treat the mobile app as a follow-up phase. I argued against it.</p>
+
+        <div class="highlight">
+          <p>A manager's route built on the web was what made the field member's day possible. Designing them independently would have produced two products that didn't fit together operationally. The data handoffs between products had to be designed from the start, not retrofitted at integration.</p>
+        </div>
+
+        <p>To get there, I facilitated a HMW session with the founding team to translate research into a shared problem framing before anyone touched a wireframe. Five questions came out of it: reduce commuting time for field members; help them fill forms faster; let managers track their team in real time; make it easy to create routes and tasks; give field members visibility into their own daily progress.</p>
         <p>From those, <strong>I defined six core MVP requirements</strong> and mapped them to user stories and acceptance criteria that engineering could act on directly: team registration, a POS database, route creation, check-in and check-out, form creation and execution, and a reporting dashboard.</p>
 
         <div class="img-block">
@@ -640,7 +778,7 @@
   </div>
 
   <!-- SECTION 5 — DESIGN DECISIONS -->
-  <div class="section-grey">
+  <div id="section-design" class="section-grey">
     <div class="container">
       <section class="case-section">
         <span class="section-eyebrow">Design Decisions</span>
@@ -766,7 +904,7 @@
   </div>
 
   <!-- SECTION 6 — CHALLENGES -->
-  <div class="section-white">
+  <div id="section-challenges" class="section-white">
     <div class="container">
       <section class="case-section">
         <span class="section-eyebrow">Challenges</span>
@@ -782,7 +920,7 @@
   </div>
 
   <!-- SECTION 7 — OUTCOME -->
-  <div class="section-grey">
+  <div id="section-outcome" class="section-grey">
     <div class="container">
       <section class="case-section">
         <span class="section-eyebrow">Outcome</span>
@@ -864,6 +1002,34 @@
   </div>
 
   <script>
+    (function() {
+      // Scroll spy
+      const sections = Array.from(document.querySelectorAll('#section-context, #section-problem, #section-discovery, #section-decision, #section-design, #section-challenges, #section-outcome'));
+      const secLinks = Array.from(document.querySelectorAll('.sec-link'));
+
+      function updateActive() {
+        const trigger = window.scrollY + window.innerHeight * 0.3;
+        let activeId = sections[0].id;
+        sections.forEach(function(s) {
+          if (s.offsetTop <= trigger) activeId = s.id;
+        });
+        secLinks.forEach(function(l) {
+          l.classList.toggle('active', l.getAttribute('href') === '#' + activeId);
+        });
+      }
+
+      window.addEventListener('scroll', updateActive, { passive: true });
+      updateActive();
+
+      secLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute('href'));
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+    })();
+
     (function() {
       const lb = document.getElementById('lightbox');
       const lbImg = lb.querySelector('img');

@@ -480,6 +480,63 @@
       body { background: white; }
       .case-nav { display: none; }
     }
+
+    /* -- SECTION INDEX NAV -- */
+    .section-index {
+      position: fixed;
+      left: max(16px, calc(50% - 580px));
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 90;
+      display: none;
+    }
+
+    @media (min-width: 1240px) {
+      .section-index { display: block; }
+    }
+
+    .section-index ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .sec-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 10px 5px 8px;
+      border-left: 2px solid transparent;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: -0.1px;
+      line-height: 1.3;
+      color: var(--color-text-tertiary);
+      white-space: nowrap;
+      border-radius: 0 4px 4px 0;
+      transition: color 180ms ease, border-color 180ms ease;
+    }
+
+    .sec-link svg {
+      width: 13px;
+      height: 13px;
+      flex-shrink: 0;
+      opacity: 0.55;
+      transition: opacity 180ms ease;
+    }
+
+    .sec-link:hover { color: var(--color-text-secondary); }
+    .sec-link:hover svg { opacity: 0.8; }
+
+    .sec-link.active {
+      color: var(--color-near-black);
+      font-weight: 600;
+      border-left-color: var(--color-blue);
+    }
+
+    .sec-link.active svg { opacity: 1; }
   </style>
 </head>
 <body>
@@ -492,6 +549,98 @@
       </svg>
       Back to portfolio
     </a>
+  </nav>
+
+  <!-- SECTION INDEX -->
+  <nav class="section-index" aria-label="Section index">
+    <ul>
+      <li>
+        <a href="#section-overview" class="sec-link">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M1.5 8C1.5 8 4 3 8 3s6.5 5 6.5 5-2.5 5-6.5 5S1.5 8 1.5 8z"/>
+            <circle cx="8" cy="8" r="2"/>
+          </svg>
+          Overview
+        </a>
+      </li>
+      <li>
+        <a href="#section-problem" class="sec-link">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="8" cy="8" r="6.5"/>
+            <line x1="8" y1="5.5" x2="8" y2="9"/>
+            <circle cx="8" cy="11.5" r="0.6" fill="currentColor" stroke="none"/>
+          </svg>
+          Problem
+        </a>
+      </li>
+      <li>
+        <a href="#section-strategy" class="sec-link">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="8" cy="8" r="6.5"/>
+            <circle cx="8" cy="8" r="3.5"/>
+            <circle cx="8" cy="8" r="1" fill="currentColor" stroke="none"/>
+          </svg>
+          Strategy
+        </a>
+      </li>
+      <li>
+        <a href="#section-execution" class="sec-link">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M8.5 1.5L2 9.5h5.5L7 14.5l6.5-8H8L8.5 1.5z"/>
+          </svg>
+          Execution
+        </a>
+      </li>
+      <li>
+        <a href="#section-stakeholders" class="sec-link">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="6" cy="5" r="2.5"/>
+            <path d="M1 13.5c0-2.5 2.2-4.5 5-4.5s5 2 5 4.5"/>
+            <circle cx="11.5" cy="5" r="2"/>
+            <path d="M15 13.5c0-2-1.6-3.6-3.5-4"/>
+          </svg>
+          Stakeholders
+        </a>
+      </li>
+      <li>
+        <a href="#section-whitelabel" class="sec-link">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="4.5" y="4.5" width="9" height="9" rx="1.5"/>
+            <path d="M2.5 11.5V3a.5.5 0 0 1 .5-.5h9"/>
+          </svg>
+          White-Label
+        </a>
+      </li>
+      <li>
+        <a href="#section-portals" class="sec-link">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M6.5 9.5a3 3 0 0 0 4.24 0l2-2a3 3 0 0 0-4.24-4.24L7.25 4.5"/>
+            <path d="M9.5 6.5a3 3 0 0 0-4.24 0l-2 2a3 3 0 0 0 4.24 4.24l1.25-1.25"/>
+          </svg>
+          Two Portals
+        </a>
+      </li>
+      <li>
+        <a href="#section-measuring" class="sec-link">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="2" y1="14" x2="14" y2="14"/>
+            <rect x="2.5" y="9" width="2.5" height="5" rx="0.5"/>
+            <rect x="6.75" y="6" width="2.5" height="8" rx="0.5"/>
+            <rect x="11" y="3" width="2.5" height="11" rx="0.5"/>
+          </svg>
+          Measuring
+        </a>
+      </li>
+      <li>
+        <a href="#section-reflection" class="sec-link">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M13 8A5 5 0 1 1 8 3"/>
+            <polyline points="8,1 8,3.5 10.5,2.5"/>
+          </svg>
+          Reflection
+        </a>
+      </li>
+    </ul>
   </nav>
 
   <!-- HEADER -->
@@ -555,7 +704,7 @@
   </div>
 
   <!-- SECTION 1 -- OVERVIEW -->
-  <div class="section-grey">
+  <div id="section-overview" class="section-grey">
     <div class="container">
       <section class="case-section">
         <span class="section-eyebrow">Overview</span>
@@ -580,7 +729,7 @@
   </div>
 
   <!-- SECTION 2 -- THE PROBLEM -->
-  <div class="section-white">
+  <div id="section-problem" class="section-white">
     <div class="container">
       <section class="case-section">
         <span class="section-eyebrow">The Problem</span>
@@ -618,7 +767,7 @@
   </div>
 
   <!-- SECTION 3 -- STRATEGIC FRAMING -->
-  <div class="section-grey">
+  <div id="section-strategy" class="section-grey">
     <div class="container">
       <section class="case-section">
         <span class="section-eyebrow">Strategy</span>
@@ -642,7 +791,7 @@
   </div>
 
   <!-- SECTION 4 -- EXECUTION -->
-  <div class="section-white">
+  <div id="section-execution" class="section-white">
     <div class="container">
       <section class="case-section">
         <span class="section-eyebrow">Execution</span>
@@ -714,7 +863,7 @@
   </div>
 
   <!-- SECTION 5 -- STAKEHOLDER BUY-IN -->
-  <div class="section-grey">
+  <div id="section-stakeholders" class="section-grey">
     <div class="container">
       <section class="case-section">
         <span class="section-eyebrow">Stakeholder Buy-In</span>
@@ -745,7 +894,7 @@
   </div>
 
   <!-- SECTION 6 -- WHITE-LABELING -->
-  <div class="section-white">
+  <div id="section-whitelabel" class="section-white">
     <div class="container">
       <section class="case-section">
         <span class="section-eyebrow">White-Labeling</span>
@@ -778,7 +927,7 @@
   </div>
 
   <!-- SECTION 7 -- STAFF VS ONLINE -->
-  <div class="section-grey">
+  <div id="section-portals" class="section-grey">
     <div class="container">
       <section class="case-section">
         <span class="section-eyebrow">Two Portals, One System</span>
@@ -822,7 +971,7 @@
   </div>
 
   <!-- SECTION 8 -- MEASURING SUCCESS -->
-  <div class="section-white">
+  <div id="section-measuring" class="section-white">
     <div class="container">
       <section class="case-section">
         <span class="section-eyebrow">Measuring Success</span>
@@ -841,7 +990,7 @@
   </div>
 
   <!-- SECTION 9 -- REFLECTION -->
-  <div class="section-grey">
+  <div id="section-reflection" class="section-grey">
     <div class="container">
       <section class="case-section">
         <span class="section-eyebrow">Reflection</span>
@@ -889,6 +1038,29 @@
   </div>
 
   <script>
+    (function() {
+      var sections = Array.from(document.querySelectorAll('#section-overview, #section-problem, #section-strategy, #section-execution, #section-stakeholders, #section-whitelabel, #section-portals, #section-measuring, #section-reflection'));
+      var secLinks = Array.from(document.querySelectorAll('.sec-link'));
+
+      function updateActive() {
+        var trigger = window.scrollY + window.innerHeight * 0.3;
+        var activeId = sections[0].id;
+        sections.forEach(function(s) { if (s.offsetTop <= trigger) activeId = s.id; });
+        secLinks.forEach(function(l) { l.classList.toggle('active', l.getAttribute('href') === '#' + activeId); });
+      }
+
+      window.addEventListener('scroll', updateActive, { passive: true });
+      updateActive();
+
+      secLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          var target = document.querySelector(this.getAttribute('href'));
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+    })();
+
     (function() {
       var lb = document.getElementById('lightbox');
       var lbImg = lb.querySelector('img');

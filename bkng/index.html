@@ -411,6 +411,63 @@
       body { background: white; }
       .case-nav { display: none; }
     }
+
+    /* -- SECTION INDEX NAV -- */
+    .section-index {
+      position: fixed;
+      left: max(16px, calc(50% - 580px));
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 90;
+      display: none;
+    }
+
+    @media (min-width: 1240px) {
+      .section-index { display: block; }
+    }
+
+    .section-index ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .sec-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 10px 5px 8px;
+      border-left: 2px solid transparent;
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: -0.1px;
+      line-height: 1.3;
+      color: var(--color-text-tertiary);
+      white-space: nowrap;
+      border-radius: 0 4px 4px 0;
+      transition: color 180ms ease, border-color 180ms ease;
+    }
+
+    .sec-link svg {
+      width: 13px;
+      height: 13px;
+      flex-shrink: 0;
+      opacity: 0.55;
+      transition: opacity 180ms ease;
+    }
+
+    .sec-link:hover { color: var(--color-text-secondary); }
+    .sec-link:hover svg { opacity: 0.8; }
+
+    .sec-link.active {
+      color: var(--color-near-black);
+      font-weight: 600;
+      border-left-color: var(--color-blue);
+    }
+
+    .sec-link.active svg { opacity: 1; }
   </style>
 </head>
 <body>
@@ -423,6 +480,61 @@
       </svg>
       Back to portfolio
     </a>
+  </nav>
+
+  <!-- SECTION INDEX -->
+  <nav class="section-index" aria-label="Section index">
+    <ul>
+      <li>
+        <a href="#section-context" class="sec-link">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M8 1.5C5.8 1.5 4 3.3 4 5.5c0 3.5 4 9 4 9s4-5.5 4-9c0-2.2-1.8-4-4-4z"/>
+            <circle cx="8" cy="5.5" r="1.4"/>
+          </svg>
+          Context
+        </a>
+      </li>
+      <li>
+        <a href="#section-problem" class="sec-link">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="8" cy="8" r="6.5"/>
+            <line x1="8" y1="5.5" x2="8" y2="9"/>
+            <circle cx="8" cy="11.5" r="0.6" fill="currentColor" stroke="none"/>
+          </svg>
+          Problem
+        </a>
+      </li>
+      <li>
+        <a href="#section-decision" class="sec-link">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="4.5" cy="3.5" r="1.5"/>
+            <circle cx="11.5" cy="3.5" r="1.5"/>
+            <circle cx="4.5" cy="12.5" r="1.5"/>
+            <path d="M4.5 5v1.5c0 1.8 1.2 2.5 3.5 2.5s3.5-.7 3.5-2.5V5"/>
+            <line x1="4.5" y1="9" x2="4.5" y2="11"/>
+          </svg>
+          Decision
+        </a>
+      </li>
+      <li>
+        <a href="#section-design" class="sec-link">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M9.5 2.5l4 4-7.5 7.5H2v-4l7.5-7.5z"/>
+            <line x1="8" y1="4" x2="12" y2="8"/>
+          </svg>
+          Design
+        </a>
+      </li>
+      <li>
+        <a href="#section-outcome" class="sec-link">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="1.5,12.5 5,8 8,10.5 14.5,3.5"/>
+            <polyline points="10.5,3.5 14.5,3.5 14.5,7.5"/>
+          </svg>
+          Outcome
+        </a>
+      </li>
+    </ul>
   </nav>
 
   <!-- HEADER -->
@@ -471,11 +583,11 @@
           </div>
           <div class="tldr-item">
             <span class="tldr-label">My Role</span>
-            <p>End-to-end UX across mobile and desktop: problem framing, flow design, four rounds of prototype testing on UserTesting.com, copy direction, and final specs.</p>
+            <p>Spotted the opportunity through my own analysis of payment funnel data, brought it to the PM as a product pitch, and drove the full design process: flow design, four rounds of prototype testing on UserTesting.com, copy direction, and final specs.</p>
           </div>
           <div class="tldr-item">
-            <span class="tldr-label">Approach</span>
-            <p>Defined the constraint boundary first (we could not fix the root cause), then used Jobs to Be Done to frame the recovery opportunity. Tested four prototype iterations with real users before shipping.</p>
+            <span class="tldr-label">Decision</span>
+            <p>Chose to surface a comparable Booking.com native room immediately after the failure rather than redesigning the error message or attempting to fix the payment limitation. The limitation was contractual and unfixable. The real opportunity was in the conversion, not the error state.</p>
           </div>
           <div class="tldr-item span-2">
             <span class="tldr-label">Impact</span>
@@ -487,7 +599,7 @@
   </div>
 
   <!-- SECTION 1 — CONTEXT -->
-  <div class="section-grey">
+  <div id="section-context" class="section-grey">
     <div class="container">
       <section class="case-section">
         <span class="section-eyebrow">Context</span>
@@ -496,14 +608,14 @@
         <p>The trade-offs were disclosed upfront: TPI rooms required advance payment, were non-refundable, had limited payment method support, and came with reduced customer service. Users who understood those conditions converted well. But this also meant Booking.com had a <strong>structural dependency on third-party systems at the most critical moment: payment.</strong></p>
 
         <div class="highlight">
-          <p>Limited payment method support was not a technical edge case. It was built into the TPI model. That made payment failures a predictable, recurring event, and the absence of a recovery path had been quietly accepted as an expected cost of the business model.</p>
+          <p>Limited payment method support was not a technical edge case. It was built into the TPI model. That made payment failures a predictable, recurring event, and the absence of a recovery path had been quietly accepted as an expected cost of the business model. I came across the post-failure abandonment data while reviewing payment funnel metrics. Nobody had scoped it as a problem to solve. I decided to.</p>
         </div>
       </section>
     </div>
   </div>
 
   <!-- SECTION 2 — THE PROBLEM -->
-  <div class="section-white">
+  <div id="section-problem" class="section-white">
     <div class="container">
       <section class="case-section">
         <span class="section-eyebrow">The Problem</span>
@@ -527,26 +639,26 @@
           </div>
           <div class="stat-card">
             <span class="stat-number">4 mo.</span>
-            <span class="stat-label">from brief to full launch on mobile and web</span>
+            <span class="stat-label">from pitch to full launch on mobile and web</span>
           </div>
         </div>
 
-        <p>My first task was to reframe the problem. The brief came in as "improve the error state." But the real opportunity was different: Booking.com's own native inventory offered pay-at-property as a standard option. The recovery was not about redesigning an error message. It was about <strong>turning a structural failure into a conversion moment.</strong></p>
+        <p>After the PM agreed to pursue it, I defined the scope myself. The obvious path was to focus narrowly on the error state: better copy, a retry button, something contained. But Booking.com already had native inventory with pay-at-property as a standard feature. The recovery was not about fixing an error message. It was about <strong>turning a structural failure into a conversion moment</strong> by connecting users to an alternative they could actually book.</p>
       </section>
     </div>
   </div>
 
-  <!-- SECTION 3 — PROCESS -->
-  <div class="section-grey">
+  <!-- SECTION 3 — THE DECISION -->
+  <div id="section-decision" class="section-grey">
     <div class="container">
       <section class="case-section">
-        <span class="section-eyebrow">Process</span>
-        <h2>Defining the constraint boundary before designing anything</h2>
-        <p>Before touching the interface, I needed to establish what we could and could not change. TPI payment limitations were contractual and technical, set by the third-party providers. <strong>We could not fix the root cause.</strong> That constraint was important to surface early, because it ruled out an entire category of solutions and focused the team on a single direction: design a recovery flow that works entirely within the failure state.</p>
-        <p>I also identified an early strategic risk. Presenting a Booking.com native room as the alternative immediately after a TPI failure could damage future TPI conversion if users started associating TPI with unreliability. The design had to frame the alternative as a helpful option, not as a judgment on TPI. That framing decision shaped every iteration that followed.</p>
+        <span class="section-eyebrow">The Decision</span>
+        <h2>I had surfaced the problem. The harder question was what to actually build.</h2>
+        <p>Once the PM agreed to pursue this, the first thing I established was the constraint boundary: what was actually fixable versus what wasn't. TPI payment limitations were contractual and technical, set by the third-party providers. We could not fix the root cause. That constraint ruled out an entire category of solutions and pointed to a single question: what could we do within the failure state itself?</p>
+        <p>I mapped two directions. Improve the error message and add a payment retry path — safer, lower lift, clearly in scope. Or use the failure moment as a conversion opportunity and surface a comparable Booking.com native room with pay-at-property immediately after the failure. I argued for the second. <strong>Booking.com already had the inventory. The structural advantage was there. The problem was that nobody had built a path to it from the failure state.</strong></p>
 
         <div class="highlight">
-          <p>I used Jobs to Be Done to anchor the team: when my payment fails, I want a clear and trustworthy alternative so I do not have to start over and risk losing my booking. That single sentence resolved several design disagreements before they became debates.</p>
+          <p>The risk of the second option was real: presenting a native room immediately after a TPI failure could damage future TPI conversion if users associated TPI with unreliability. The design had to frame the alternative as a helpful next step, not as a verdict on TPI. That constraint shaped every iteration. I used Jobs to Be Done to anchor the team: when my payment fails, I want a clear and trustworthy alternative so I do not have to start over and risk losing my booking.</p>
         </div>
 
         <p>I mapped the current flow against the proposed recovery flow to get cross-functional agreement before designing. The before state was a linear dead end. The after state introduced a branch at the failure point: offer a comparable Booking.com room with pay-at-property.</p>
@@ -563,10 +675,10 @@
   </div>
 
   <!-- SECTION 4 — DESIGN DECISIONS -->
-  <div class="section-white">
+  <div id="section-design" class="section-white">
     <div class="container">
       <section class="case-section">
-        <span class="section-eyebrow">Design Decisions</span>
+        <span class="section-eyebrow">Design Process</span>
         <h2>Four iterations, each one informed by a specific failure in the previous</h2>
         <p>The first mobile prototype followed the existing room options design pattern: a side-by-side comparison with color-coded differences. Users found it overwhelming. Several did not register it as a comparison at all. The cognitive cost of processing two options at once, in a frustrated state, was too high.</p>
 
@@ -619,7 +731,7 @@
   </div>
 
   <!-- SECTION 5 — OUTCOME -->
-  <div class="section-grey">
+  <div id="section-outcome" class="section-grey">
     <div class="container">
       <section class="case-section">
         <span class="section-eyebrow">Outcome</span>
@@ -657,6 +769,29 @@
   </div>
 
   <script>
+    (function() {
+      var sections = Array.from(document.querySelectorAll('#section-context, #section-problem, #section-decision, #section-design, #section-outcome'));
+      var secLinks = Array.from(document.querySelectorAll('.sec-link'));
+
+      function updateActive() {
+        var trigger = window.scrollY + window.innerHeight * 0.3;
+        var activeId = sections[0].id;
+        sections.forEach(function(s) { if (s.offsetTop <= trigger) activeId = s.id; });
+        secLinks.forEach(function(l) { l.classList.toggle('active', l.getAttribute('href') === '#' + activeId); });
+      }
+
+      window.addEventListener('scroll', updateActive, { passive: true });
+      updateActive();
+
+      secLinks.forEach(function(link) {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          var target = document.querySelector(this.getAttribute('href'));
+          if (target) target.scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+    })();
+
     (function() {
       const lb = document.getElementById('lightbox');
       const lbImg = lb.querySelector('img');
